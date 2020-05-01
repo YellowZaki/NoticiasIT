@@ -24,12 +24,15 @@
         </action>
     </package>
     
-    <package name="alberto" extends="struts-default">
-        <action name="NoticiaCard" class="acciones.NoticiaCard">
+    <package name="variable-setting" extends="struts-default">
+        <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
-        <action name="CrearEditarNoticia" class="acciones.NoticiaCard">
+        <action name="CrearEditarNoticia" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/crear_editar_noticia.jsp</result>
+        </action>
+        <action name="ListaNoticias" class="acciones.SetVariables" method="listaNoticias">
+            <result name="success">/vistas/ver_noticias.jsp</result>
         </action>
     </package>
     
