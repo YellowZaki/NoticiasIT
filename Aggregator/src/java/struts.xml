@@ -13,6 +13,14 @@
             <result name="success">/vistas/index.jsp</result>
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
+        </action>    
+    </package>
+    
+    <package name="juan" extends="struts-default">
+        <action name="comprobarLogin" class="acciones.Login">
+            <result name="success">/vistas/index.jsp</result>
+            <result name="error">/vistas/login.jsp</result>
+            <result name="input">/vistas/login.jsp</result>
         </action>
     </package>
     
@@ -20,5 +28,10 @@
         <action name="NoticiaCard" class="acciones.NoticiaCard">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
+        <action name="CrearEditarNoticia" class="acciones.NoticiaCard">
+            <result name="success">/vistas/crear_editar_noticia.jsp</result>
+        </action>
     </package>
+    
+    
 </struts>

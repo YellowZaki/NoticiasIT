@@ -14,12 +14,24 @@
             <div class="col-lg-9 col-md-8 mx-auto">                           
                 <div class="card rounded shadow shadow-sm">
                     <div class="card-header">
-                        <h3 class="mb-0">titulo</h3>
+                        <h3 class="mb-0"><s:property value="noticia.titulo"/></h3>
                     </div>
                     <div class="card-body">
-                        Body
+                        <s:property value="noticia.descripcion"/>
                     </div>
 
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col">
+                                <s:property value="noticia.comentarios.size()"/> <i class="fas fa-comment" style="color:#a9a9a9;"></i>
+                            </div>
+                            
+                            <div class="float-right mr-3">
+                                <i class="fas fa-thumbs-up" style="color:#e85454;"></i> 199 <i class="fas fa-thumbs-down" style="color:#4498ef;"></i>
+                            </div>
+                        </div>
+
+                    </div>
                     <s:property value="idd"/>
                 </div>
             </div>

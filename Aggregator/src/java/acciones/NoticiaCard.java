@@ -5,8 +5,11 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.noticiaDAO;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import pojos.Noticia;
 
 /**
@@ -15,6 +18,8 @@ import pojos.Noticia;
  */
 public class NoticiaCard extends ActionSupport {
 
+    //    localhost/NoticiaCard.action?id=2
+    //Notcia
     //Parámetros de entrada por GET
     String id;
 
@@ -28,16 +33,23 @@ public class NoticiaCard extends ActionSupport {
     public NoticiaCard() {
     }
 
-    String idd;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getIdd() {
-        return idd;
+    public void setNoticia(Noticia noticia) {
+        this.noticia = noticia;
+    }
+
+    public Noticia getNoticia() {
+        return this.noticia;
     }
 
     public String execute() throws Exception {
-//        noticiaDAO nd = new noticiaDAO();
-//        noticia = nd.getNoticia(getId());
-        idd = "Param " + getId();
+        if (id != null) {
+            noticiaDAO nd = new noticiaDAO();
+            noticia = nd.getNoticia(getId());
+        }
         return SUCCESS;
     }
 

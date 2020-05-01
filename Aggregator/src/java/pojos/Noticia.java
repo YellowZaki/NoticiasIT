@@ -25,6 +25,7 @@ public class Noticia  implements java.io.Serializable {
      private Set guardadasEns = new HashSet(0);
 
     public Noticia() {
+
     }
 
 	
