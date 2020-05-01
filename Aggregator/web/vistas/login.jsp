@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -20,33 +21,25 @@
             <div class="row">
                 <div class="col-md-12 d-flex flex-column justify-content-center">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        <?php
-                        if ($user_o_pass_incorrecto) {
-                            echo "<h4>Usuario/contraseña incorrectos</h4>";
-                        }
-                        ?>
                         <div class="card rounded shadow shadow-sm">
                             <div class="card-header">
                                 <h3 class="mb-0">Login</h3>
                             </div>
                             <div class="card-body">
-                                <form method="POST">
+                                <s:form action="comprobarLogin">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Introduce email">
-                                        <div class="invalid-feedback">
-                                            Debes rellenar este campo
+                                        <s:textfield name="username" label="Nombre de usuario" cssClass="form-control" theme="simple"></s:textfield>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pass">Contraseña</label>
-                                        <input name="pass" type="password" class="form-control" id="pass" placeholder="Introduce contraseña">
-                                    </div>
-                                    <div class="d-flex">
-                                        <button name="login" type="submit" class="btn btn-primary">Entrar</button>
-                                        <a href="register.php" class="btn btn-primary ml-auto">Registrarse</a>  
-                                    </div>
-                                </form>
+                                        <div class="form-group">
+                                        <s:password name="password" label="Contraseña" cssClass="form-control" theme="simple"></s:password>
+                                        </div>
+                                        <div class="d-flex">                                            
+                                        <s:submit name="btnLogin" value="Entrar" cssClass="btn btn-primary" theme="simple"></s:submit>
+                                        <s:form action="/register.jsp">
+                                            <s:submit name="btnRegistro" value="Registrarse" cssClass="btn btn-primary ml-auto" theme="simple"></s:submit>
+                                        </s:form>
+                                    </div>                                
+                                </s:form>
                             </div>
                         </div>
                     </div>
