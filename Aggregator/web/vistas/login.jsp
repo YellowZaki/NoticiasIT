@@ -13,10 +13,10 @@
     </head>
     <body>
         <div class="jumbotron text-center" style="margin-bottom:0">
-            <h1>UPOBOARD</h1>
+            <h1>aggregator</h1>
             <p>El aula virtual de clases no presenciales</p>
         </div>
-        <div class="container upoboard-margin-navbar">
+        <div class="container aggregator-margin-navbar">
             <div class="row">
                 <div class="col-md-12 d-flex flex-column justify-content-center">
                     <div class="col-lg-6 col-md-8 mx-auto">
