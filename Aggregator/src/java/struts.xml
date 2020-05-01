@@ -13,4 +13,10 @@
             <result name="error">/login.jsp</result>
         </action>
     </package>
+    
+    <package name="alberto" extends="struts-default">
+        <action name="NoticiaCard" class="acciones.NoticiaCard">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>
+    </package>
 </struts>
