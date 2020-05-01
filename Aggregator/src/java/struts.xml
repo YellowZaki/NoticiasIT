@@ -19,4 +19,10 @@
             <result name="success">/vistas/noticia.jsp</result>
         </action>
     </package>
+    
+    <package name="hector" extends="struts-default">
+        <action name="crearEditarNotica" class="acciones.newNoticia">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>
+    </package>
 </struts>
