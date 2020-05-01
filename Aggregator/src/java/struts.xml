@@ -11,6 +11,7 @@
     <package name="andres" extends="struts-default">
         <action name="registrar" class="acciones.Register">
             <result name="success">/vistas/index.jsp</result>
+            <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
         </action>
     </package>

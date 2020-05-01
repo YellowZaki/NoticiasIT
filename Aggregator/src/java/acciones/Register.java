@@ -5,13 +5,17 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.registerDAO;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Register extends ActionSupport {
     private String usuario;
     private String email;
     private String clave;
+    private registerDAO dao;
     
     public void validate(){
         if(this.getUsuario().trim().equals("")){
@@ -25,13 +29,34 @@ public class Register extends ActionSupport {
         }else if(!Pattern.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$", this.getEmail())){
             addFieldError("email", "El formato del email no es correcto");
         }
+        
+        if(this.getClave().trim().equals("")){
+            addFieldError("clave", "Debe estar relleno");
+        }
     }
     
     public Register() {
+        dao = new registerDAO();
     }
     
     public String execute() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String enc = dao.Registrar(usuario, email, clave);
+        
+        if(enc.equals("email")){
+            Map session = (Map) ActionContext.getContext().get("session");
+            
+            session.put("errorEmail", "El email introducido ya existe.");
+        }else if(enc.equals("usuario")){
+            Map session = (Map) ActionContext.getContext().get("session");
+            
+            session.put("errorUsuario", "El nombre de usuario introducido ya existe.");
+        }
+        
+        if(enc.equals("")){
+            return SUCCESS;
+        }else{
+            return ERROR;
+        }
     }
 
     public String getUsuario() {
