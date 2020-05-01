@@ -21,7 +21,7 @@
     </package>
     
     <package name="hector" extends="struts-default">
-        <action name="crearEditarNotica" class="acciones.newNoticia">
+        <action name="crearEditarNoticia" class="acciones.newNoticia">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
     </package>
