@@ -23,7 +23,7 @@ public class Anuncio  implements java.io.Serializable {
     }
    
     public String getLink() {
-        return this.link;
+        return this.link;   
     }
     
     public void setLink(String link) {
