@@ -18,5 +18,10 @@
         <action name="NoticiaCard" class="acciones.NoticiaCard">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
+        <action name="CrearEditarNoticia" class="acciones.NoticiaCard">
+            <result name="success">/vistas/crear_editar_noticia.jsp</result>
+        </action>
     </package>
+    
+    
 </struts>

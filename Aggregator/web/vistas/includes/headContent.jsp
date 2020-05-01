@@ -137,11 +137,11 @@
             <%
                 if (mostrar_encabezado) {
             %>
-            "40px"
+            40px
             <%
             } else {
             %>
-            "105px"
+            105px
             <%
                 }
             %>
