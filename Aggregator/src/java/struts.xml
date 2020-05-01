@@ -7,10 +7,11 @@
     <package name="default" extends="struts-default">
         
     </package>
-    <package name="juan" extends="struts-default">
-        <action name="comprobarLogin" class="acciones.Login">
-            <result name="success">/index.jsp</result>
-            <result name="error">/login.jsp</result>
+    
+    <package name="andres" extends="struts-default">
+        <action name="registrar" class="acciones.Register">
+            <result name="success">/vistas/index.jsp</result>
+            <result name="error">/vistas/register.jsp</result>
         </action>
     </package>
 </struts>
