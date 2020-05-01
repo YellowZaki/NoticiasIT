@@ -2,6 +2,9 @@ package utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -37,6 +40,15 @@ public class Utils {
     public static boolean isHashedPasswordCorrect(String passwordInput, String passwordFromDB) {
         String hashedPassword = getHashedPassword(passwordInput);
         return hashedPassword.equals(passwordFromDB);
+    }
+    
+    public static Date fechaHoy() throws ParseException{
+        Date fechaHoy = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("d-m-Y");
+        String fechaStr = format.format(fechaHoy);
+        fechaHoy = format.parse(fechaStr);
+        
+        return fechaHoy;
     }
 
 }

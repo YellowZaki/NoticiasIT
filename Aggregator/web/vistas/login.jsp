@@ -11,11 +11,22 @@
     <head>
         <title>Login</title>
         <%@include file="includes/headContent.jsp"%>
+        <style>
+            ul {
+                list-style: none;
+                margin: 10px 0px;
+                padding:7px;
+                color: #D8000C;
+                background-color: #FFD2D2;
+                border: 1px solid red;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
-        <div class="jumbotron text-center" style="margin-bottom:0">
-            <h1>aggregator</h1>
-            <p>El aula virtual de clases no presenciales</p>
+        <div class="jumbotron text-center">
+            <h1>Aggregator</h1>
+            <p>Mis cojones adobaos</p>
         </div>
         <div class="container aggregator-margin-navbar">
             <div class="row">
@@ -28,17 +39,19 @@
                             <div class="card-body">
                                 <s:form action="comprobarLogin">
                                     <div class="form-group">
-                                        <s:textfield name="username" label="Nombre de usuario" cssClass="form-control" theme="simple"></s:textfield>
-                                        </div>
-                                        <div class="form-group">
-                                        <s:password name="password" label="Contraseña" cssClass="form-control" theme="simple"></s:password>
-                                        </div>
-                                        <div class="d-flex">                                            
+                                        <label>Nombre de usuario</label>
+                                        <s:textfield name="usuario" cssClass="form-control" theme="simple"></s:textfield>
+                                        <s:fielderror fieldName="usuario"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <s:password name="clave" cssClass="form-control" theme="simple"></s:password>
+                                        <s:fielderror fieldName="clave"/>
+                                    </div>
+                                    <div class="d-flex">                                            
                                         <s:submit name="btnLogin" value="Entrar" cssClass="btn btn-primary" theme="simple"></s:submit>
-                                        <s:form action="/register.jsp">
-                                            <s:submit name="btnRegistro" value="Registrarse" cssClass="btn btn-primary ml-auto" theme="simple"></s:submit>
-                                        </s:form>
-                                    </div>                                
+                                            <a href="register.jsp" class="btn btn-primary ml-auto">Registrarse</a>                                        
+                                        </div>                                
                                 </s:form>
                             </div>
                         </div>

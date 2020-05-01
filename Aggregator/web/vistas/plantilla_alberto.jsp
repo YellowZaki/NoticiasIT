@@ -21,14 +21,25 @@ NO MODIFICAR ESTO, COPIAR PEGAR DE AQUI-->
             <div class="row">
                 <div class="mr-auto"><h1>Header de prueba</h1></div>
             </div>
-            
-            
-            
-            <s:action name="NoticiaCard" flush="true" executeResult="true" ignoreContextParams="true">
 
-                <s:param name="id" value="test">test</s:param>
+
+
+            <s:action name="NoticiaCard" ignoreContextParams="true" executeResult="true">
+                <s:param name="id">2</s:param>
             </s:action>
             
+           
+            
+            
+             <a href="
+                
+            <s:url action="NoticiaCard">
+                <s:param name="id">2</s:param>
+            </s:url>
+
+                
+                ">click here</a>      
+                
         </div>
     </body>
 </html>
