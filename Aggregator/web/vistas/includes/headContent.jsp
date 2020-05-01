@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <!-- Uso de plugins-->
-<script src="js/upoboard.js"></script>
+<script src="js/aggregator.js"></script>
 
 
 <%!
@@ -130,7 +130,7 @@
         border: 5px solid <%=color_primario%>;
     }
 
-    .upoboard-margin-navbar {
+    .aggregator-margin-navbar {
         margin-bottom:50px;
         margin-top:
 
