@@ -11,6 +11,17 @@
     <head>
         <title>Login</title>
         <%@include file="includes/headContent.jsp"%>
+        <style>
+            ul {
+                list-style: none;
+                margin: 10px 0px;
+                padding:7px;
+                color: #D8000C;
+                background-color: #FFD2D2;
+                border: 1px solid red;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <div class="jumbotron text-center">
@@ -29,16 +40,18 @@
                                 <s:form action="comprobarLogin">
                                     <div class="form-group">
                                         <label>Nombre de usuario</label>
-                                        <s:textfield name="username" cssClass="form-control" theme="simple"></s:textfield>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contraseña</label>
-                                        <s:password name="password" cssClass="form-control" theme="simple"></s:password>
-                                        </div>
-                                        <div class="d-flex">                                            
+                                        <s:textfield name="usuario" cssClass="form-control" theme="simple"></s:textfield>
+                                        <s:fielderror fieldName="usuario"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <s:password name="clave" cssClass="form-control" theme="simple"></s:password>
+                                        <s:fielderror fieldName="clave"/>
+                                    </div>
+                                    <div class="d-flex">                                            
                                         <s:submit name="btnLogin" value="Entrar" cssClass="btn btn-primary" theme="simple"></s:submit>
-                                        <a href="register.jsp" class="btn btn-primary ml-auto">Registrarse</a>                                        
-                                    </div>                                
+                                            <a href="register.jsp" class="btn btn-primary ml-auto">Registrarse</a>                                        
+                                        </div>                                
                                 </s:form>
                             </div>
                         </div>
