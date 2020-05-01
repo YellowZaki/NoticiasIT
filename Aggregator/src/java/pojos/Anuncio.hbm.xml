@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Anuncio" table="anuncio" catalog="aggregator" optimistic-lock="version">
+        <id name="link" type="string">
+            <column name="link" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tema" class="pojos.Tema" fetch="select">
+            <column name="nombre_tema" length="100" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

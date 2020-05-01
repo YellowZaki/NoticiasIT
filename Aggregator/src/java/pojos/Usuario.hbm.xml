@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Usuario" table="usuario" catalog="aggregator" optimistic-lock="version">
+        <id name="usuario" type="string">
+            <column name="usuario" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="clave" type="string">
+            <column name="clave" length="300" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="rol" type="string">
+            <column name="rol" length="50" not-null="true" />
+        </property>
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" length="50" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Comentario" />
+        </set>
+        <set name="votos" table="voto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" length="50" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Voto" />
+        </set>
+        <one-to-one name="personalizacion" class="pojos.Personalizacion"></one-to-one>
+        <set name="carpetas" table="carpeta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" length="50" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Carpeta" />
+        </set>
+        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" length="50" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Noticia" />
+        </set>
+    </class>
+</hibernate-mapping>

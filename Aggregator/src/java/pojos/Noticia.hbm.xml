@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Noticia" table="noticia" catalog="aggregator" optimistic-lock="version">
+        <id name="idNoticia" type="java.lang.Integer">
+            <column name="id_noticia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tema" class="pojos.Tema" fetch="select">
+            <column name="nombre_tema" length="100" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
+            <column name="usuario" length="50" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="3000" not-null="true" />
+        </property>
+        <property name="fuente" type="string">
+            <column name="fuente" length="100" not-null="true" />
+        </property>
+        <property name="votos" type="int">
+            <column name="votos" not-null="true" />
+        </property>
+        <property name="fechaPublicacion" type="date">
+            <column name="fecha_publicacion" length="10" not-null="true" />
+        </property>
+        <set name="votos_1" table="voto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_noticia" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Voto" />
+        </set>
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_noticia" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Comentario" />
+        </set>
+        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_noticia" not-null="true" />
+            </key>
+            <one-to-many class="pojos.GuardadasEn" />
+        </set>
+    </class>
+</hibernate-mapping>

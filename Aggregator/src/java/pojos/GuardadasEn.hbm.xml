@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.GuardadasEn" table="guardadas_en" catalog="aggregator" optimistic-lock="version">
+        <composite-id name="id" class="pojos.GuardadasEnId">
+            <key-property name="idNoticia" type="int">
+                <column name="id_noticia" />
+            </key-property>
+            <key-property name="nombreCarpeta" type="int">
+                <column name="nombre_carpeta" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="carpeta" class="pojos.Carpeta" update="false" insert="false" fetch="select">
+            <column name="nombre_carpeta" not-null="true" />
+        </many-to-one>
+        <many-to-one name="noticia" class="pojos.Noticia" update="false" insert="false" fetch="select">
+            <column name="id_noticia" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
