@@ -29,7 +29,7 @@ public class NewNoticia extends ActionSupport {
        Date fechaPublicacion = Utils.fechaHoy();
        
        
-         return "JUAN CALLATE";
+        return SUCCESS;
     }
     
 }
