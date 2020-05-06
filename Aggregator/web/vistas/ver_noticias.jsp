@@ -77,6 +77,12 @@
                 </div>
 
             </div>
+            <a href="
+               <s:url action="CrearEditarNoticia">
+               </s:url>
+               " class="btn btn-primary btn-circle btn-xl fixed-botton-btn" role="button"><i class="fas fa-pen"></i></a>
+               
+               
         </div>
     </body>
 </html>

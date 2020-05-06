@@ -5,7 +5,11 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        
+        <action name="">
+            <result type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result>
+        </action>  
     </package>
     
     <package name="andres" extends="struts-default">
@@ -26,7 +30,9 @@
     
     <package name="juan" extends="struts-default">
         <action name="comprobarLogin" class="acciones.Login">
-            <result name="success">/vistas/index.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result> 
             <result name="error">/vistas/login.jsp</result>
             <result name="input">/vistas/login.jsp</result>
         </action>
@@ -45,8 +51,11 @@
     </package>
     <package name="alberto" extends="struts-default">
         <action name="nuevoComentario" class="acciones.NewComentario">
-            
+         
         </action>
+        <action name="logout" class="acciones.Login" method="logout">
+            <result name="success">/vistas/login.jsp</result>
+        </action> 
     </package>
     <package name="variable-setting" extends="struts-default">
         <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
