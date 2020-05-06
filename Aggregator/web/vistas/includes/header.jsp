@@ -2,22 +2,22 @@
 
 <div class="jumbotron text-center" style="margin-bottom:-20px">
 
-                     <a href="
-                
-            <s:url action="ListaNoticias">
-                <s:param name="pag">1</s:param>
-            </s:url>
+    <a href="
 
-                
-                ">
-                     
-                     <h1>AGGREGATOR</h1>
-                     
-                     
-                     
-                     
-                     </a> 
-    
+       <s:url action="ListaNoticias">
+           <s:param name="pag">1</s:param>
+       </s:url>
+
+
+       ">
+
+        <h1>AGGREGATOR</h1>
+
+
+
+
+    </a> 
+
     <p>Lo agrega TORR</p>
 </div>    
 
@@ -56,7 +56,18 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="config.php>"><i class="fa fa-cog"></i></a> </li>
-                <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i></a> </li>
+                <!--                    session.usuario.getUsuario()-->
+                <s:if test='#session.containsKey("usuario")'>
+
+                    <li class="nav-item"><a class="nav-link" href="
+                                            <s:url action="logout">
+                                            </s:url>
+                                            "><i class="fas fa-sign-out-alt"></i></a> </li>
+                        </s:if>
+                        <s:else>
+                    <li class="nav-item"><a class="nav-link" href="login.jsp"><i class="fas fa-sign-in-alt"></i></a> </li>
+                        </s:else>
+
 
             </ul>
         </div>

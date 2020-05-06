@@ -6,10 +6,12 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
 import java.util.ArrayList;
 import java.util.List;
+import pojos.Carpeta;
 import pojos.Noticia;
 import pojos.Tema;
 
@@ -23,11 +25,14 @@ public class SetVariables extends ActionSupport {
     String id;//De noticia, si se van a crear mas ids, poner id_xxxx
     String pag;
     String tema; //Para ver_noticias.jsp
+    String nombre_carpeta;
+    String nombre_usuario;
 
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
     Tema tema0;
+    Carpeta carpeta;
 
     public SetVariables() {
     }
@@ -85,6 +90,30 @@ public class SetVariables extends ActionSupport {
 
     public void setTema0(Tema tema0) {
         this.tema0 = tema0;
+    }
+
+    public String getNombre_carpeta() {
+        return nombre_carpeta;
+    }
+
+    public void setNombre_carpeta(String nombre_carpeta) {
+        this.nombre_carpeta = nombre_carpeta;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+
+    public Carpeta getCarpeta() {
+        return carpeta;
+    }
+
+    public void setCarpeta(Carpeta carpeta) {
+        this.carpeta = carpeta;
     }
     
     
@@ -152,6 +181,13 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
     
+    public String getCarpetaUnica() {
+        if (nombre_carpeta != null) {
+            carpetaDAO cd = new carpetaDAO();
+            carpeta = cd.getCarpeta(getNombre_carpeta(), getNombre_usuario());
+        }
+        return SUCCESS;
+    }
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;

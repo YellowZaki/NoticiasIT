@@ -41,21 +41,21 @@ public class Login extends ActionSupport {
     }
 
     public void validate() {
+        if (getUsuario() != null) {
+            if (this.usuario.length() == 0) {
+                this.addFieldError("usuario", "Debe rellenar el campo");
+            }
+            if (this.usuario.contains("_") || this.usuario.contains("#") || this.usuario.contains("!") || this.usuario.contains(";") || this.usuario.contains(":") || this.usuario.contains("*") || this.usuario.contains("(") || this.usuario.contains(")") || this.usuario.contains("[") || this.usuario.contains("]") || this.usuario.contains("{") || this.usuario.contains("}")) {
+                this.addFieldError("usuario", "No se permiten caracteres extraños");
+            }
+            if (this.clave.length() == 0) {
+                this.addFieldError("clave", "Debe rellenar el campo");
+            }
 
-        if (this.usuario.length() == 0) {
-            this.addFieldError("usuario", "Debe rellenar el campo");
+            if (this.clave.contains("_") || this.clave.contains("#") || this.clave.contains("!") || this.clave.contains(";") || this.clave.contains(":") || this.clave.contains("(") || this.clave.contains(")") || this.clave.contains("[") || this.clave.contains("]") || this.clave.contains("{") || this.clave.contains("}")) {
+                this.addFieldError("clave", "No se permiten caracteres extraños");
+            }
         }
-        if (this.usuario.contains("_") || this.usuario.contains("#") || this.usuario.contains("!") || this.usuario.contains(";") || this.usuario.contains(":") || this.usuario.contains("*") || this.usuario.contains("(") || this.usuario.contains(")") || this.usuario.contains("[") || this.usuario.contains("]") || this.usuario.contains("{") || this.usuario.contains("}")) {
-            this.addFieldError("usuario", "No se permiten caracteres extraños");
-        }
-        if (this.clave.length() == 0) {
-            this.addFieldError("clave", "Debe rellenar el campo");
-        }
-
-        if (this.clave.contains("_") || this.clave.contains("#") || this.clave.contains("!") || this.clave.contains(";") || this.clave.contains(":") || this.clave.contains("(") || this.clave.contains(")") || this.clave.contains("[") || this.clave.contains("]") || this.clave.contains("{") || this.clave.contains("}")) {
-            this.addFieldError("clave", "No se permiten caracteres extraños");
-        }
-
     }
 
     public String execute() throws Exception {
@@ -69,6 +69,14 @@ public class Login extends ActionSupport {
             }
         }
         return resultado;
+    }
+
+    public String logout() {
+        Map session = (Map) ActionContext.getContext().get("session");
+        if (session.containsKey("usuario")) {
+            session.remove("usuario");
+        }
+        return SUCCESS;
     }
 
 }

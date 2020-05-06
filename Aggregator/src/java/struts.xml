@@ -5,7 +5,11 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        
+        <action name="">
+            <result type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result>
+        </action>  
     </package>
     
     <package name="andres" extends="struts-default">
@@ -13,20 +17,45 @@
             <result name="success">/vistas/index.jsp</result>
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
-        </action>    
+        </action>  
+        
+        <action name="votosLike" class="acciones.Votos">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>
+        
+        <action name="votosDislike" class="acciones.Votos" method="dislike">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>  
     </package>
     
     <package name="juan" extends="struts-default">
         <action name="comprobarLogin" class="acciones.Login">
-            <result name="success">/vistas/index.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result> 
             <result name="error">/vistas/login.jsp</result>
             <result name="input">/vistas/login.jsp</result>
+        </action>
+        <action name="GestionarCarpetas" class="acciones.SetVariables" method="getNoticiaUnica">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
+        <action name="EditarAnadirCarpeta" class="acciones.SetVariables" method="getCarpetaUnica">
+            <result name="success">/vistas/editar_anadir_carpeta.jsp</result>
+        </action>
+        <action name="AnadirNoticiaACarpeta" class="acciones.CarpetaActions" method="asociar">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
+        <action name="BorrarCarpeta" class="acciones.CarpetaActions" method="borrarCarpeta">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
     </package>
     <package name="alberto" extends="struts-default">
         <action name="nuevoComentario" class="acciones.NewComentario">
-            
+         
         </action>
+        <action name="logout" class="acciones.Login" method="logout">
+            <result name="success">/vistas/login.jsp</result>
+        </action> 
     </package>
     <package name="variable-setting" extends="struts-default">
         <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
