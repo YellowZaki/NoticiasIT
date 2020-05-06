@@ -32,6 +32,12 @@
                                '><i style='color:red;' class='fas fa-trash'></i></a>
                               
                         </s:if>
+                        <a href='
+                               <s:url action="GestionarCarpetas">
+                                   <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                               </s:url>
+
+                               '><i style='color:darkgrey;' class='fas fa-folder-plus'></i></a>
                     </div>
 
 
