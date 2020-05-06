@@ -70,7 +70,7 @@ public class noticiaDAO {
         Voto v = null;
         
         for(Voto voto:lista){
-            if(voto.getUsuario() == u){
+            if(voto.getUsuario().getUsuario().equals(u.getUsuario())){
                 v = voto;
             }
         }
@@ -95,7 +95,9 @@ public class noticiaDAO {
                 v.setValor(-1);
                 sesion.update(v);
             }else if(valor == v.getValor()){
+                not.getVotos_1().remove(v);
                 sesion.delete(v);
+                sesion.update(not);
             }   
         }
         
