@@ -5,8 +5,11 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.noticiaDAO;
+import java.util.Map;
+import pojos.Usuario;
 
 /**
  *
@@ -20,13 +23,23 @@ public class Votos extends ActionSupport {
     }
     
     public String execute() throws Exception {
-        dao.votar(getIdNoticia(), 1);
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario)session.get("usuario");
+        
+        if(u != null){
+            dao.votar(u, getIdNoticia(), 1);
+        }
         
         return SUCCESS;
     }
 
     public String dislike(){
-        dao.votar(getIdNoticia(), -1);
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario)session.get("usuario");
+        
+        if(u != null){
+            dao.votar(u, getIdNoticia(), -1);
+        }
         
         return SUCCESS;
     }

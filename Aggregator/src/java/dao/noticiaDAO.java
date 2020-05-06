@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -57,7 +58,7 @@ public class noticiaDAO {
         tx.commit();
     }
     
-    public void votar(String idNoticia, int valor){
+    public void votar(Usuario u, String idNoticia, int valor){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         
@@ -65,11 +66,14 @@ public class noticiaDAO {
 
         Noticia not = (Noticia)q1.uniqueResult();
 
-        Usuario u = not.getUsuario();
-
-        Query q2 = sesion.createQuery("From Voto where id_noticia='" + idNoticia + "'");
+        Set<Voto> lista = not.getVotos_1();
+        Voto v = null;
         
-        Voto v = (Voto)q2.uniqueResult();
+        for(Voto voto:lista){
+            if(voto.getUsuario() == u){
+                v = voto;
+            }
+        }
         
         if(v == null){
             Voto v1;
@@ -80,15 +84,19 @@ public class noticiaDAO {
                 v1 = new Voto(not, u, -1);
             }
             
+            not.getVotos_1().add(v1);
             sesion.save(v1);
+            sesion.update(not);
         }else{
-            if(valor == 1){
-                v.setValor(v.getValor()+1);
-            }else{
-                v.setValor(v.getValor()-1);
-            }
-            
-            sesion.update(v);
+            if(valor == 1 && (v.getValor() == -1)){
+                v.setValor(1);
+                sesion.update(v);
+            }else if(valor == -1 && (v.getValor() == 1)){
+                v.setValor(-1);
+                sesion.update(v);
+            }else if(valor == v.getValor()){
+                sesion.delete(v);
+            }   
         }
         
         tx.commit();
