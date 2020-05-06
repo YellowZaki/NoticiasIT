@@ -47,7 +47,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <s:form action="crearEditarNoticia" cssClass="needs-validation" method="POST">
+                                <s:form action="crearNoticiaSubmit" cssClass="needs-validation" method="POST">
 
                                     <label for="titulo">Título</label>
                                     <s:if test="%{noticia!=null}">

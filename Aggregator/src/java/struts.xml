@@ -46,13 +46,16 @@
         <action name="ListaNoticias" class="acciones.SetVariables" method="listaNoticias">
             <result name="success">/vistas/ver_noticias.jsp</result>
         </action>
+        <action name="CrearEditarTema" class="acciones.SetVariables" method="setearTema">
+            <result name="success">/vistas/crear_editar_tema.jsp</result>
+        </action>
     </package>
     
     <package name="hector" extends="struts-default">
-        <action name="crearEditarNoticia" class="acciones.NewNoticia">
+        <action name="crearNoticiaSubmit" class="acciones.NewNoticia">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
-        <action name="crearEditarTema" class="acciones.NewTema">
+        <action name="crearEditarTemaSubmit" class="acciones.NewTema">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
     </package>

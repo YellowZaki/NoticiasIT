@@ -7,9 +7,11 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
 import dao.noticiaDAO;
+import dao.temaDAO;
 import java.util.ArrayList;
 import java.util.List;
 import pojos.Noticia;
+import pojos.Tema;
 
 /**
  *
@@ -25,6 +27,7 @@ public class SetVariables extends ActionSupport {
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
+    Tema tema0;
 
     public SetVariables() {
     }
@@ -75,6 +78,16 @@ public class SetVariables extends ActionSupport {
     public void setNoticias(List<Noticia> noticias) {
         this.noticias = noticias;
     }
+
+    public Tema getTema0() {
+        return tema0;
+    }
+
+    public void setTema0(Tema tema0) {
+        this.tema0 = tema0;
+    }
+    
+    
 
     /**
      * ###########################################
@@ -129,6 +142,16 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
 
+    public String setearTema(){
+        
+        if(getTema()!=null){
+            temaDAO tDAO = new temaDAO();
+            setTema0(tDAO.getTema(getTema()));
+        }
+        
+        return SUCCESS;
+    }
+    
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;
