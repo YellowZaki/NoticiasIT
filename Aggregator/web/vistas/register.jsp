@@ -5,8 +5,6 @@
     <head>
         <title>Registrarse</title>
         <%@include file="includes/headContent.jsp"%>
-        <s:head/>
-        
         <style>
             ul {
                 list-style: none;

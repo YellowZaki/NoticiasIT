@@ -34,7 +34,7 @@ public class registerDAO {
             if(u == null){
                 clave = Utils.getHashedPassword(clave);
                 
-                u = new Usuario(usuario, clave, email, usuario);
+                u = new Usuario(usuario, clave, email, "usuario");
                 sesion.save(u);
             }else{
                 enc = "usuario";

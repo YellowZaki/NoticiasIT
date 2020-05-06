@@ -8,7 +8,6 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <div class="container aggregator-margin-navbar">
-
     <div class="row">
         <div class="col-md-12 d-flex flex-column justify-content-center">
             <div class="col-lg-9 col-md-8 mx-auto">                           
@@ -27,10 +26,14 @@
                             </div>
                             
                             <div class="float-right mr-3">
-                                <i class="fas fa-thumbs-up" style="color:#e85454;"></i> 199 <i class="fas fa-thumbs-down" style="color:#4498ef;"></i>
+                                <i class="fas fa-thumbs-up" style="color:#a9a9a9;" id="like">
+                                    <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
+                                </i> 199 
+                                <i class="fas fa-thumbs-down" style="color:#a9a9a9;" id="dislike">
+                                    <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
+                                </i>
                             </div>
                         </div>
-
                     </div>
                     <s:property value="idd"/>
                 </div>

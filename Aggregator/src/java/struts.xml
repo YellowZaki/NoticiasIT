@@ -13,7 +13,15 @@
             <result name="success">/vistas/index.jsp</result>
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
-        </action>    
+        </action>  
+        
+        <action name="votosLike" class="acciones.Votos">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>
+        
+        <action name="votosDislike" class="acciones.Votos" method="dislike">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>  
     </package>
     
     <package name="juan" extends="struts-default">
