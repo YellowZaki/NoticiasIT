@@ -22,6 +22,18 @@
             <result name="error">/vistas/login.jsp</result>
             <result name="input">/vistas/login.jsp</result>
         </action>
+        <action name="GestionarCarpetas" class="acciones.SetVariables" method="getNoticiaUnica">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
+        <action name="EditarAnadirCarpeta" class="acciones.SetVariables" method="getCarpetaUnica">
+            <result name="success">/vistas/editar_anadir_carpeta.jsp</result>
+        </action>
+        <action name="AnadirNoticiaACarpeta" class="acciones.CarpetaActions" method="asociar">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
+        <action name="BorrarCarpeta" class="acciones.CarpetaActions" method="borrarCarpeta">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
     </package>
     
     <package name="variable-setting" extends="struts-default">

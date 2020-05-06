@@ -11,7 +11,7 @@ import java.util.Set;
 public class Carpeta  implements java.io.Serializable {
 
 
-     private int nombreCarpeta;
+     private String nombreCarpeta;
      private Usuario usuario;
      private Set guardadasEns = new HashSet(0);
 
@@ -19,21 +19,21 @@ public class Carpeta  implements java.io.Serializable {
     }
 
 	
-    public Carpeta(int nombreCarpeta, Usuario usuario) {
+    public Carpeta(String nombreCarpeta, Usuario usuario) {
         this.nombreCarpeta = nombreCarpeta;
         this.usuario = usuario;
     }
-    public Carpeta(int nombreCarpeta, Usuario usuario, Set guardadasEns) {
+    public Carpeta(String nombreCarpeta, Usuario usuario, Set guardadasEns) {
        this.nombreCarpeta = nombreCarpeta;
        this.usuario = usuario;
        this.guardadasEns = guardadasEns;
     }
    
-    public int getNombreCarpeta() {
+    public String getNombreCarpeta() {
         return this.nombreCarpeta;
     }
     
-    public void setNombreCarpeta(int nombreCarpeta) {
+    public void setNombreCarpeta(String nombreCarpeta) {
         this.nombreCarpeta = nombreCarpeta;
     }
     public Usuario getUsuario() {
