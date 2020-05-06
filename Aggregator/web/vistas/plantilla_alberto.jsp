@@ -27,19 +27,19 @@ NO MODIFICAR ESTO, COPIAR PEGAR DE AQUI-->
             <s:action name="NoticiaCard" ignoreContextParams="true" executeResult="true">
                 <s:param name="id">2</s:param>
             </s:action>
-            
-           
-            
-            
-             <a href="
-                
-            <s:url action="NoticiaCard">
-                <s:param name="id">2</s:param>
-            </s:url>
 
-                
-                ">click here</a>      
-                
+
+
+
+            <a href="
+
+               <s:url action="NoticiaCard">
+                   <s:param name="id">2</s:param>
+               </s:url>
+
+
+               ">click here</a>      
+
         </div>
     </body>
 </html>

@@ -8,9 +8,12 @@ package acciones;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.carpetaDAO;
 import dao.noticiaDAO;
+import dao.temaDAO;
+import java.util.ArrayList;
 import java.util.List;
 import pojos.Carpeta;
 import pojos.Noticia;
+import pojos.Tema;
 
 /**
  *
@@ -19,22 +22,76 @@ import pojos.Noticia;
 public class SetVariables extends ActionSupport {
 
     //Parámetros de entrada por GET
-    String id;
-    
+    String id;//De noticia, si se van a crear mas ids, poner id_xxxx
+    String pag;
+    String tema; //Para ver_noticias.jsp
     String nombre_carpeta;
     String nombre_usuario;
 
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
-
+    Tema tema0;
     Carpeta carpeta;
-    List<Carpeta> carpetas;
+
     public SetVariables() {
     }
 
-    
-    
+    /**
+     * ###########################################
+     *
+     * Aquí empiezan los getter y setter de todo
+     *
+     * ###########################################
+     */
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPag() {
+        return pag;
+    }
+
+    public void setPag(String pag) {
+        this.pag = pag;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public Noticia getNoticia() {
+        return noticia;
+    }
+
+    public void setNoticia(Noticia noticia) {
+        this.noticia = noticia;
+    }
+
+    public List<Noticia> getNoticias() {
+        return noticias;
+    }
+
+    public void setNoticias(List<Noticia> noticias) {
+        this.noticias = noticias;
+    }
+
+    public Tema getTema0() {
+        return tema0;
+    }
+
+    public void setTema0(Tema tema0) {
+        this.tema0 = tema0;
+    }
+
     public String getNombre_carpeta() {
         return nombre_carpeta;
     }
@@ -58,38 +115,8 @@ public class SetVariables extends ActionSupport {
     public void setCarpeta(Carpeta carpeta) {
         this.carpeta = carpeta;
     }
-
-    public List<Carpeta> getCarpetas() {
-        return carpetas;
-    }
-
-    public void setCarpetas(List<Carpeta> carpetas) {
-        this.carpetas = carpetas;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Noticia getNoticia() {
-        return noticia;
-    }
-
-    public void setNoticia(Noticia noticia) {
-        this.noticia = noticia;
-    }
-
-    public List<Noticia> getNoticias() {
-        return noticias;
-    }
-
-    public void setNoticias(List<Noticia> noticias) {
-        this.noticias = noticias;
-    }
+    
+    
 
     /**
      * ###########################################
@@ -100,9 +127,36 @@ public class SetVariables extends ActionSupport {
      * ###########################################
      */
     public String listaNoticias() {
-        //Limpiamos sesión
+
         noticiaDAO nd = new noticiaDAO();
-        noticias = nd.getAllNoticias();
+        //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
+        if (getTema() != null) {
+            noticias = nd.getNoticias(getTema());
+        }
+        else {
+            noticias = nd.getAllNoticias();
+        }
+               
+        
+        //Obtener solo los resultados de una página
+        int pag = 1;
+        if (getPag() != null) {
+            pag = Integer.parseInt(getPag());
+        }
+        else {
+            setPag(1+"");
+        }
+        int initialIndex = pag * 3 - 3;
+        int i = 0;
+        List<Noticia> final_not = new ArrayList();
+        while (i < 3 && initialIndex < noticias.size()) {
+            final_not.add(noticias.get(initialIndex));
+            i++;
+            initialIndex++;
+        }
+        
+        noticias = final_not;
+        
         return SUCCESS;
     }
 
@@ -116,10 +170,17 @@ public class SetVariables extends ActionSupport {
         }
         return SUCCESS;
     }
+
+    public String setearTema(){
+        
+        if(getTema()!=null){
+            temaDAO tDAO = new temaDAO();
+            setTema0(tDAO.getTema(getTema()));
+        }
+        
+        return SUCCESS;
+    }
     
-    /**
-     * Si se le pasa por parámetro GET, el id, se establecerá Carpeta. Si no no.
-     */
     public String getCarpetaUnica() {
         if (nombre_carpeta != null) {
             carpetaDAO cd = new carpetaDAO();
@@ -127,7 +188,6 @@ public class SetVariables extends ActionSupport {
         }
         return SUCCESS;
     }
-
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;

@@ -8,11 +8,11 @@
 <!--Bootstrap JS-->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!--Font awesome(iconos)-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <!--JS y CSS propio-->
-<script src="js/anadirVideosTests.js"></script>
-<script src="js/gestorTareas.js"></script>
-<script src="js/inactividad.js"></script>
+<script src="js/votosAjax.js"></script>
 <link rel="stylesheet" href="css/gestorTareas.css">
 <!-- PLugin JQUERY: Color picker-->
 <script src="js/colorPick.min.js"></script>
@@ -22,8 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <!-- Uso de plugins-->
-<script src="js/aggregator.js"></script>
-
+<!--<script src="js/aggregator.js"></script>-->
 
 <%!
     public static String darkenColor(String colorStr, int factor) {
