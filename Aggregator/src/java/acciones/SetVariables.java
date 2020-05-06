@@ -7,8 +7,11 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
 import dao.noticiaDAO;
+import dao.temaDAO;
+import java.util.ArrayList;
 import java.util.List;
 import pojos.Noticia;
+import pojos.Tema;
 
 /**
  *
@@ -17,11 +20,14 @@ import pojos.Noticia;
 public class SetVariables extends ActionSupport {
 
     //Parámetros de entrada por GET
-    String id;
+    String id;//De noticia, si se van a crear mas ids, poner id_xxxx
+    String pag;
+    String tema; //Para ver_noticias.jsp
 
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
+    Tema tema0;
 
     public SetVariables() {
     }
@@ -41,6 +47,22 @@ public class SetVariables extends ActionSupport {
         this.id = id;
     }
 
+    public String getPag() {
+        return pag;
+    }
+
+    public void setPag(String pag) {
+        this.pag = pag;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
     public Noticia getNoticia() {
         return noticia;
     }
@@ -57,6 +79,16 @@ public class SetVariables extends ActionSupport {
         this.noticias = noticias;
     }
 
+    public Tema getTema0() {
+        return tema0;
+    }
+
+    public void setTema0(Tema tema0) {
+        this.tema0 = tema0;
+    }
+    
+    
+
     /**
      * ###########################################
      *
@@ -66,9 +98,36 @@ public class SetVariables extends ActionSupport {
      * ###########################################
      */
     public String listaNoticias() {
-        //Limpiamos sesión
+
         noticiaDAO nd = new noticiaDAO();
-        noticias = nd.getAllNoticias();
+        //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
+        if (getTema() != null) {
+            noticias = nd.getNoticias(getTema());
+        }
+        else {
+            noticias = nd.getAllNoticias();
+        }
+               
+        
+        //Obtener solo los resultados de una página
+        int pag = 1;
+        if (getPag() != null) {
+            pag = Integer.parseInt(getPag());
+        }
+        else {
+            setPag(1+"");
+        }
+        int initialIndex = pag * 3 - 3;
+        int i = 0;
+        List<Noticia> final_not = new ArrayList();
+        while (i < 3 && initialIndex < noticias.size()) {
+            final_not.add(noticias.get(initialIndex));
+            i++;
+            initialIndex++;
+        }
+        
+        noticias = final_not;
+        
         return SUCCESS;
     }
 
@@ -83,6 +142,16 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
 
+    public String setearTema(){
+        
+        if(getTema()!=null){
+            temaDAO tDAO = new temaDAO();
+            setTema0(tDAO.getTema(getTema()));
+        }
+        
+        return SUCCESS;
+    }
+    
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;

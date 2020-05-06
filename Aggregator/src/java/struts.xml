@@ -31,7 +31,11 @@
             <result name="input">/vistas/login.jsp</result>
         </action>
     </package>
-    
+    <package name="alberto" extends="struts-default">
+        <action name="nuevoComentario" class="acciones.NewComentario">
+            
+        </action>
+    </package>
     <package name="variable-setting" extends="struts-default">
         <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/noticia.jsp</result>
@@ -39,13 +43,27 @@
         <action name="CrearEditarNoticia" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/crear_editar_noticia.jsp</result>
         </action>
+        <action name="BorrarNoticia" class="acciones.BorrarNoticia">
+            <result type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result>
+        </action>    
+        <action name="VerNoticia" class="acciones.SetVariables" method="getNoticiaUnica">
+            <result name="success">/vistas/ver_noticia.jsp</result>
+        </action>
         <action name="ListaNoticias" class="acciones.SetVariables" method="listaNoticias">
             <result name="success">/vistas/ver_noticias.jsp</result>
+        </action>
+        <action name="CrearEditarTema" class="acciones.SetVariables" method="setearTema">
+            <result name="success">/vistas/crear_editar_tema.jsp</result>
         </action>
     </package>
     
     <package name="hector" extends="struts-default">
-        <action name="crearEditarNoticia" class="acciones.NewNoticia">
+        <action name="crearNoticiaSubmit" class="acciones.NewNoticia">
+            <result name="success">/vistas/noticia.jsp</result>
+        </action>
+        <action name="crearEditarTemaSubmit" class="acciones.NewTema">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
     </package>

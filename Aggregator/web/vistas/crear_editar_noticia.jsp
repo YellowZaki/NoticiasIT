@@ -1,3 +1,4 @@
+<%@page import="pojos.Usuario"%>
 <%@page import="dao.noticiaDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -12,6 +13,13 @@
 
         <s:if test="%{noticia!=null}">
             <title>Editar noticia</title>
+            <%
+                Usuario usuario = (Usuario) session.getAttribute("usuario");
+                Noticia noticia = (Noticia) session.getAttribute("usuario");
+                if (!usuario.getUsuario().equals(noticia.getUsuario().getUsuario())) {
+                    response.sendRedirect(request.getContextPath() + "/paginaNoEncontrada.jsp"); //Comprobar que la ruta vaya bien.
+                }
+            %>
         </s:if>
         <s:else>
             <title>Crear noticia</title>
@@ -39,7 +47,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <s:form action="crearEditarNoticia" cssClass="needs-validation" method="POST">
+                                <s:form action="crearNoticiaSubmit" cssClass="needs-validation" method="POST">
 
                                     <label for="titulo">Título</label>
                                     <s:if test="%{noticia!=null}">
@@ -68,6 +76,10 @@
                                             <input required class="form-control" name="fuente"/>
                                         </s:else>
                                     </div>
+                                        
+                                    <!--Añadir CSS -->
+                                    
+                                    
 
                                     <div class="form-group">
                                         <div class="d-flex">

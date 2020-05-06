@@ -14,9 +14,9 @@ import pojos.Voto;
  */
 public class noticiaDAO {
 
-    static Session sesion = null;
+    Session sesion = null;
 
-    public static Noticia getNoticia(String id) {
+    public Noticia getNoticia(String id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where id_noticia='" + id + "'");
@@ -24,7 +24,7 @@ public class noticiaDAO {
         tx.commit();
         return n;
     }
-    
+
     public List<Noticia> getAllNoticias() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
@@ -32,7 +32,30 @@ public class noticiaDAO {
         List<Noticia> ln = (List<Noticia>) q.list();
         tx.commit();
         return ln;
-    } 
+    }
+
+    public List<Noticia> getNoticias(String tema) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("From Noticia where tema = '" + tema + "'");
+        List<Noticia> ln = (List<Noticia>) q.list();
+        tx.commit();
+        return ln;
+    }
+
+    public void borrarNoticia(Noticia noticia) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        sesion.delete(noticia);
+        tx.commit();
+    }
+
+    public void addNoticia(Noticia noticia) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        sesion.save(noticia);
+        tx.commit();
+    }
     
     public void votar(String idNoticia, int valor){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
