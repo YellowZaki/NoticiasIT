@@ -14,7 +14,10 @@
     
     <package name="andres" extends="struts-default">
         <action name="registrar" class="acciones.Register">
-            <result name="success">/vistas/index.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result> 
+            
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
         </action>  
@@ -50,6 +53,9 @@
         </action>
     </package>
     <package name="alberto" extends="struts-default">
+        <action name="goToLogin">
+            <result>/vistas/login.jsp</result>
+        </action>
         <action name="nuevoComentario" class="acciones.NewComentario">
          
         </action>

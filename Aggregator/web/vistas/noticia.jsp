@@ -17,28 +17,53 @@
 
             <div class="mr-3">
                 <!--                    session.usuario.getUsuario()-->
-                <s:if test="%{'admin' == noticia.usuario.getUsuario()}">
+
+
+
+                <s:if test='#session.containsKey("usuario")'>
+
+
+
+
+                    <s:if test="%{#session.usuario.getUsuario() == noticia.usuario.getUsuario()}">
+                        <a href='
+                           <s:url action="CrearEditarNoticia">
+                               <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                           </s:url>
+
+                           '><i style='color:orange;' class='fas fa-edit'></i></a>
+
+                        <a href='
+                           <s:url action="BorrarNoticia">
+                               <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                           </s:url>
+
+                           '><i style='color:red;' class='fas fa-trash'></i></a>
+
+                    </s:if>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <a href='
-                       <s:url action="CrearEditarNoticia">
+                       <s:url action="GestionarCarpetas">
                            <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
                        </s:url>
 
-                       '><i style='color:orange;' class='fas fa-edit'></i></a>
+                       '><i style='color:darkgrey;' class='fas fa-folder-plus'></i></a>
+                    </s:if>
 
-                    <a href='
-                       <s:url action="BorrarNoticia">
-                           <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
-                       </s:url>
 
-                       '><i style='color:red;' class='fas fa-trash'></i></a>
-
-                </s:if>
-                <a href='
-                   <s:url action="GestionarCarpetas">
-                       <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
-                   </s:url>
-
-                   '><i style='color:darkgrey;' class='fas fa-folder-plus'></i></a>
             </div>        
         </div>
     </div>
@@ -57,13 +82,13 @@
             <div class="mr-3">
                 <i class="fas fa-thumbs-up" style="color:#a9a9a9;" id="like">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                </i> 199 <i class="fas fa-thumbs-down" style="color:#a9a9a9;" id="dislike">
+                    </i> 199 <i class="fas fa-thumbs-down" style="color:#a9a9a9;" id="dislike">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                </i>
+                    </i>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     <s:property value="idd"/>
 </div>
 <!--</div>-->
