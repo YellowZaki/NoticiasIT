@@ -1,5 +1,23 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
+
 <div class="jumbotron text-center" style="margin-bottom:-20px">
-    <h1>AGGREGATOR</h1>
+
+                     <a href="
+                
+            <s:url action="ListaNoticias">
+                <s:param name="pag">1</s:param>
+            </s:url>
+
+                
+                ">
+                     
+                     <h1>AGGREGATOR</h1>
+                     
+                     
+                     
+                     
+                     </a> 
+    
     <p>Lo agrega TORR</p>
 </div>    
 
@@ -34,7 +52,7 @@
                 <li class="nav-item">
                     <a class='nav-link' href='#'>Gestionar temas y anuncios (admin)</a>
                 </li>
-         
+
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="config.php>"><i class="fa fa-cog"></i></a> </li>

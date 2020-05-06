@@ -15,7 +15,26 @@
                 <div class="card rounded shadow shadow-sm">
                     <div class="card-header">
                         <h3 class="mb-0"><s:property value="noticia.titulo"/></h3>
+                        <!--                    session.usuario.getUsuario()-->
+                        <s:if test="%{'admin' == noticia.usuario.getUsuario()}">
+                            <a href='
+                               <s:url action="CrearEditarNoticia">
+                                   <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                               </s:url>
+
+                               '><i style='color:orange;' class='fas fa-edit'></i></a>
+
+                            <a href='
+                               <s:url action="BorrarNoticia">
+                                   <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                               </s:url>
+
+                               '><i style='color:red;' class='fas fa-trash'></i></a>
+                              
+                        </s:if>
                     </div>
+
+
                     <div class="card-body">
                         <s:property value="noticia.descripcion"/>
                     </div>
@@ -25,7 +44,7 @@
                             <div class="col">
                                 <s:property value="noticia.comentarios.size()"/> <i class="fas fa-comment" style="color:#a9a9a9;"></i>
                             </div>
-                            
+
                             <div class="float-right mr-3">
                                 <i class="fas fa-thumbs-up" style="color:#e85454;"></i> 199 <i class="fas fa-thumbs-down" style="color:#4498ef;"></i>
                             </div>
