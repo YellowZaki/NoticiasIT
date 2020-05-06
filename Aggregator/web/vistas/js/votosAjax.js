@@ -1,4 +1,16 @@
 $(document).ready(function () {
+    $('#like').hover(
+        function() {
+            $( this ).css("cursor", "pointer");
+        }
+    );
+    
+    $('#dislike').hover(
+        function() {
+            $( this ).css("cursor", "pointer");
+        }
+    );
+    
     $('#like').click(function (event) {
         var noticia = $(this).find("#idNoticia");
         $.ajax({
