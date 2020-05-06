@@ -12,7 +12,7 @@
 <html lang="es">
     <head>
 
-        <s:if test="%{tema!=null}">
+        <s:if test="%{tema0!=null}">
             <title>Editar noticia</title>
         </s:if>
         <s:else>
@@ -32,7 +32,7 @@
                             <div class="card-header">
                                 <h3 class="mb-0">
 
-                                    <s:if test="%{tema!=null}">
+                                    <s:if test="%{tema0!=null}">
                                         Editando tema...
                                     </s:if>
                                     <s:else>
@@ -43,11 +43,11 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <s:form action="crearEditarTema" cssClass="needs-validation" method="POST">
+                                <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
 
                                     <label for="nombre">Nombre</label>
-                                    <s:if test="%{tema!=null}">
-                                        <input type="text" required class="form-control" name="nombre" value="<s:property value="tema.getNombreTema()"/>" />
+                                    <s:if test="%{tema0!=null}">
+                                        <input type="text" required class="form-control" name="nombre" value="<s:property value="tema0.getNombreTema()"/>" />
                                     </s:if>
                                     <s:else>
                                         <input type="text" required class="form-control" name="nombre"/>
@@ -55,16 +55,16 @@
 
                                     <div class="form-group">
                                         <label for="imagen">Banner</label>
-                                        <s:if test="%{tema!=null}">
-                                            <input type="text" required class="form-control" name="imagen" value="<s:property value="tema.getImagen()"/>" />
+                                        <s:if test="%{tema0!=null}">
+                                            <input type="text" required class="form-control" name="imagen" value="<s:property value="tema0.getImagen()"/>" />
                                         </s:if>
                                         <s:else>
                                             <input type="text" required class="form-control" name="imagen"/>
                                         </s:else>  
                                     </div> 
                                         
-                                    <s:if test="%{tema!=null}">
-                                        <input type="hidden" name="temaOriginal" value="<s:property value="tema.getNombreTema()"/>" />
+                                    <s:if test="%{tema0!=null}">
+                                        <input type="hidden" name="temaOriginal" value="<s:property value="tema0.getNombreTema()"/>" />
                                     </s:if>
 
 
