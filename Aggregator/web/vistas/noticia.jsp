@@ -78,11 +78,27 @@
             <div class="col">
                 <s:property value="noticia.comentarios.size()"/> <i class="fas fa-comment" style="color:#a9a9a9;"></i>
             </div>
-
             <div class="mr-3">
-                <i class="fas fa-thumbs-up" style="color:#a9a9a9;" id="like">
+                <i class="fas fa-thumbs-up" style="
+
+                   <s:if test="%{valorVotoUsuario == 1}">
+                       color:green;
+                   </s:if>
+                   <s:else>
+                       color:#a9a9a9;
+                   </s:else>
+
+                   " id="like">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                    </i> 199 <i class="fas fa-thumbs-down" style="color:#a9a9a9;" id="dislike">
+                    </i> <s:property value="valorVotosNoticia"></s:property> <i class="fas fa-thumbs-down" style="
+                    <s:if test="%{valorVotoUsuario == -1}">
+                       color:red;
+                   </s:if>
+                   <s:else>
+                       color:#a9a9a9;
+                   </s:else>
+                           
+                           " id="dislike">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
                     </i>
                 </div>

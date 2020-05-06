@@ -196,7 +196,7 @@ public class SetVariables extends ActionSupport {
             }
             for (Voto voto : (Set<Voto>) noticia.getVotos_1()) {
                 valorVotosNoticia = valorVotosNoticia + voto.getValor();
-                if (user != null && voto.getUsuario().equals(user)) {
+                if (user != null && voto.getUsuario().getUsuario().equals(user.getUsuario())) {
                     valorVotoUsuario = voto.getValor();
                 }
             }
