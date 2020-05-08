@@ -89,9 +89,11 @@
     <package name="hector" extends="struts-default">
         <action name="crearNoticiaSubmit" class="acciones.NewNoticia">
             <result name="success">/vistas/noticia.jsp</result>
+            <result name="input">/vistas/crear_editar_noticia.jsp</result>
         </action>
         <action name="crearEditarTemaSubmit" class="acciones.NewTema">
             <result name="success">/vistas/noticia.jsp</result>
+            <result name="input">/vistas/crear_editar_tema.jsp</result>
         </action>
     </package>
 </struts>

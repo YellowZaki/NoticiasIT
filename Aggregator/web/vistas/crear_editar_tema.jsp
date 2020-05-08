@@ -13,10 +13,10 @@
     <head>
 
         <s:if test="%{tema0!=null}">
-            <title>Editar noticia</title>
+            <title>Editar tema</title>
         </s:if>
         <s:else>
-            <title>Crear noticia</title>
+            <title>Crear tema</title>
         </s:else>
 
         <%@include file="includes/checkUsuarioAdmin.jsp"%>
@@ -46,11 +46,16 @@
                             <div class="card-body">
                                 <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
 
-                                    <label for="nombre">Nombre</label>
+                                    
                                     <s:if test="%{tema0!=null}">
-                                        <input type="text" required class="form-control" name="nombre" value="<s:property value="tema0.getNombreTema()"/>" />
+                                        <label for="nombreOriginal">Nombre Original</label>
+                                        <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="tema0.getNombreTema()"/>" disabled />
+                                        
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" required class="form-control" name="nombre" />
                                     </s:if>
                                     <s:else>
+                                        <label for="nombre">Nombre</label>
                                         <input type="text" required class="form-control" name="nombre"/>
                                     </s:else>
 

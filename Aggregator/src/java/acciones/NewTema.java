@@ -51,36 +51,32 @@ public class NewTema extends ActionSupport {
     public NewTema() {
     }
 
-//    public void validate() {
-//
-//        if (this.nombre.length() == 0) {
-//            this.addFieldError("nombre", "Debe rellenar el campo");
-//        }
-//        if (this.nombre.contains("_") || this.nombre.contains("#") || this.nombre.contains("!") || this.nombre.contains(";") || this.nombre.contains(":") || this.nombre.contains("*") || this.nombre.contains("(") || this.nombre.contains(")") || this.nombre.contains("[") || this.nombre.contains("]") || this.nombre.contains("{") || this.nombre.contains("}")) {
-//            this.addFieldError("nombre", "No se permiten caracteres extraños");
-//        }
-//        if (this.imagen.length() == 0) {
-//            this.addFieldError("imagen", "Debe rellenar el campo");
-//        }
-//
-//        if ( this.imagen.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
-//            this.addFieldError("imagen", "No se permiten caracteres extraños");
-//        }
-//
-//    }
-    public String execute() throws Exception {
-        temaDAO tDAO = new temaDAO();
-        Tema tema = null;
+    public void validate() {
 
-        if (temaOriginal != null) {
-            tema = tDAO.getTema(temaOriginal);
-        } else {
-            tema = new Tema(nombre, imagen);
+        if (this.nombre.length() == 0) {
+            this.addFieldError("nombre", "Debe rellenar el campo");
+        }
+        if (this.nombre.contains("_") || this.nombre.contains("#") || this.nombre.contains("!") || this.nombre.contains(";") || this.nombre.contains(":") || this.nombre.contains("*") || this.nombre.contains("(") || this.nombre.contains(")") || this.nombre.contains("[") || this.nombre.contains("]") || this.nombre.contains("{") || this.nombre.contains("}")) {
+            this.addFieldError("nombre", "No se permiten caracteres extraños");
+        }
+        if (this.imagen.length() == 0) {
+            this.addFieldError("imagen", "Debe rellenar el campo");
         }
 
-        if (temaOriginal != null) {
-            tDAO.updateTema(tema);
-        } else {
+        if ( this.imagen.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
+            this.addFieldError("imagen", "No se permiten caracteres extraños");
+        }
+
+    }
+    
+    public String execute() throws Exception {
+        temaDAO tDAO = new temaDAO();
+        Tema tema = new Tema(nombre, imagen);
+
+        if (getTemaOriginal() != null) {
+            //actualizamos
+            tDAO.updateTema(temaOriginal,tema);
+        }else{
             tDAO.addTema(tema);
         }
 

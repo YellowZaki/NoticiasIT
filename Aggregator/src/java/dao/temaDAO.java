@@ -44,11 +44,11 @@ public class temaDAO {
         tx.commit();
     }
 
-    public void updateTema(Tema tema) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = sesion.beginTransaction();
-        sesion.update(tema);
-        tx.commit();
+    public void updateTema(String temaOriginal, Tema temaNuevo) {
+        Tema original = getTema(temaOriginal);
+        borrarTema(original);
+        addTema(temaNuevo);
+        
     }
 
     public void borrarTema(Tema tema) {
