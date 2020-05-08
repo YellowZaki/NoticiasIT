@@ -5,15 +5,20 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import pojos.Carpeta;
 import pojos.Noticia;
 import pojos.Tema;
+import pojos.Usuario;
+import pojos.Voto;
 
 /**
  *
@@ -33,6 +38,8 @@ public class SetVariables extends ActionSupport {
     List<Noticia> noticias;
     Tema tema0;
     Carpeta carpeta;
+        int valorVotosNoticia = 0;
+    int valorVotoUsuario = 0;
 
     public SetVariables() {
     }
@@ -115,6 +122,22 @@ public class SetVariables extends ActionSupport {
     public void setCarpeta(Carpeta carpeta) {
         this.carpeta = carpeta;
     }
+
+    public int getValorVotosNoticia() {
+        return valorVotosNoticia;
+    }
+
+    public void setValorVotosNoticia(int valorVotosNoticia) {
+        this.valorVotosNoticia = valorVotosNoticia;
+    }
+
+    public int getValorVotoUsuario() {
+        return valorVotoUsuario;
+    }
+
+    public void setValorVotoUsuario(int valorVotoUsuario) {
+        this.valorVotoUsuario = valorVotoUsuario;
+    }
     
     
 
@@ -132,19 +155,16 @@ public class SetVariables extends ActionSupport {
         //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
         if (getTema() != null) {
             noticias = nd.getNoticias(getTema());
-        }
-        else {
+        } else {
             noticias = nd.getAllNoticias();
         }
-               
-        
+
         //Obtener solo los resultados de una página
         int pag = 1;
         if (getPag() != null) {
             pag = Integer.parseInt(getPag());
-        }
-        else {
-            setPag(1+"");
+        } else {
+            setPag(1 + "");
         }
         int initialIndex = pag * 3 - 3;
         int i = 0;
@@ -154,11 +174,13 @@ public class SetVariables extends ActionSupport {
             i++;
             initialIndex++;
         }
-        
+
         noticias = final_not;
-        
+
         return SUCCESS;
     }
+
+
 
     /**
      * Si se le pasa por parámetro GET, el id, se establecerá Noticia. Si no no.
@@ -167,20 +189,31 @@ public class SetVariables extends ActionSupport {
         if (id != null) {
             noticiaDAO nd = new noticiaDAO();
             noticia = nd.getNoticia(getId());
+            Map session = (Map) ActionContext.getContext().get("session");
+            Usuario user = null;
+            if (session.containsKey("usuario") && session.get("usuario") != null) {
+                user = (Usuario) session.get("usuario");
+            }
+            for (Voto voto : (Set<Voto>) noticia.getVotos_1()) {
+                valorVotosNoticia = valorVotosNoticia + voto.getValor();
+                if (user != null && voto.getUsuario().getUsuario().equals(user.getUsuario())) {
+                    valorVotoUsuario = voto.getValor();
+                }
+            }
         }
         return SUCCESS;
     }
 
-    public String setearTema(){
-        
-        if(getTema()!=null){
+    public String setearTema() {
+
+        if (getTema() != null) {
             temaDAO tDAO = new temaDAO();
             setTema0(tDAO.getTema(getTema()));
         }
-        
+
         return SUCCESS;
     }
-    
+
     public String getCarpetaUnica() {
         if (nombre_carpeta != null) {
             carpetaDAO cd = new carpetaDAO();
@@ -188,6 +221,7 @@ public class SetVariables extends ActionSupport {
         }
         return SUCCESS;
     }
+
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;
