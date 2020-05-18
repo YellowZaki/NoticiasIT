@@ -47,14 +47,14 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping resource="pojos/Comentario.hbm.xml"/>
     <mapping resource="pojos/Usuario.hbm.xml"/>
     <mapping resource="pojos/Carpeta.hbm.xml"/>
-    <mapping resource="pojos/Noticia.hbm.xml"/>
-    <mapping resource="pojos/Personalizacion.hbm.xml"/>
-    <mapping resource="pojos/GuardadasEn.hbm.xml"/>
-    <mapping resource="pojos/Anuncio.hbm.xml"/>
-    <mapping resource="pojos/Tema.hbm.xml"/>
-    <mapping resource="pojos/Comentario.hbm.xml"/>
     <mapping resource="pojos/Voto.hbm.xml"/>
+    <mapping resource="pojos/Personalizacion.hbm.xml"/>
+    <mapping resource="pojos/Noticia.hbm.xml"/>
+    <mapping resource="pojos/Anuncio.hbm.xml"/>
+    <mapping resource="pojos/GuardadasEn.hbm.xml"/>
+    <mapping resource="pojos/Tema.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

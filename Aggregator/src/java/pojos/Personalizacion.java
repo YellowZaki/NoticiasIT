@@ -1,5 +1,5 @@
 package pojos;
-// Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1
+// Generated 18-may-2020 21:40:24 by Hibernate Tools 4.3.1
 
 
 
@@ -11,19 +11,17 @@ public class Personalizacion  implements java.io.Serializable {
 
      private String idUsuario;
      private Usuario usuario;
-     private int colorPrimario;
+     private String colorPrimario;
      private int modoOscuro;
-     private int tipografia;
      private int mostrarEncabezado;
 
     public Personalizacion() {
     }
 
-    public Personalizacion(Usuario usuario, int colorPrimario, int modoOscuro, int tipografia, int mostrarEncabezado) {
+    public Personalizacion(Usuario usuario, String colorPrimario, int modoOscuro, int mostrarEncabezado) {
        this.usuario = usuario;
        this.colorPrimario = colorPrimario;
        this.modoOscuro = modoOscuro;
-       this.tipografia = tipografia;
        this.mostrarEncabezado = mostrarEncabezado;
     }
    
@@ -41,11 +39,11 @@ public class Personalizacion  implements java.io.Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    public int getColorPrimario() {
+    public String getColorPrimario() {
         return this.colorPrimario;
     }
     
-    public void setColorPrimario(int colorPrimario) {
+    public void setColorPrimario(String colorPrimario) {
         this.colorPrimario = colorPrimario;
     }
     public int getModoOscuro() {
@@ -54,13 +52,6 @@ public class Personalizacion  implements java.io.Serializable {
     
     public void setModoOscuro(int modoOscuro) {
         this.modoOscuro = modoOscuro;
-    }
-    public int getTipografia() {
-        return this.tipografia;
-    }
-    
-    public void setTipografia(int tipografia) {
-        this.tipografia = tipografia;
     }
     public int getMostrarEncabezado() {
         return this.mostrarEncabezado;

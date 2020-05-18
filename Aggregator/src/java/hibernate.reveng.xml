@@ -41,13 +41,13 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="aggregator"/>
-  <table-filter match-name="carpeta"/>
-  <table-filter match-name="noticia"/>
-  <table-filter match-name="anuncio"/>
+  <table-filter match-name="personalizacion"/>
   <table-filter match-name="voto"/>
-  <table-filter match-name="tema"/>
+  <table-filter match-name="noticia"/>
   <table-filter match-name="guardadas_en"/>
   <table-filter match-name="comentario"/>
-  <table-filter match-name="personalizacion"/>
+  <table-filter match-name="carpeta"/>
+  <table-filter match-name="tema"/>
+  <table-filter match-name="anuncio"/>
   <table-filter match-name="usuario"/>
 </hibernate-reverse-engineering>

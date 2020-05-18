@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-may-2020 21:40:26 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Comentario" table="comentario" catalog="aggregator" optimistic-lock="version">
-        <id name="fechaPublicacion" type="int">
-            <column name="fecha_publicacion" />
-            <generator class="assigned" />
+        <id name="idComentario" type="java.lang.Integer">
+            <column name="id_comentario" />
+            <generator class="identity" />
         </id>
         <many-to-one name="noticia" class="pojos.Noticia" fetch="select">
             <column name="id_noticia" not-null="true" />
@@ -14,6 +14,9 @@
         <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
             <column name="usuario" length="50" not-null="true" />
         </many-to-one>
+        <property name="fechaPublicacion" type="date">
+            <column name="fecha_publicacion" length="10" not-null="true" />
+        </property>
         <property name="texto" type="string">
             <column name="texto" length="3000" not-null="true" />
         </property>

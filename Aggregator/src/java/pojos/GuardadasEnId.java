@@ -1,5 +1,5 @@
 package pojos;
-// Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1
+// Generated 18-may-2020 21:40:24 by Hibernate Tools 4.3.1
 
 
 
@@ -10,12 +10,12 @@ public class GuardadasEnId  implements java.io.Serializable {
 
 
      private int idNoticia;
-     private int nombreCarpeta;
+     private String nombreCarpeta;
 
     public GuardadasEnId() {
     }
 
-    public GuardadasEnId(int idNoticia, int nombreCarpeta) {
+    public GuardadasEnId(int idNoticia, String nombreCarpeta) {
        this.idNoticia = idNoticia;
        this.nombreCarpeta = nombreCarpeta;
     }
@@ -27,11 +27,11 @@ public class GuardadasEnId  implements java.io.Serializable {
     public void setIdNoticia(int idNoticia) {
         this.idNoticia = idNoticia;
     }
-    public int getNombreCarpeta() {
+    public String getNombreCarpeta() {
         return this.nombreCarpeta;
     }
     
-    public void setNombreCarpeta(int nombreCarpeta) {
+    public void setNombreCarpeta(String nombreCarpeta) {
         this.nombreCarpeta = nombreCarpeta;
     }
 
@@ -43,14 +43,14 @@ public class GuardadasEnId  implements java.io.Serializable {
 		 GuardadasEnId castOther = ( GuardadasEnId ) other; 
          
 		 return (this.getIdNoticia()==castOther.getIdNoticia())
- && (this.getNombreCarpeta()==castOther.getNombreCarpeta());
+ && ( (this.getNombreCarpeta()==castOther.getNombreCarpeta()) || ( this.getNombreCarpeta()!=null && castOther.getNombreCarpeta()!=null && this.getNombreCarpeta().equals(castOther.getNombreCarpeta()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getIdNoticia();
-         result = 37 * result + this.getNombreCarpeta();
+         result = 37 * result + ( getNombreCarpeta() == null ? 0 : this.getNombreCarpeta().hashCode() );
          return result;
    }   
 

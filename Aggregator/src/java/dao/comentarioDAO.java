@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,7 +19,7 @@ public class comentarioDAO {
 
 
     public void addComentario(Noticia noticia, Usuario usuario, String texto) {
-        Comentario comment = new Comentario(0, noticia, usuario, texto);
+        Comentario comment = new Comentario(noticia, usuario, new Date(), texto);
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         sesion.save(comment);

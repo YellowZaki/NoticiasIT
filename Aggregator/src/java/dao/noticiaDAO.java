@@ -66,7 +66,7 @@ public class noticiaDAO {
 
         Noticia not = (Noticia)q1.uniqueResult();
 
-        Set<Voto> lista = not.getVotos_1();
+        Set<Voto> lista = not.getVotos();
         Voto v = null;
         
         for(Voto voto:lista){
@@ -84,7 +84,7 @@ public class noticiaDAO {
                 v1 = new Voto(not, u, -1);
             }
             
-            not.getVotos_1().add(v1);
+            not.getVotos().add(v1);
             sesion.save(v1);
             sesion.update(not);
         }else{
@@ -95,7 +95,7 @@ public class noticiaDAO {
                 v.setValor(-1);
                 sesion.update(v);
             }else if(valor == v.getValor()){
-                not.getVotos_1().remove(v);
+                not.getVotos().remove(v);
                 sesion.delete(v);
                 sesion.update(not);
             }   

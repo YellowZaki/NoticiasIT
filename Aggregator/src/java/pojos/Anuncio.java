@@ -1,5 +1,5 @@
 package pojos;
-// Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1
+// Generated 18-may-2020 21:40:24 by Hibernate Tools 4.3.1
 
 
 
@@ -12,18 +12,20 @@ public class Anuncio  implements java.io.Serializable {
      private String link;
      private Tema tema;
      private String titulo;
+     private String imagen;
 
     public Anuncio() {
     }
 
-    public Anuncio(String link, Tema tema, String titulo) {
+    public Anuncio(String link, Tema tema, String titulo, String imagen) {
        this.link = link;
        this.tema = tema;
        this.titulo = titulo;
+       this.imagen = imagen;
     }
    
     public String getLink() {
-        return this.link;   
+        return this.link;
     }
     
     public void setLink(String link) {
@@ -42,6 +44,13 @@ public class Anuncio  implements java.io.Serializable {
     
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+    public String getImagen() {
+        return this.imagen;
+    }
+    
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
 

@@ -194,7 +194,7 @@ public class SetVariables extends ActionSupport {
             if (session.containsKey("usuario") && session.get("usuario") != null) {
                 user = (Usuario) session.get("usuario");
             }
-            for (Voto voto : (Set<Voto>) noticia.getVotos_1()) {
+            for (Voto voto : (Set<Voto>) noticia.getVotos()) {
                 valorVotosNoticia = valorVotosNoticia + voto.getValor();
                 if (user != null && voto.getUsuario().getUsuario().equals(user.getUsuario())) {
                     valorVotoUsuario = voto.getValor();

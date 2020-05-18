@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-may-2020 21:40:26 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Noticia" table="noticia" catalog="aggregator" optimistic-lock="version">
         <id name="idNoticia" type="java.lang.Integer">
@@ -23,25 +23,22 @@
         <property name="fuente" type="string">
             <column name="fuente" length="100" not-null="true" />
         </property>
-        <property name="votos" type="int">
-            <column name="votos" not-null="true" />
-        </property>
         <property name="fechaPublicacion" type="date">
             <column name="fecha_publicacion" length="10" not-null="true" />
         </property>
-        <set name="votos_1" table="voto" inverse="true" lazy="false" fetch="select">
+        <set name="votos" table="voto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>
             <one-to-many class="pojos.Voto" />
         </set>
-        <set name="comentarios" table="comentario" inverse="true" lazy="false" fetch="select">
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>
             <one-to-many class="pojos.Comentario" />
         </set>
-        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="false" fetch="select">
+        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>

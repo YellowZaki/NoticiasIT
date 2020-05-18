@@ -66,7 +66,7 @@ public class NewNoticia extends ActionSupport {
        Usuario usuario = (Usuario) session.get("usuario");
        
        Date fechaPublicacion = Utils.fechaHoy();
-       Noticia noticia = new Noticia(temaNoticia, usuario, titulo, descripcion, fuente, 0, fechaPublicacion);
+       Noticia noticia = new Noticia(temaNoticia, usuario, titulo, descripcion, fuente, fechaPublicacion);
        noticiaDAO ndao = new noticiaDAO();
        
        ndao.addNoticia(noticia);

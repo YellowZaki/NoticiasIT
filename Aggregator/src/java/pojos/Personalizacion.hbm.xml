@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01-may-2020 13:21:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-may-2020 21:40:26 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Personalizacion" table="personalizacion" catalog="aggregator" optimistic-lock="version">
         <id name="idUsuario" type="string">
@@ -11,14 +11,11 @@
             </generator>
         </id>
         <one-to-one name="usuario" class="pojos.Usuario" constrained="true"></one-to-one>
-        <property name="colorPrimario" type="int">
-            <column name="color_primario" not-null="true" />
+        <property name="colorPrimario" type="string">
+            <column name="color_primario" length="40" not-null="true" />
         </property>
         <property name="modoOscuro" type="int">
             <column name="modo_oscuro" not-null="true" />
-        </property>
-        <property name="tipografia" type="int">
-            <column name="tipografia" not-null="true" />
         </property>
         <property name="mostrarEncabezado" type="int">
             <column name="mostrar_encabezado" not-null="true" />
