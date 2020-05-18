@@ -48,12 +48,15 @@
             <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
         <action name="EditarAnadirCarpeta" class="acciones.SetVariables" method="getCarpetaUnica">
-            <result name="success">/vistas/editar_anadir_carpeta.jsp</result>
+            <result name="success">/vistas/crear_editar_carpeta.jsp</result>
         </action>
         <action name="AnadirNoticiaACarpeta" class="acciones.CarpetaActions" method="asociar">
             <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
         <action name="BorrarCarpeta" class="acciones.CarpetaActions" method="borrarCarpeta">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+        </action>
+        <action name="CrearEditarCarpetaSubmit" class="acciones.CarpetaActions" method="crearEditarCarpeta">
             <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
     </package>

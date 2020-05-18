@@ -43,4 +43,21 @@ public class carpetaDAO {
         q.executeUpdate();
         tx.commit();
     }
+    
+    public void addCarpeta(Carpeta carpeta) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        sesion.save(carpeta);
+        tx.commit();
+    }
+
+    public void updateCarpeta(String nombreOriginal, Carpeta carpetaNueva) {
+        Carpeta original = getCarpeta(nombreOriginal, carpetaNueva.getUsuario().getUsuario());
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();        
+        original.setNombreCarpeta(carpetaNueva.getNombreCarpeta());
+        sesion.update(original);
+        tx.commit();
+        
+    }
 }

@@ -7,6 +7,9 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
 import dao.carpetaDAO;
+import dao.usuarioDAO;
+import pojos.Carpeta;
+import pojos.Usuario;
 
 /**
  *
@@ -16,6 +19,25 @@ public class CarpetaActions extends ActionSupport {
     
     String nombre_carpeta;
     String nombre_usuario;
+    String nombre;
+    String nombreOriginal;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombreOriginal() {
+        return nombreOriginal;
+    }
+
+    public void setNombreOriginal(String nombreOriginal) {
+        this.nombreOriginal = nombreOriginal;
+    }
+    
 
     public String getNombre_carpeta() {
         return nombre_carpeta;
@@ -48,6 +70,20 @@ public class CarpetaActions extends ActionSupport {
     
     public String asociar() throws Exception{
         //asociar una noticia a una carpeta
+        return SUCCESS;
+    }
+    
+    public String crearEditarCarpeta() throws Exception{
+        carpetaDAO DAO = new carpetaDAO();
+        Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
+        Carpeta carpeta = new Carpeta(nombre,u);
+
+        if (getNombreOriginal() != null) {
+            //actualizamos
+            DAO.updateCarpeta(nombreOriginal,carpeta);
+        }else{
+            DAO.addCarpeta(carpeta);
+        }
         return SUCCESS;
     }
 }
