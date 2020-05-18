@@ -8,6 +8,7 @@ package dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Personalizacion;
 import pojos.Usuario;
 
 /**
@@ -24,5 +25,29 @@ public class usuarioDAO {
         Usuario u = (Usuario) q.uniqueResult();
         tx.commit();
         return u;
+    }
+    
+    public void modificarUsuario(Usuario u){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        
+        sesion.update(u);
+        
+        tx.commit();
+    }
+    
+    public void eliminarUsuario(Usuario u){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        
+        Query q = sesion.createQuery("From Personalizacion where id_usuario='" + u.getUsuario() + "'");
+        
+        Personalizacion p = (Personalizacion)q.uniqueResult();
+        
+        sesion.delete(p);
+        
+        sesion.delete(u);
+        
+        tx.commit();
     }
 }

@@ -9,6 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojos.Noticia;
+import pojos.Personalizacion;
 import pojos.Usuario;
 import utils.Utils;
 
@@ -36,6 +37,10 @@ public class registerDAO {
                 
                 u = new Usuario(usuario, clave, email, "usuario");
                 sesion.save(u);
+                
+                //Personalizacion p = new Personalizacion(u, "#007bff", 0, 1);
+                
+                //sesion.save(p);
             }else{
                 enc = "usuario";
             }

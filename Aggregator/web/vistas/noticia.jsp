@@ -90,7 +90,7 @@
 
                    " id="like">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                    </i> <s:property value="valorVotosNoticia"></s:property> <i class="fas fa-thumbs-down" style="
+                </i> <div id="valorVotos"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down" style="
                     <s:if test="%{valorVotoUsuario == -1}">
                        color:red;
                    </s:if>

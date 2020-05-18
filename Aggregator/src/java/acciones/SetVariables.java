@@ -38,7 +38,7 @@ public class SetVariables extends ActionSupport {
     List<Noticia> noticias;
     Tema tema0;
     Carpeta carpeta;
-        int valorVotosNoticia = 0;
+    int valorVotosNoticia = 0;
     int valorVotoUsuario = 0;
 
     public SetVariables() {

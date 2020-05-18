@@ -29,6 +29,11 @@
         <action name="votosDislike" class="acciones.Votos" method="dislike">
             <result name="success">/vistas/noticia.jsp</result>
         </action>  
+        
+        <action name="modificarUsuario" class="acciones.UsuarioActions">
+            <result name="success">/vistas/ver_noticias.jsp</result>
+            <result name="input">/vistas/perfil.jsp</result>
+        </action>
     </package>
     
     <package name="juan" extends="struts-default">
