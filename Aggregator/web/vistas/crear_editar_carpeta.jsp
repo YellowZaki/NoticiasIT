@@ -44,7 +44,7 @@
                                     </s:else>                                 
                                     <!--Añadir CSS -->                                   
                                      <s:if test="%{carpeta!=null}">
-                                        <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta("/>" />
+                                        <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>
                                         <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
                                     <div class="form-group">
