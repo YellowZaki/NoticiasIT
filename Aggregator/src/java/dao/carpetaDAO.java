@@ -4,20 +4,21 @@
  * and open the template in the editor.
  */
 package dao;
-
+ 
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojos.Carpeta;
-
+import pojos.GuardadasEn;
+ 
 /**
  *
  * @author juani_000
  */
 public class carpetaDAO {
     Session sesion = null;
-
+ 
     public Carpeta getCarpeta(String nombre_carpeta, String nombre_usuario) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
@@ -27,7 +28,7 @@ public class carpetaDAO {
         sesion.close();
         return c;
     }
-    
+   
     public List<Carpeta> getAllCarpetas(String nombre_usuario) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
@@ -36,8 +37,8 @@ public class carpetaDAO {
         tx.commit();
         sesion.close();
         return ln;
-    } 
-    
+    }
+   
     public void borrarCarpeta(String nombre_carpeta, String nombre_usuario) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
@@ -46,7 +47,7 @@ public class carpetaDAO {
         tx.commit();
         sesion.close();
     }
-    
+   
     public void addCarpeta(Carpeta carpeta) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
@@ -54,7 +55,7 @@ public class carpetaDAO {
         tx.commit();
         sesion.close();
     }
-
+ 
     public void updateCarpeta(String nombreOriginal, Carpeta carpetaNueva) {
         //Carpeta original = getCarpeta(nombreOriginal, carpetaNueva.getUsuario().getUsuario());
         sesion = HibernateUtil.getSessionFactory().openSession();
@@ -66,13 +67,13 @@ public class carpetaDAO {
         sesion.update(original);
         tx.commit();
         sesion.close();
-        
+       
     }
-    
-    public void updateCarpeta(Carpeta carpeta) {
+   
+    public void updateRelacionCarpeta(GuardadasEn relacion) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        sesion.update(carpeta);
+        sesion.save(relacion);
         tx.commit();
         sesion.close();
     }

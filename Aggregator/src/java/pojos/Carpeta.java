@@ -1,5 +1,5 @@
 package pojos;
-// Generated 18-may-2020 21:40:24 by Hibernate Tools 4.3.1
+// Generated 19-may-2020 19:11:18 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,30 +12,30 @@ public class Carpeta  implements java.io.Serializable {
 
 
      private Integer idCarpeta;
-     private String nombreCarpeta;
      private Usuario usuario;
+     private String nombreCarpeta;
      private Set guardadasEns = new HashSet(0);
 
     public Carpeta() {
     }
 
 	
-    public Carpeta(String nombreCarpeta, Usuario usuario) {
-        this.nombreCarpeta = nombreCarpeta;
+    public Carpeta(Usuario usuario, String nombreCarpeta) {
         this.usuario = usuario;
+        this.nombreCarpeta = nombreCarpeta;
     }
-    public Carpeta(String nombreCarpeta, Usuario usuario, Set guardadasEns) {
-       this.nombreCarpeta = nombreCarpeta;
+    public Carpeta(Usuario usuario, String nombreCarpeta, Set guardadasEns) {
        this.usuario = usuario;
+       this.nombreCarpeta = nombreCarpeta;
        this.guardadasEns = guardadasEns;
     }
    
-    public String getNombreCarpeta() {
-        return this.nombreCarpeta;
+    public Integer getIdCarpeta() {
+        return this.idCarpeta;
     }
     
-    public void setNombreCarpeta(String nombreCarpeta) {
-        this.nombreCarpeta = nombreCarpeta;
+    public void setIdCarpeta(Integer idCarpeta) {
+        this.idCarpeta = idCarpeta;
     }
     public Usuario getUsuario() {
         return this.usuario;
@@ -43,6 +43,13 @@ public class Carpeta  implements java.io.Serializable {
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    public String getNombreCarpeta() {
+        return this.nombreCarpeta;
+    }
+    
+    public void setNombreCarpeta(String nombreCarpeta) {
+        this.nombreCarpeta = nombreCarpeta;
     }
     public Set getGuardadasEns() {
         return this.guardadasEns;
@@ -52,16 +59,6 @@ public class Carpeta  implements java.io.Serializable {
         this.guardadasEns = guardadasEns;
     }
 
-    public Integer getIdCarpeta() {
-        return idCarpeta;
-    }
-
-    public void setIdCarpeta(Integer idCarpeta) {
-        this.idCarpeta = idCarpeta;
-    }
-
-    
-    
 
 
 
