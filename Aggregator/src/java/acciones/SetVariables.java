@@ -7,6 +7,7 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.anuncioDAO;
 import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import pojos.Anuncio;
 import pojos.Carpeta;
 import pojos.GuardadasEn;
 import pojos.Noticia;
@@ -33,6 +35,8 @@ public class SetVariables extends ActionSupport {
     String tema; //Para ver_noticias.jsp
     String id_carpeta;
     String temaCrearEditar;
+    String anuncioCrearEditar;
+
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
@@ -59,6 +63,10 @@ public class SetVariables extends ActionSupport {
         this.id_carpeta = id_carpeta;
     }
 
+    List<Anuncio> anuncios;
+    Anuncio anuncio;
+
+
     public SetVariables() {
     }
 
@@ -71,6 +79,30 @@ public class SetVariables extends ActionSupport {
      */
     public String getId() {
         return id;
+    }
+
+    public Anuncio getAnuncio() {
+        return anuncio;
+    }
+
+    public void setAnuncio(Anuncio anuncio) {
+        this.anuncio = anuncio;
+    }
+
+    public String getAnuncioCrearEditar() {
+        return anuncioCrearEditar;
+    }
+
+    public void setAnuncioCrearEditar(String anuncioCrearEditar) {
+        this.anuncioCrearEditar = anuncioCrearEditar;
+    }
+
+    public List<Anuncio> getAnuncios() {
+        return anuncios;
+    }
+
+    public void setAnuncios(List<Anuncio> anuncios) {
+        this.anuncios = anuncios;
     }
 
     public String getTemaCrearEditar() {
@@ -156,9 +188,6 @@ public class SetVariables extends ActionSupport {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
-    
-    
 
     /**
      * ###########################################
@@ -172,7 +201,7 @@ public class SetVariables extends ActionSupport {
         //Setear temas
         temaDAO td = new temaDAO();
         this.setTemas(td.getAllTemas());
-        
+
         noticiaDAO nd = new noticiaDAO();
         //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
         if (getTema() != null) {
@@ -201,8 +230,6 @@ public class SetVariables extends ActionSupport {
 
         return SUCCESS;
     }
-
-
 
     /**
      * Si se le pasa por parámetro GET, el id, se establecerá Noticia. Si no no.
@@ -244,17 +271,24 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
 
+    public String setearAnuncios() {
+        anuncioDAO adao = new anuncioDAO();
+        setAnuncios(adao.getAllanuncios());
+
+        return SUCCESS;
+    }
+
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
-    public String setearTemas(){
+
+    public String setearTemas() {
         getNoticiaUnica();
         temaDAO tdao = new temaDAO();
         List<Tema> temas = tdao.getAllTemas();
         setTemas(temas);
-         
+
         return SUCCESS;
     }
     
@@ -267,4 +301,16 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
 
+    public String setearAnuncio() {
+
+        if (getAnuncioCrearEditar() != null) {
+            anuncioDAO adao = new anuncioDAO();
+            Anuncio anuncio = adao.getAnuncio(getAnuncioCrearEditar());
+            setAnuncio(anuncio);
+
+        }
+        setearTemas();
+
+        return SUCCESS;
+    }
 }

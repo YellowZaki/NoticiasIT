@@ -98,7 +98,7 @@ public class CarpetaActions extends ActionSupport {
     public String crearEditarCarpeta() throws Exception {
         carpetaDAO cDAO = new carpetaDAO();
         Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
-        Carpeta carpeta = new Carpeta(u, nombre);
+        Carpeta carpeta = new Carpeta(nombre, u);
 
         if (getNombreOriginal() != null) {
             //actualizamos

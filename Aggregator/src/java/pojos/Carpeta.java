@@ -1,5 +1,5 @@
 package pojos;
-// Generated 19-may-2020 19:11:18 by Hibernate Tools 4.3.1
+// Generated 19-may-2020 20:01:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -20,7 +20,7 @@ public class Carpeta  implements java.io.Serializable {
     }
 
 	
-    public Carpeta(Usuario usuario, String nombreCarpeta) {
+    public Carpeta(String nombreCarpeta, Usuario usuario) {
         this.usuario = usuario;
         this.nombreCarpeta = nombreCarpeta;
     }

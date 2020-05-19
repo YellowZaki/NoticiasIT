@@ -43,14 +43,5 @@ public class Utils {
         return hashedPassword.equals(passwordFromDB);
     }
     
-    public static Date fechaHoy() throws ParseException{
-        Date fechaHoy = new Date();
-        fechaHoy = Calendar.getInstance().getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        String fechaStr = format.format(fechaHoy);
-        fechaHoy = format.parse(fechaStr);
-        
-        return fechaHoy;
-    }
 
 }

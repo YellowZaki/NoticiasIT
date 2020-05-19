@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Pagina de prueba</title>
+        <title>Gestión Carpetas</title>
         <%@include file="includes/headContent.jsp"%>
     </head>
     <body>
