@@ -22,7 +22,7 @@
                 
                 
                 </h3> 
-                <h6 style="font-size: 0.8rem;">por <s:property value="noticia.usuario.getUsuario()"/> (<s:date name="noticia.fechaPublicacion" format="dd/MM/yyyy" />)</h6>
+                <h6 style="font-size: 0.8rem;">por <s:property value="noticia.usuario.getUsuario()"/> (<s:date name="noticia.fechaPublicacion" format="dd/MM/yyyy HH:mm" />)</h6>
             </div>
 
             <div class="mr-3">

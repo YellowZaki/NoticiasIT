@@ -76,7 +76,7 @@ public class NoticiaActions extends ActionSupport {
         Usuario usuario = (Usuario) session.get("usuario");
         noticiaDAO ndao = new noticiaDAO();
 
-        Date fechaPublicacion = Utils.fechaHoy();
+        Date fechaPublicacion = new Date();
         temaDAO tdao = new temaDAO();
         Tema tema = tdao.getTema(temaNoticia);
 

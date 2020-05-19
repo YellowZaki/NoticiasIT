@@ -21,6 +21,10 @@
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
         </action>  
+        <action name="goToRegister">           
+            <result>/vistas/register.jsp</result>
+        </action>   
+        
         
         <action name="votosLike" class="acciones.Votos">
             <result name="success">/vistas/noticia.jsp</result>

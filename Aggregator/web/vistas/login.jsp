@@ -50,8 +50,11 @@
                                     </div>
                                     <div class="d-flex">                                            
                                         <s:submit name="btnLogin" value="Entrar" cssClass="btn btn-primary" theme="simple"></s:submit>
-                                            <a href="register.jsp" class="btn btn-primary ml-auto">Registrarse</a>                                        
-                                        </div>                                
+                                            <a href="
+                                            <s:url action="goToRegister">
+                                            </s:url>
+                                            " class="btn btn-primary ml-auto">Registrarse</a>                                        
+                                    </div>                                
                                 </s:form>
                             </div>
                         </div>

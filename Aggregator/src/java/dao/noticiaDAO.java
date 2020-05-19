@@ -30,7 +30,7 @@ public class noticiaDAO {
     public List<Noticia> getAllNoticias() {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("From Noticia");
+        Query q = sesion.createQuery("From Noticia order by fecha_publicacion desc");
         List<Noticia> ln = (List<Noticia>) q.list();
         tx.commit();
         sesion.close();
@@ -40,7 +40,7 @@ public class noticiaDAO {
     public List<Noticia> getNoticias(String tema) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("From Noticia where tema = '" + tema + "'");
+        Query q = sesion.createQuery("From Noticia where tema = '" + tema + "' order by fecha_publicacion desc");
         List<Noticia> ln = (List<Noticia>) q.list();
         tx.commit();
         sesion.close();
