@@ -13,6 +13,7 @@ import dao.usuarioDAO;
 import java.util.Map;
 import pojos.Carpeta;
 import pojos.GuardadasEn;
+import pojos.GuardadasEnId;
 import pojos.Noticia;
 import pojos.Usuario;
 
@@ -85,11 +86,9 @@ public class CarpetaActions extends ActionSupport {
     public String asociar() throws Exception {
         Noticia n = new noticiaDAO().getNoticia(id_noticia);
         Carpeta c = new carpetaDAO().getCarpeta(nombre_carpeta, nombre_usuario);
-        GuardadasEn ge = new GuardadasEn();
-        ge.setCarpeta(c);
-        ge.setNoticia(n);
-        c.getGuardadasEns().add(ge);
-        new carpetaDAO().updateCarpeta(c);
+        GuardadasEnId geId = new GuardadasEnId(Integer.parseInt(id_noticia), nombre_carpeta);
+        GuardadasEn ge = new GuardadasEn(geId, c, n);        
+        new carpetaDAO().updateRelacionCarpeta(ge);
         Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
         Map session = (Map) ActionContext.getContext().get("session");
         session.put("usuario", u);

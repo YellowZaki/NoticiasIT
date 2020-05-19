@@ -11,7 +11,7 @@
         <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
             <column name="usuario" length="50" not-null="true" />
         </many-to-one>
-        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="true" fetch="select">
+        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="nombre_carpeta" length="100" not-null="true" />
             </key>

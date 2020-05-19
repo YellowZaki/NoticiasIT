@@ -59,6 +59,9 @@
         <action name="CrearEditarCarpetaSubmit" class="acciones.CarpetaActions" method="crearEditarCarpeta">
             <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
+        <action name="VerCarpeta" class="acciones.SetVariables" method="getCarpetaUnica">
+            <result name="success">/vistas/ver_carpeta.jsp</result>
+        </action>
     </package>
     <package name="alberto" extends="struts-default">
         <action name="goToLogin">
