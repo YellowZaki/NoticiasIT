@@ -43,16 +43,27 @@
                             </div>
 
                             <div class="card-body">
-                                <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
-
+                                <s:form action="crearEditarAnuncioSubmit" cssClass="needs-validation" method="POST">
+                                    
                                     <div class="form-group">
                                         <s:if test="%{anuncio!=null}">
-                                            <label for="nombreOriginal">Nombre</label>
-                                            <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="anuncio.getTitulo()"/>" disabled />
+                                            <label for="link">Link</label>
+                                            <input type="text" required class="form-control" name="link" value="<s:property value="anuncio.getLink()"/>" disabled />
                                         </s:if>
                                         <s:else>
-                                            <label for="nombre">Nombre</label>
-                                            <input type="text" required class="form-control" name="nombre"/>
+                                            <label for="nombre">Link</label>
+                                            <input type="text" required class="form-control" name="link"/>
+                                        </s:else>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <s:if test="%{anuncio!=null}">
+                                            <label for="titulo"></label>
+                                            <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="anuncio.getTitulo()"/>"/>
+                                        </s:if>
+                                        <s:else>
+                                            <label for="titulo">Titulo</label>
+                                            <input type="text" required class="form-control" name="titulo"/>
                                         </s:else>
                                     </div>
                                     
@@ -68,14 +79,14 @@
                                         </s:else>  
                                     </div> 
                                     
-                                    <s:if test="%{anuncio!=null}">
-                                        <input type="hidden" name="temaOriginal" value="<s:property value="tema0.getNombreTema()"/>" />
-                                    </s:if>
+                                    <div class="form-group">
+                                        <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
+                                    </div>
 
 
                                     <div class="form-group">
                                         <div class="d-flex">
-                                            <input type="submit" name="altaTema" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            <input type="submit" name="altaAnuncio" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
                                         </div>
                                     </div>
 

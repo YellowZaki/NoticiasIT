@@ -83,7 +83,7 @@
 
                                     <div class="form-group">
                                         <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
-                                        </div>
+                                    </div>
 
                                         <div class="form-group">
                                             <div class="d-flex">
