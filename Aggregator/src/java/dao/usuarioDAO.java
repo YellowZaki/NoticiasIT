@@ -27,10 +27,11 @@ public class usuarioDAO {
         return u;
     }
     
-    public void modificarUsuario(Usuario u){
+    public void modificarUsuario(Usuario u, Personalizacion p){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         
+        sesion.update(p);
         sesion.update(u);
         
         tx.commit();

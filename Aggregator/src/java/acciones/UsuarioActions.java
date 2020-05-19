@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.usuarioDAO;
 import java.util.Map;
 import java.util.regex.Pattern;
+import pojos.Personalizacion;
 import pojos.Usuario;
 
 /**
@@ -21,6 +22,9 @@ import pojos.Usuario;
 public class UsuarioActions extends ActionSupport {
     private String email;
     private String modificarCuenta;
+    private String mostrarEncabezado;
+    private String temaOscuro;
+    private String color_primario;
     private usuarioDAO dao;
     
     public UsuarioActions() {
@@ -41,9 +45,25 @@ public class UsuarioActions extends ActionSupport {
         Usuario u = (Usuario)session.get("usuario");
             
         if(this.getModificarCuenta().equals("Guardar")){
+            int encabezado = 1;
+            int oscuro = 0;
             u.setEmail(email);
             
-            dao.modificarUsuario(u);
+            if(!this.getMostrarEncabezado().equals("true")){
+                encabezado = 0;
+            }
+            
+            if(this.getTemaOscuro().equals("true")){
+                oscuro = 1;
+            }
+            
+            Personalizacion p = u.getPersonalizacion();
+        
+            p.setModoOscuro(oscuro);
+            p.setMostrarEncabezado(encabezado);
+            p.setColorPrimario(color_primario);
+            
+            dao.modificarUsuario(u, p);
         }else{
             dao.eliminarUsuario(u);
         }
@@ -65,6 +85,30 @@ public class UsuarioActions extends ActionSupport {
 
     public void setModificarCuenta(String modificarCuenta) {
         this.modificarCuenta = modificarCuenta;
+    }
+
+    public String getMostrarEncabezado() {
+        return mostrarEncabezado;
+    }
+
+    public void setMostrarEncabezado(String mostrarEncabezado) {
+        this.mostrarEncabezado = mostrarEncabezado;
+    }
+
+    public String getTemaOscuro() {
+        return temaOscuro;
+    }
+
+    public void setTemaOscuro(String temaOscuro) {
+        this.temaOscuro = temaOscuro;
+    }
+
+    public String getColor_primario() {
+        return color_primario;
+    }
+
+    public void setColor_primario(String color_primario) {
+        this.color_primario = color_primario;
     }
     
     
