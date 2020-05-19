@@ -21,6 +21,7 @@ $(document).ready(function () {
             
             },
             success : function(data) {
+                alert($('#dislike').css("color"));
                 if($('#like').css("color") == 'rgb(169, 169, 169)'){
                     $('#like').css("color", "green");
                     
@@ -28,6 +29,9 @@ $(document).ready(function () {
                     valor = valor + 1;
                     
                     $('#valorVotos').text(valor);
+                }else if($('#dislike').css("color") == 'rgb(255, 0, 0)'){
+                    
+                    
                 }else{
                     $('#like').css("color", "#a9a9a9");
                     
