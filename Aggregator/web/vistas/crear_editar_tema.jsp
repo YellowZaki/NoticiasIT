@@ -42,17 +42,14 @@
 
                                 </h3>
                             </div>
-                            
+
                             <div class="card-body">
                                 <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
 
-                                    
+
                                     <s:if test="%{tema0!=null}">
-                                        <label for="nombreOriginal">Nombre Original</label>
+                                        <label for="nombreOriginal">Nombre</label>
                                         <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="tema0.getNombreTema()"/>" disabled />
-                                        
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" required class="form-control" name="nombre" />
                                     </s:if>
                                     <s:else>
                                         <label for="nombre">Nombre</label>
@@ -63,12 +60,14 @@
                                         <label for="imagen">Banner</label>
                                         <s:if test="%{tema0!=null}">
                                             <input type="text" required class="form-control" name="imagen" value="<s:property value="tema0.getImagen()"/>" />
+                                            <input type="hidden" name="actualizar" value="actualizar"/>
+
                                         </s:if>
                                         <s:else>
                                             <input type="text" required class="form-control" name="imagen"/>
                                         </s:else>  
                                     </div> 
-                                        
+
                                     <s:if test="%{tema0!=null}">
                                         <input type="hidden" name="temaOriginal" value="<s:property value="tema0.getNombreTema()"/>" />
                                     </s:if>

@@ -1,4 +1,4 @@
-
+<%@page import="pojos.Usuario"%>
 <%@page import="java.awt.Color"%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <!-- Uso de plugins-->
-<!--<script src="js/aggregator.js"></script>-->
+<script src="js/aggregator.js"></script>
 
 <%!
     public static String darkenColor(String colorStr, int factor) {
@@ -43,36 +43,28 @@
 %>
 
 <%
-
     String color_primario = "#007bff";
     boolean tema_oscuro = false;
     boolean mostrar_encabezado = true;
     //Comprobar si la variable de sesion usuario está establecida y tomar su personalizacion
-    if (false) {
-        //$personalizacion = 
-        //$color_primario = $personalizacion['color_primario'];
-        //$tema_oscuro = $personalizacion['tema_oscuro'];
-        //$mostrar_encabezado = $personalizacion['mostrar_encabezado'];
+    if (session.getAttribute("usuario") != null) {
+        Usuario u = (Usuario)session.getAttribute("usuario");
+        color_primario = u.getPersonalizacion().getColorPrimario();
+        
+        if(u.getPersonalizacion().getModoOscuro() == 1){
+            tema_oscuro = true;
+            
+        }
+        
+        if(u.getPersonalizacion().getMostrarEncabezado() == 0){
+            mostrar_encabezado = false;
+        }  
     }
-
-//CAMBIO DE COLOR PRIMARIO
-//función que oscurece un color
-//public static String darken_color($rgb, $darker = 2) {
-//    $hash = (strpos($rgb, '#') !== false) ? '#' : '';
-//    $rgb = (strlen($rgb) == 7) ? str_replace('#', '', $rgb) : ((strlen($rgb) == 6) ? $rgb : false);
-//    if (strlen($rgb) != 6)
-//        return $hash . '000000';
-//    $darker = ($darker > 1) ? $darker : 1;
-//    list($R16, $G16, $B16) = str_split($rgb, 2);
-//    $R = sprintf("%02X", floor(hexdec($R16) / $darker));
-//    $G = sprintf("%02X", floor(hexdec($G16) / $darker));
-//    $B = sprintf("%02X", floor(hexdec($B16) / $darker));
-//    return $hash . $R . $G . $B;
-//}
+    
     String color_primario_oscuro = darkenColor(color_primario, 1);
-    String color_primario_oscuroplus = darkenColor(color_primario, 1);
-//$color_flechas = str_replace("#", "", $color_primario);
-//MODO OSCURO
+    String color_primario_oscuroplus = darkenColor(color_primario, 2);
+        
+    //MODO OSCURO
     if (tema_oscuro) {
 %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/darkly/bootstrap.min.css">
@@ -87,11 +79,19 @@
 %>
 
 
-
-
-
-
 <style>
+
+    .widget .panel-body { padding:0px; }
+    .widget .list-group { margin-bottom: 0; }
+    .widget .panel-title { display:inline }
+    .widget .label-info { float: right; }
+    .widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+    .widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+    .widget .mic-info { color: #666666;font-size: 11px; }
+    .widget .action { margin-top:5px; }
+    .widget .comment-text { font-size: 12px; }
+    .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
     .btn-primary {
         background-color: <%=color_primario%>;
         border-color: <%=color_primario%>>;
@@ -109,14 +109,6 @@
         border-color: <%=color_primario_oscuroplus%>!important;
     }        
 
-    .carousel-control-prev-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23<?php echo $color_flechas; ?>' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-    }
-
-    .carousel-control-next-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23<?php echo $color_flechas; ?>' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-    }    
-
     .colorPickSelector {
         border-radius:5px;
         width:36px;
@@ -128,7 +120,7 @@
         -o-transition:all linear .2s;
         transition:all linear .2s;
     }
-            
+
     .principal {
         background: <%=color_primario%>;
     }    

@@ -13,13 +13,11 @@
 
         <s:if test="%{noticia!=null}">
             <title>Editar noticia</title>
-            <%
-                Usuario usuario = (Usuario) session.getAttribute("usuario");
-                Noticia noticia = (Noticia) session.getAttribute("usuario");
-                if (!usuario.getUsuario().equals(noticia.getUsuario().getUsuario())) {
+            <s:if test="%{noticia.getUsuario()!= session.usuario.getUsuario().getUsuario()}">
+                <%
                     response.sendRedirect(request.getContextPath() + "/paginaNoEncontrada.jsp"); //Comprobar que la ruta vaya bien.
-                }
-            %>
+                %>
+            </s:if>
         </s:if>
         <s:else>
             <title>Crear noticia</title>
@@ -42,21 +40,26 @@
                                     <s:else>
                                         Crear noticia
                                     </s:else>
-
-
                                 </h3>
                             </div>
                             <div class="card-body">
                                 <s:form action="crearNoticiaSubmit" cssClass="needs-validation" method="POST">
 
-                                    <label for="titulo">Título</label>
                                     <s:if test="%{noticia!=null}">
-                                        <input required class="form-control" name="titulo" value="<s:property value="noticia.getTitulo()"/>" />
+                                        <input type="hidden" name="actualizar" value="actualizar"/>
+                                        <s:param name="idNoticia"><s:property value="%{#id}"/></s:param>
                                     </s:if>
-                                    <s:else>
-                                        <input required class="form-control" name="titulo"/>
-                                    </s:else>
 
+                                    <div class="form-group">
+                                        <label for="titulo">Título</label>
+                                        <s:if test="%{noticia!=null}">
+                                            <input required class="form-control" name="titulo" value="<s:property value="noticia.getTitulo()"/>" />
+                                        </s:if>
+                                        <s:else>
+                                            <input required class="form-control" name="titulo"/>
+                                        </s:else>
+                                    </div>
+                                        
                                     <div class="form-group">
                                         <label for="descripcion">Descripción</label>
                                         <s:if test="%{noticia!=null}">
@@ -76,16 +79,18 @@
                                             <input required class="form-control" name="fuente"/>
                                         </s:else>
                                     </div>
-                                        
+
                                     <!--Añadir CSS -->
-                                    
-                                    
 
                                     <div class="form-group">
-                                        <div class="d-flex">
-                                            <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                        <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
                                         </div>
-                                    </div>
+
+                                        <div class="form-group">
+                                            <div class="d-flex">
+                                                <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            </div>
+                                        </div>
                                 </s:form>
 
 

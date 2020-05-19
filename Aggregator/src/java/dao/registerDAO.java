@@ -38,9 +38,9 @@ public class registerDAO {
                 u = new Usuario(usuario, clave, email, "usuario");
                 sesion.save(u);
                 
-                //Personalizacion p = new Personalizacion(u, "#007bff", 0, 1);
+                Personalizacion p = new Personalizacion(u, "#007bff", 0, 1);
                 
-                //sesion.save(p);
+                sesion.save(p);
             }else{
                 enc = "usuario";
             }

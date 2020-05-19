@@ -11,7 +11,17 @@
     <div class="card-header">
         <div class="row">
             <div class="col">
-                <h3 class="mb-0"><s:property value="noticia.titulo"/></h3> 
+                <h3 class="mb-0">
+                        <a href='
+                           <s:url action="VerNoticia">
+                               <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                           </s:url>
+
+                           '><s:property value="noticia.titulo"/></a>
+                    
+                
+                
+                </h3> 
                 <h6 style="font-size: 0.8rem;">por <s:property value="noticia.usuario.getUsuario()"/> (<s:date name="noticia.fechaPublicacion" format="dd/MM/yyyy" />)</h6>
             </div>
 
@@ -71,6 +81,9 @@
 
     <div class="card-body">
         <s:property value="noticia.descripcion"/>
+        <br>
+        <br>
+        Fuente: <a href='<s:property value="noticia.fuente"/>'>Click aquí</a>
     </div>
 
     <div class="card-footer">
@@ -90,7 +103,7 @@
 
                    " id="like">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                </i> <div id="valorVotos"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down" style="
+                </i> <div id="valorVotos" style="display: inline;"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down" style="
                     <s:if test="%{valorVotoUsuario == -1}">
                        color:red;
                    </s:if>
