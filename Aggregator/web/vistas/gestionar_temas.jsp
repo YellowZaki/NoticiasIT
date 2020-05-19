@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Pagina de prueba</title>
+        <title>Gestión temas</title>
         <%@include file="includes/headContent.jsp"%>
     </head>
     <body>

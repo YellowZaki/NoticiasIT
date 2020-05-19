@@ -144,5 +144,22 @@
         <action name="GestionarAnuncios" class="acciones.SetVariables" method="setearAnuncios">
             <result name="success">/vistas/gestionar_anuncios.jsp</result>
         </action>
+        
+        <action name="CrearEditarAnuncio" class="acciones.SetVariables" method="setearAnuncio">
+            <result name="success">/vistas/crear_editar_anuncio.jsp</result>
+        </action>
+        
+        <action name="crearEditarAnuncioSubmit" class="acciones.AnuncioActions">
+            <result name="success" type="chain">
+                <param name="actionName">GestionarAnuncios</param>
+            </result>
+            <result name="input">/vistas/crear_editar_anuncio.jsp</result>
+        </action>
+        
+        <action name="BorrarAnuncio" class="acciones.AnuncioActions" method="borrarAnuncio">
+            <result name="success" type="chain">
+                <param name="actionName">GestionarAnuncios</param>
+            </result>
+        </action>
     </package>
 </struts>

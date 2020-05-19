@@ -35,6 +35,8 @@ public class SetVariables extends ActionSupport {
     String nombre_carpeta;
     String nombre_usuario;
     String temaCrearEditar;
+    String anuncioCrearEditar;
+
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
@@ -44,6 +46,7 @@ public class SetVariables extends ActionSupport {
     int valorVotosNoticia = 0;
     int valorVotoUsuario = 0;
     List<Anuncio> anuncios;
+    Anuncio anuncio;
 
     public SetVariables() {
     }
@@ -57,6 +60,22 @@ public class SetVariables extends ActionSupport {
      */
     public String getId() {
         return id;
+    }
+
+    public Anuncio getAnuncio() {
+        return anuncio;
+    }
+
+    public void setAnuncio(Anuncio anuncio) {
+        this.anuncio = anuncio;
+    }
+
+    public String getAnuncioCrearEditar() {
+        return anuncioCrearEditar;
+    }
+
+    public void setAnuncioCrearEditar(String anuncioCrearEditar) {
+        this.anuncioCrearEditar = anuncioCrearEditar;
     }
 
     public List<Anuncio> getAnuncios() {
@@ -248,11 +267,11 @@ public class SetVariables extends ActionSupport {
         }
         return SUCCESS;
     }
-    
-    public String setearAnuncios(){
+
+    public String setearAnuncios() {
         anuncioDAO adao = new anuncioDAO();
         setAnuncios(adao.getAllanuncios());
-        
+
         return SUCCESS;
     }
 
@@ -270,4 +289,16 @@ public class SetVariables extends ActionSupport {
         return SUCCESS;
     }
 
+    public String setearAnuncio() {
+
+        if (getAnuncioCrearEditar() != null) {
+            anuncioDAO adao = new anuncioDAO();
+            Anuncio anuncio = adao.getAnuncio(getAnuncioCrearEditar());
+            setAnuncio(anuncio);
+
+        }
+        setearTemas();
+
+        return SUCCESS;
+    }
 }

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Pagina de prueba</title>
+        <title>Gestión Anuncios</title>
         <%@include file="includes/headContent.jsp"%>
     </head>
     <body>
@@ -17,10 +17,10 @@
         <%@include file="includes/header.jsp"%>
         <div class="container aggregator-margin-navbar">
             <div class="row">
-                <div class="mr-auto"><h1>Temas</h1></div>
+                <div class="mr-auto"><h1>Anuncios</h1></div>
                 <div class="ml-auto">                    
                     <a href='
-                       <s:url action="CrearEditarTema">
+                       <s:url action="CrearEditarAnuncio">
                        </s:url>
                        ' class='btn btn-primary add-new'><i class='fa fa-plus'></i> Añadir</a>
                 </div>
@@ -28,23 +28,23 @@
             <table class="table table-responsive-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Link</th>
                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <s:iterator value="temas" var="tema">
+                    <s:iterator value="anuncios" var="anuncio">
                         <tr>
-                            <td><s:property value="%{#tema.getNombreTema()}"/></td>
+                            <td><s:property value="%{#anuncio.getLink()}"/></td>
                             <td>
                                 <a href='
-                                   <s:url action="CrearEditarTema">
-                                       <s:param name="temaCrearEditar"><s:property value="%{#tema.getNombreTema()}"/></s:param>
+                                   <s:url action="CrearEditarAnuncio">
+                                       <s:param name="anuncioCrearEditar"><s:property value="%{#anuncio.getLink()}"/></s:param>
                                    </s:url>
                                    '><i style='color:orange;' class='fas fa-edit'></i></a>
                                 <a href='
-                                   <s:url action="BorrarTema">
-                                       <s:param name="temaBorrar"><s:property value="%{#tema.getNombreTema()}"/></s:param>
+                                   <s:url action="BorrarAnuncio">
+                                       <s:param name="anuncioBorrar"><s:property value="%{#anuncio.getLink()}"/></s:param>
                                        <s:param name="noValidar"><s:property value="noValidar"/></s:param>
                                    </s:url>
                                    '><i style='color:red;' class='fas fa-trash'></i></a>                            

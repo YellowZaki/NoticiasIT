@@ -48,18 +48,19 @@
                                     <div class="form-group">
                                         <s:if test="%{anuncio!=null}">
                                             <label for="link">Link</label>
-                                            <input type="text" required class="form-control" name="link" value="<s:property value="anuncio.getLink()"/>" disabled />
+                                            <input type="text" required class="form-control" value="<s:property value="%{anuncio.getLink()}"/>" disabled />
+                                            <s:hidden name="link" value="%{anuncio.getLink()}"/>
                                         </s:if>
                                         <s:else>
-                                            <label for="nombre">Link</label>
+                                            <label for="link">Link</label>
                                             <input type="text" required class="form-control" name="link"/>
                                         </s:else>
                                     </div>
                                     
                                     <div class="form-group">
                                         <s:if test="%{anuncio!=null}">
-                                            <label for="titulo"></label>
-                                            <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="anuncio.getTitulo()"/>"/>
+                                            <label for="titulo">Titulo</label>
+                                            <input type="text" required class="form-control" name="titulo" value="<s:property value="anuncio.getTitulo()"/>"/>
                                         </s:if>
                                         <s:else>
                                             <label for="titulo">Titulo</label>
@@ -80,7 +81,7 @@
                                     </div> 
                                     
                                     <div class="form-group">
-                                        <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
+                                        <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaAnuncio" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
                                     </div>
 
 
