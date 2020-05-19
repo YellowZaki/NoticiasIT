@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -44,7 +45,8 @@ public class Utils {
     
     public static Date fechaHoy() throws ParseException{
         Date fechaHoy = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("d-m-Y");
+        fechaHoy = Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String fechaStr = format.format(fechaHoy);
         fechaHoy = format.parse(fechaStr);
         
