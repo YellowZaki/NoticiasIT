@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <<s:iterator value="temas" var="tema">
+                    <s:iterator value="temas" var="tema">
                         <tr>
                             <td><s:property value="%{#tema.getNombreTema()}"/></td>
                             <td>
