@@ -65,7 +65,7 @@
                 </s:if>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="perfil.jsp"><i class="fa fa-cog"></i></a> </li>
+                <li class="nav-item"><a class="nav-link" href="./perfil.jsp"><i class="fa fa-cog"></i></a> </li>
                 <!--                    session.usuario.getUsuario()-->
                 <s:if test='#session.containsKey("usuario")'>
 

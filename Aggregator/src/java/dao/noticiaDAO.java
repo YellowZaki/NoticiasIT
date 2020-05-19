@@ -15,10 +15,10 @@ import pojos.Voto;
  */
 public class noticiaDAO {
 
-    Session sesion = null;
+    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
 
     public Noticia getNoticia(String id) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where id_noticia='" + id + "'");
         Noticia n = (Noticia) q.uniqueResult();
@@ -27,7 +27,7 @@ public class noticiaDAO {
     }
 
     public List<Noticia> getAllNoticias() {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia");
         List<Noticia> ln = (List<Noticia>) q.list();
@@ -36,7 +36,7 @@ public class noticiaDAO {
     }
 
     public List<Noticia> getNoticias(String tema) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where tema = '" + tema + "'");
         List<Noticia> ln = (List<Noticia>) q.list();
@@ -45,21 +45,21 @@ public class noticiaDAO {
     }
 
     public void borrarNoticia(Noticia noticia) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.delete(noticia);
         tx.commit();
     }
 
     public void addNoticia(Noticia noticia) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.save(noticia);
         tx.commit();
     }
     
     public void votar(Usuario u, String idNoticia, int valor){
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         
         Query q1 = sesion.createQuery("From Noticia where id_noticia='" + idNoticia + "'");

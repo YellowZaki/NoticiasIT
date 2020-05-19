@@ -27,7 +27,6 @@ public class usuarioDAO {
     }
     
     public void modificarUsuario(Usuario u, Personalizacion p){
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         
         sesion.update(p);
@@ -37,7 +36,6 @@ public class usuarioDAO {
     }
     
     public void eliminarUsuario(Usuario u){
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         
         Query q = sesion.createQuery("From Personalizacion where id_usuario='" + u.getUsuario() + "'");

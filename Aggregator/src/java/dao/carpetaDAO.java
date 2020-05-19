@@ -16,10 +16,10 @@ import pojos.Carpeta;
  * @author juani_000
  */
 public class carpetaDAO {
-    Session sesion = null;
+    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
 
     public Carpeta getCarpeta(String nombre_carpeta, String nombre_usuario) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Carpeta where nombre_carpeta='" + nombre_carpeta + "' and usuario='" + nombre_usuario + "'");
         Carpeta c = (Carpeta) q.uniqueResult();
@@ -28,7 +28,7 @@ public class carpetaDAO {
     }
     
     public List<Carpeta> getAllCarpetas(String nombre_usuario) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Carpeta where usuario='" + nombre_usuario + "'");
         List<Carpeta> ln = (List<Carpeta>) q.list();
@@ -37,7 +37,7 @@ public class carpetaDAO {
     } 
     
     public void borrarCarpeta(String nombre_carpeta, String nombre_usuario) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("delete From Carpeta where nombre_carpeta='" + nombre_carpeta + "' and usuario='" + nombre_usuario + "'");
         q.executeUpdate();
@@ -45,7 +45,7 @@ public class carpetaDAO {
     }
     
     public void addCarpeta(Carpeta carpeta) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.save(carpeta);
         tx.commit();
@@ -53,7 +53,7 @@ public class carpetaDAO {
 
     public void updateCarpeta(String nombreOriginal, Carpeta carpetaNueva) {
         //Carpeta original = getCarpeta(nombreOriginal, carpetaNueva.getUsuario().getUsuario());
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Carpeta where nombre_carpeta='" + nombreOriginal + "' and usuario='" + carpetaNueva.getUsuario().getUsuario() + "'");
         Carpeta original = (Carpeta) q.uniqueResult();
@@ -65,7 +65,7 @@ public class carpetaDAO {
     }
     
     public void updateCarpeta(Carpeta carpeta) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.update(carpeta);
         tx.commit();

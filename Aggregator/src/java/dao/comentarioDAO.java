@@ -15,19 +15,19 @@ import pojos.Usuario;
  */
 public class comentarioDAO {
 
-    Session sesion = null;
+    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
 
 
     public void addComentario(Noticia noticia, Usuario usuario, String texto) {
         Comentario comment = new Comentario(noticia, usuario, new Date(), texto);
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.save(comment);
         tx.commit();
     }
 
     public Comentario getComentario(String id_comentario) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Comentario where id_comentario='" + id_comentario + "'");
         Comentario n = (Comentario) q.uniqueResult();
@@ -36,7 +36,7 @@ public class comentarioDAO {
     }
 
     public void borrarComentario(Comentario coment) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         Transaction tx = sesion.beginTransaction();
         sesion.delete(coment);
         tx.commit();
