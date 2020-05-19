@@ -32,10 +32,11 @@ public class SetVariables extends ActionSupport {
     String tema; //Para ver_noticias.jsp
     String nombre_carpeta;
     String nombre_usuario;
-
+    String temaCrearEditar;
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
+    List <Tema> temas;
     Tema tema0;
     Carpeta carpeta;
     int valorVotosNoticia = 0;
@@ -53,6 +54,14 @@ public class SetVariables extends ActionSupport {
      */
     public String getId() {
         return id;
+    }
+
+    public String getTemaCrearEditar() {
+        return temaCrearEditar;
+    }
+
+    public void setTemaCrearEditar(String temaCrearEditar) {
+        this.temaCrearEditar = temaCrearEditar;
     }
 
     public void setId(String id) {
@@ -138,6 +147,15 @@ public class SetVariables extends ActionSupport {
     public void setValorVotoUsuario(int valorVotoUsuario) {
         this.valorVotoUsuario = valorVotoUsuario;
     }
+
+    public List<Tema> getTemas() {
+        return temas;
+    }
+
+    public void setTemas(List<Tema> temas) {
+        this.temas = temas;
+    }
+    
     
     
 
@@ -206,9 +224,9 @@ public class SetVariables extends ActionSupport {
 
     public String setearTema() {
 
-        if (getTema() != null) {
+        if (getTemaCrearEditar() != null) {
             temaDAO tDAO = new temaDAO();
-            setTema0(tDAO.getTema(getTema()));
+            setTema0(tDAO.getTema(getTemaCrearEditar()));
         }
 
         return SUCCESS;
@@ -224,6 +242,15 @@ public class SetVariables extends ActionSupport {
 
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
+        return SUCCESS;
+    }
+    
+    public String setearTemas(){
+        getNoticiaUnica();
+        temaDAO tdao = new temaDAO();
+        List<Tema> temas = tdao.getAllTemas();
+        setTemas(temas);
+         
         return SUCCESS;
     }
 

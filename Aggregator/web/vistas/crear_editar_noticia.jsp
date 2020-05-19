@@ -76,16 +76,18 @@
                                             <input required class="form-control" name="fuente"/>
                                         </s:else>
                                     </div>
-                                        
+
                                     <!--Añadir CSS -->
-                                    
-                                    
 
                                     <div class="form-group">
-                                        <div class="d-flex">
-                                            <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
-                                        </div>
+                                        <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
                                     </div>
+                                    
+                                        <div class="form-group">
+                                            <div class="d-flex">
+                                                <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            </div>
+                                        </div>
                                 </s:form>
 
 

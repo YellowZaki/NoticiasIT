@@ -33,32 +33,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%--<s:iterator value="" var="temas"> Obtener temas--%> 
+                    <<s:iterator value="temas" var="tema">
                         <tr>
                             <td><s:property value="%{#tema.getNombreTema()}"/></td>
-                            <td><s:if test="%{noticia!=null}">
-                                    <s:form action="AnadirNoticiaACarpeta">
-                                        <s:submit name="btnAsocial" value="Añadir a esta carpeta" cssClass='btn btn-primary add-new'></s:submit>
-                                        <s:hidden name="id_noticia" value="%{noticia.getIdNoticia()}"></s:hidden>
-                                        <s:hidden name="nombre_carpeta" value="%{#carpeta.getNombreCarpeta()}"></s:hidden>
-                                        <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
-                                    </s:form>                                    
-                                </s:if>
-                                <s:else>
-                                    <a href='
-                                       <s:url action="EditarAnadirCarpeta">
-                                           <s:param name="nombre_carpeta"><s:property value="%{#carpeta.getNombreCarpeta()}"/></s:param>
-                                           <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
-                                       </s:url>
-                                       '><i style='color:orange;' class='fas fa-edit'></i></a>
-                                    <a href='
-                                       <s:url action="BorrarCarpeta">
-                                           <s:param name="nombre_carpeta"><s:property value="%{#carpeta.getNombreCarpeta()}"/></s:param>
-                                           <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
-                                       </s:url>
-                                       '><i style='color:red;' class='fas fa-trash'></i></a>                            
+                            <td>
+                                <a href='
+                                   <s:url action="CrearEditarTema">
+                                       <s:param name="temaCrearEditar"><s:property value="%{#tema.getNombreTema()}"/></s:param>
+                                   </s:url>
+                                   '><i style='color:orange;' class='fas fa-edit'></i></a>
+                                <a href='
+                                   <s:url action="BorrarTema">
+                                       <s:param name="temaBorrar"><s:property value="%{#tema.getNombreTema()}"/></s:param>
+                                       <s:param name="noValidar"><s:property value="noValidar"/></s:param>
+                                   </s:url>
+                                   '><i style='color:red;' class='fas fa-trash'></i></a>                            
 
-                                </s:else></td>
+                            </td>
                         </tr>
                     </s:iterator>
                 </tbody>
