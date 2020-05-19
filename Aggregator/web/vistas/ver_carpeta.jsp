@@ -17,7 +17,7 @@
         <%@include file="includes/header.jsp"%>
         <div class="container aggregator-margin-navbar">
             <div class="row">
-                <div class="mr-auto"><h1>Carpetas</h1></div>
+                <div class="mr-auto"><h1>Viendo el contenido de la carpeta <s:property value="%{#carpeta.getNombreCarpeta()}"/></h1></div>
                 <div class="ml-auto">                    
                     <a href='
                        <s:url action="EditarAnadirCarpeta">
