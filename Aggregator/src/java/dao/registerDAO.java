@@ -18,7 +18,7 @@ import utils.Utils;
  * @author Andrés Manuel
  */
 public class registerDAO {
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
     
     public String Registrar(String usuario, String email, String clave) {
         

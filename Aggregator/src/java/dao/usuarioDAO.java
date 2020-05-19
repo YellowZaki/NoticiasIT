@@ -16,36 +16,43 @@ import pojos.Usuario;
  * @author juani_000
  */
 public class usuarioDAO {
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+
+    Session sesion = null;
 
     public Usuario getUsuario(String usuario) {
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Usuario where usuario='" + usuario + "'");
         Usuario u = (Usuario) q.uniqueResult();
         tx.commit();
+        sesion.close();
         return u;
     }
-    
-    public void modificarUsuario(Usuario u, Personalizacion p){
+
+    public void modificarUsuario(Usuario u, Personalizacion p) {
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        
+
         sesion.update(p);
         sesion.update(u);
-        
+
         tx.commit();
+        sesion.close();
     }
-    
-    public void eliminarUsuario(Usuario u){
+
+    public void eliminarUsuario(Usuario u) {
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        
+
         Query q = sesion.createQuery("From Personalizacion where id_usuario='" + u.getUsuario() + "'");
-        
-        Personalizacion p = (Personalizacion)q.uniqueResult();
-        
+
+        Personalizacion p = (Personalizacion) q.uniqueResult();
+
         sesion.delete(p);
-        
+
         sesion.delete(u);
-        
+
         tx.commit();
+        sesion.close();
     }
 }

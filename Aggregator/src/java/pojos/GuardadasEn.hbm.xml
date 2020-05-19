@@ -8,12 +8,12 @@
             <key-property name="idNoticia" type="int">
                 <column name="id_noticia" />
             </key-property>
-            <key-property name="nombreCarpeta" type="string">
-                <column name="nombre_carpeta" length="100" />
+            <key-property name="idCarpeta" type="int">
+                <column name="id_carpeta" />
             </key-property>
         </composite-id>
         <many-to-one name="carpeta" class="pojos.Carpeta" update="false" insert="false" fetch="select">
-            <column name="nombre_carpeta" length="100" not-null="true" />
+            <column name="id_carpeta" not-null="true" />
         </many-to-one>
         <many-to-one name="noticia" class="pojos.Noticia" update="false" insert="false" fetch="select">
             <column name="id_noticia" not-null="true" />

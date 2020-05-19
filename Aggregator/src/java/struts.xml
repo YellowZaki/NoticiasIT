@@ -76,6 +76,17 @@
                 <param name="actionName">VerNoticia</param>
             </result>
         </action>
+        <action name="EditarComentario" class="acciones.ComentarioActions" method="editarComentario">
+            <result name="success">/vistas/editar_comentario.jsp</result>
+        </action>
+        
+        <action name="EditarComentarioSubmit" class="acciones.ComentarioActions" method="editarComentarioSubmit">
+            <result name="success" type="redirectAction">
+                <param name="id">${id_noticia}</param>
+                <param name="actionName">VerNoticia</param>
+            </result>
+        </action>
+        
         <action name="logout" class="acciones.Login" method="logout">
             <result name="success">/vistas/login.jsp</result>
         </action> 

@@ -11,6 +11,7 @@ import java.util.Set;
 public class Carpeta  implements java.io.Serializable {
 
 
+     private Integer idCarpeta;
      private String nombreCarpeta;
      private Usuario usuario;
      private Set guardadasEns = new HashSet(0);
@@ -51,6 +52,16 @@ public class Carpeta  implements java.io.Serializable {
         this.guardadasEns = guardadasEns;
     }
 
+    public Integer getIdCarpeta() {
+        return idCarpeta;
+    }
+
+    public void setIdCarpeta(Integer idCarpeta) {
+        this.idCarpeta = idCarpeta;
+    }
+
+    
+    
 
 
 
