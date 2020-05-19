@@ -90,7 +90,12 @@ public class NoticiaActions extends ActionSupport {
         Tema tema = tdao.getTema(temaNoticia);
 
         if (this.getId() != null) {//actualizar
-            
+            Noticia noticia = ndao.getNoticia(id);
+            noticia.setTema(tema);
+            noticia.setTitulo(titulo);
+            noticia.setDescripcion(descripcion);
+            noticia.setFuente(fuente);
+            ndao.updateNoticia(noticia);
         } else {
             Noticia noticia = new Noticia(tema, usuario, titulo, descripcion, fuente, fechaPublicacion);
             ndao.addNoticia(noticia);

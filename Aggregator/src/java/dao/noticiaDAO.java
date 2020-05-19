@@ -50,6 +50,12 @@ public class noticiaDAO {
         sesion.delete(noticia);
         tx.commit();
     }
+    
+    public void updateNoticia(Noticia noticia) {
+        Transaction tx = sesion.beginTransaction();
+        sesion.update(noticia);
+        tx.commit();
+    }
 
     public void addNoticia(Noticia noticia) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
