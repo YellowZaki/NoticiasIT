@@ -168,7 +168,10 @@ public class SetVariables extends ActionSupport {
      * ###########################################
      */
     public String listaNoticias() {
-
+        //Setear temas
+        temaDAO td = new temaDAO();
+        this.setTemas(td.getAllTemas());
+        
         noticiaDAO nd = new noticiaDAO();
         //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
         if (getTema() != null) {

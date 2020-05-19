@@ -28,9 +28,15 @@
                 </div>   
                 <div class="col-3">
                     <div class="btn-group-vertical" style="width: 100%;">
-                        <a href="a" class="btn btn-secondary" role="button">Deportes</a>
-                        <a href="a" class="btn btn-secondary" role="button">Tecnología</a>
-                        <a href="a" class="btn btn-secondary" role="button">Siensia</a>
+                        <s:iterator value="temas" var="tema">
+                            <a style='background-image: url(<s:property value="#tema.getImagen()"></s:property>); height: 75px'  href='
+                            <s:url action="ListaNoticias">
+                                <s:param name="tema"><s:property value="#tema.getNombreTema()"/></s:param>
+                            </s:url>
+                              ' class="btn btn-secondary" role="button">
+                               <s:property value="#tema.getNombreTema()"></s:property>
+                           </a>
+                        </s:iterator>
                     </div>
                 </div>
 

@@ -46,8 +46,7 @@
                                 <s:form action="crearNoticiaSubmit" cssClass="needs-validation" method="POST">
 
                                     <s:if test="%{noticia!=null}">
-                                        <input type="hidden" name="actualizar" value="actualizar"/>
-                                        <s:param name="idNoticia"><s:property value="%{#id}"/></s:param>
+                                        <s:hidden name="id" value="%{noticia.getIdNoticia()}"/>
                                     </s:if>
 
                                     <div class="form-group">
@@ -84,7 +83,7 @@
 
                                     <div class="form-group">
                                         <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
-                                        </div>
+                                    </div>
 
                                         <div class="form-group">
                                             <div class="d-flex">

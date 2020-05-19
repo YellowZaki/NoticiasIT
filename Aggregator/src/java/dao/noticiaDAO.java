@@ -18,7 +18,6 @@ public class noticiaDAO {
     Session sesion = HibernateUtil.getSessionFactory().openSession();
 
     public Noticia getNoticia(String id) {
-        
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where id_noticia='" + id + "'");
         Noticia n = (Noticia) q.uniqueResult();
@@ -48,6 +47,12 @@ public class noticiaDAO {
         
         Transaction tx = sesion.beginTransaction();
         sesion.delete(noticia);
+        tx.commit();
+    }
+    
+    public void updateNoticia(Noticia noticia) {
+        Transaction tx = sesion.beginTransaction();
+        sesion.update(noticia);
         tx.commit();
     }
 
