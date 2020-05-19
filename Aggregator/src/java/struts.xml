@@ -126,5 +126,9 @@
                 <param name="actionName">gestionarTemas</param>
             </result>
         </action>
+        
+        <action name="GestionarAnuncios" class="acciones.SetVariables" method="setearAnuncios">
+            <result name="success">/vistas/gestionar_anuncios.jsp</result>
+        </action>
     </package>
 </struts>

@@ -7,6 +7,7 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.anuncioDAO;
 import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import pojos.Anuncio;
 import pojos.Carpeta;
 import pojos.Noticia;
 import pojos.Tema;
@@ -36,11 +38,12 @@ public class SetVariables extends ActionSupport {
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
-    List <Tema> temas;
+    List<Tema> temas;
     Tema tema0;
     Carpeta carpeta;
     int valorVotosNoticia = 0;
     int valorVotoUsuario = 0;
+    List<Anuncio> anuncios;
 
     public SetVariables() {
     }
@@ -54,6 +57,14 @@ public class SetVariables extends ActionSupport {
      */
     public String getId() {
         return id;
+    }
+
+    public List<Anuncio> getAnuncios() {
+        return anuncios;
+    }
+
+    public void setAnuncios(List<Anuncio> anuncios) {
+        this.anuncios = anuncios;
     }
 
     public String getTemaCrearEditar() {
@@ -155,9 +166,6 @@ public class SetVariables extends ActionSupport {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
-    
-    
 
     /**
      * ###########################################
@@ -171,7 +179,7 @@ public class SetVariables extends ActionSupport {
         //Setear temas
         temaDAO td = new temaDAO();
         this.setTemas(td.getAllTemas());
-        
+
         noticiaDAO nd = new noticiaDAO();
         //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
         if (getTema() != null) {
@@ -200,8 +208,6 @@ public class SetVariables extends ActionSupport {
 
         return SUCCESS;
     }
-
-
 
     /**
      * Si se le pasa por parámetro GET, el id, se establecerá Noticia. Si no no.
@@ -242,18 +248,25 @@ public class SetVariables extends ActionSupport {
         }
         return SUCCESS;
     }
+    
+    public String setearAnuncios(){
+        anuncioDAO adao = new anuncioDAO();
+        setAnuncios(adao.getAllanuncios());
+        
+        return SUCCESS;
+    }
 
     //No usar esté metodo, siempre crear uno
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
-    public String setearTemas(){
+
+    public String setearTemas() {
         getNoticiaUnica();
         temaDAO tdao = new temaDAO();
         List<Tema> temas = tdao.getAllTemas();
         setTemas(temas);
-         
+
         return SUCCESS;
     }
 
