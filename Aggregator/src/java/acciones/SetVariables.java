@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import pojos.Carpeta;
+import pojos.GuardadasEn;
 import pojos.Noticia;
 import pojos.Tema;
 import pojos.Usuario;
@@ -30,17 +31,33 @@ public class SetVariables extends ActionSupport {
     String id;//De noticia, si se van a crear mas ids, poner id_xxxx
     String pag;
     String tema; //Para ver_noticias.jsp
-    String nombre_carpeta;
-    String nombre_usuario;
+    String id_carpeta;
     String temaCrearEditar;
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
+    List<GuardadasEn> relaciones;
     List <Tema> temas;
     Tema tema0;
     Carpeta carpeta;
     int valorVotosNoticia = 0;
     int valorVotoUsuario = 0;
+
+    public List<GuardadasEn> getRelaciones() {
+        return relaciones;
+    }
+
+    public void setRelaciones(List<GuardadasEn> relaciones) {
+        this.relaciones = relaciones;
+    }
+
+    public String getId_carpeta() {
+        return id_carpeta;
+    }
+
+    public void setId_carpeta(String id_carpeta) {
+        this.id_carpeta = id_carpeta;
+    }
 
     public SetVariables() {
     }
@@ -106,22 +123,6 @@ public class SetVariables extends ActionSupport {
 
     public void setTema0(Tema tema0) {
         this.tema0 = tema0;
-    }
-
-    public String getNombre_carpeta() {
-        return nombre_carpeta;
-    }
-
-    public void setNombre_carpeta(String nombre_carpeta) {
-        this.nombre_carpeta = nombre_carpeta;
-    }
-
-    public String getNombre_usuario() {
-        return nombre_usuario;
-    }
-
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
     }
 
     public Carpeta getCarpeta() {
@@ -236,9 +237,9 @@ public class SetVariables extends ActionSupport {
     }
 
     public String getCarpetaUnica() {
-        if (nombre_carpeta != null) {
+        if (id_carpeta != null) {
             carpetaDAO cd = new carpetaDAO();
-            carpeta = cd.getCarpeta(getNombre_carpeta(), getNombre_usuario());
+            carpeta = cd.getCarpeta(id_carpeta);
         }
         return SUCCESS;
     }
@@ -254,6 +255,15 @@ public class SetVariables extends ActionSupport {
         List<Tema> temas = tdao.getAllTemas();
         setTemas(temas);
          
+        return SUCCESS;
+    }
+    
+    public String getNoticiasCarpeta(){
+        if (id_carpeta != null) {
+            carpetaDAO cd = new carpetaDAO();
+            carpeta = cd.getCarpeta(id_carpeta);
+            relaciones = cd.getNoticiasCarpeta(id_carpeta);
+        }
         return SUCCESS;
     }
 

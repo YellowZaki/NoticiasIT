@@ -23,7 +23,7 @@ import pojos.Usuario;
  */
 public class CarpetaActions extends ActionSupport {
 
-    String nombre_carpeta;
+    String id_carpeta;
     String nombre_usuario;
     String nombre;
     String nombreOriginal;
@@ -53,12 +53,12 @@ public class CarpetaActions extends ActionSupport {
         this.nombreOriginal = nombreOriginal;
     }
 
-    public String getNombre_carpeta() {
-        return nombre_carpeta;
+    public String getId_carpeta() {
+        return id_carpeta;
     }
 
-    public void setNombre_carpeta(String nombre_carpeta) {
-        this.nombre_carpeta = nombre_carpeta;
+    public void setId_carpeta(String id_carpeta) {
+        this.id_carpeta = id_carpeta;
     }
 
     public String getNombre_usuario() {
@@ -77,7 +77,7 @@ public class CarpetaActions extends ActionSupport {
     }
 
     public String borrarCarpeta() throws Exception {
-        new carpetaDAO().borrarCarpeta(nombre_carpeta, nombre_usuario);
+        new carpetaDAO().borrarCarpeta(id_carpeta);
         Map session = (Map) ActionContext.getContext().get("session");
         session.put("usuario", new usuarioDAO().getUsuario(nombre_usuario));
         return SUCCESS;
@@ -85,8 +85,8 @@ public class CarpetaActions extends ActionSupport {
 
     public String asociar() throws Exception {
         Noticia n = new noticiaDAO().getNoticia(id_noticia);
-        Carpeta c = new carpetaDAO().getCarpeta(nombre_carpeta, nombre_usuario);
-        GuardadasEnId geId = new GuardadasEnId(Integer.parseInt(id_noticia), nombre_carpeta);
+        Carpeta c = new carpetaDAO().getCarpeta(id_carpeta);
+        GuardadasEnId geId = new GuardadasEnId(Integer.parseInt(id_noticia), c.getIdCarpeta());
         GuardadasEn ge = new GuardadasEn(geId, c, n);        
         new carpetaDAO().updateRelacionCarpeta(ge);
         Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
@@ -98,11 +98,11 @@ public class CarpetaActions extends ActionSupport {
     public String crearEditarCarpeta() throws Exception {
         carpetaDAO cDAO = new carpetaDAO();
         Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
-        Carpeta carpeta = new Carpeta(nombre, u);
+        Carpeta carpeta = new Carpeta(u, nombre);
 
         if (getNombreOriginal() != null) {
             //actualizamos
-            cDAO.updateCarpeta(nombreOriginal, carpeta);
+            cDAO.updateCarpeta(id_carpeta, carpeta);
             u = new usuarioDAO().getUsuario(nombre_usuario);
         } else {
             cDAO.addCarpeta(carpeta);
