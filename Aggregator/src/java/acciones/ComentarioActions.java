@@ -19,11 +19,12 @@ import pojos.Usuario;
  * @author Alberto
  */
 public class ComentarioActions extends ActionSupport {
-    
+
     String textoComentario;
     String id_noticia;
     String id_comentario;
-    
+    Comentario comentario;
+
     public ComentarioActions() {
     }
 
@@ -50,22 +51,27 @@ public class ComentarioActions extends ActionSupport {
     public void setId_comentario(String id_comentario) {
         this.id_comentario = id_comentario;
     }
-    
-    
-    
-    
+
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
+    }
+
     public String execute() throws Exception {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuario user = (Usuario) session.get("usuario");
-        
+
         comentarioDAO cd = new comentarioDAO();
         noticiaDAO nd = new noticiaDAO();
         Noticia noticia = nd.getNoticia(getId_noticia());
- 
+
         cd.addComentario(noticia, user, getTextoComentario());
         return SUCCESS;
     }
-    
+
     public String borrarComentario() {
         comentarioDAO cd = new comentarioDAO();
         Comentario coment = cd.getComentario(id_comentario);
@@ -73,5 +79,22 @@ public class ComentarioActions extends ActionSupport {
         cd.borrarComentario(coment);
         return SUCCESS;
     }
+
+    public String editarComentario() {
+        comentarioDAO cd = new comentarioDAO();
+        comentario = cd.getComentario(id_comentario);
+        return SUCCESS;
+    }
     
+    public String editarComentarioSubmit() {
+        
+        comentarioDAO cd = new comentarioDAO();
+        comentario = cd.getComentario(id_comentario);
+        comentario.setTexto(textoComentario);
+        setId_noticia(comentario.getNoticia().getIdNoticia() + "");
+        cd.updateComentario(comentario);
+        
+        return SUCCESS;
+    }
+
 }

@@ -1,19 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18-may-2020 21:40:26 by Hibernate Tools 4.3.1 -->
+<!-- Generated 19-may-2020 19:11:20 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Carpeta" table="carpeta" catalog="aggregator" optimistic-lock="version">
-        <id name="nombreCarpeta" type="string">
-            <column name="nombre_carpeta" length="100" />
-            <generator class="assigned" />
+        <id name="idCarpeta" type="java.lang.Integer">
+            <column name="id_carpeta" />
+            <generator class="identity" />
         </id>
         <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
             <column name="usuario" length="50" not-null="true" />
         </many-to-one>
-        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="true" fetch="select">
+        <property name="nombreCarpeta" type="string">
+            <column name="nombre_carpeta" length="100" not-null="true" />
+        </property>
+        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="false" fetch="select">
             <key>
-                <column name="nombre_carpeta" length="100" not-null="true" />
+                <column name="id_carpeta" not-null="true" />
             </key>
             <one-to-many class="pojos.GuardadasEn" />
         </set>
