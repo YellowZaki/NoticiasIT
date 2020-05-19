@@ -64,8 +64,17 @@
         <action name="goToLogin">
             <result>/vistas/login.jsp</result>
         </action>
-        <action name="nuevoComentario" class="acciones.NewComentario">
-         
+        <action name="nuevoComentario" class="acciones.ComentarioActions">
+            <result name="success" type="redirectAction">
+                <param name="id">${id_noticia}</param>
+                <param name="actionName">VerNoticia</param>
+            </result>
+        </action>
+        <action name="borrarComentario" class="acciones.ComentarioActions" method="borrarComentario">
+            <result name="success" type="redirectAction">
+                <param name="id">${id_noticia}</param>
+                <param name="actionName">VerNoticia</param>
+            </result>
         </action>
         <action name="logout" class="acciones.Login" method="logout">
             <result name="success">/vistas/login.jsp</result>

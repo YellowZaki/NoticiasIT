@@ -26,5 +26,22 @@ public class comentarioDAO {
         tx.commit();
     }
 
+    public Comentario getComentario(String id_comentario) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("From Comentario where id_comentario='" + id_comentario + "'");
+        Comentario n = (Comentario) q.uniqueResult();
+        tx.commit();
+        return n;
+    }
+
+    public void borrarComentario(Comentario coment) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        sesion.delete(coment);
+        tx.commit();
+    }
+
+    
 
 }

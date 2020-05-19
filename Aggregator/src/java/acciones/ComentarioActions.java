@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.comentarioDAO;
 import dao.noticiaDAO;
 import java.util.Map;
+import pojos.Comentario;
 import pojos.Noticia;
 import pojos.Usuario;
 
@@ -17,12 +18,13 @@ import pojos.Usuario;
  *
  * @author Alberto
  */
-public class NewComentario extends ActionSupport {
+public class ComentarioActions extends ActionSupport {
     
     String textoComentario;
     String id_noticia;
+    String id_comentario;
     
-    public NewComentario() {
+    public ComentarioActions() {
     }
 
     public String getTextoComentario() {
@@ -40,6 +42,17 @@ public class NewComentario extends ActionSupport {
     public void setId_noticia(String id_noticia) {
         this.id_noticia = id_noticia;
     }
+
+    public String getId_comentario() {
+        return id_comentario;
+    }
+
+    public void setId_comentario(String id_comentario) {
+        this.id_comentario = id_comentario;
+    }
+    
+    
+    
     
     public String execute() throws Exception {
         Map session = (Map) ActionContext.getContext().get("session");
@@ -50,6 +63,14 @@ public class NewComentario extends ActionSupport {
         Noticia noticia = nd.getNoticia(getId_noticia());
  
         cd.addComentario(noticia, user, getTextoComentario());
+        return SUCCESS;
+    }
+    
+    public String borrarComentario() {
+        comentarioDAO cd = new comentarioDAO();
+        Comentario coment = cd.getComentario(id_comentario);
+        setId_noticia(coment.getNoticia().getIdNoticia() + "");
+        cd.borrarComentario(coment);
         return SUCCESS;
     }
     

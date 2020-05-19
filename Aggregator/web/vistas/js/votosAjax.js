@@ -21,11 +21,18 @@ $(document).ready(function () {
             
             },
             success : function(data) {
-                if($('#like').css("color") == 'rgb(169, 169, 169)'){
+                if(($('#like').css("color") == 'rgb(169, 169, 169)') && ($('#dislike').css("color") == 'rgb(169, 169, 169)')){
                     $('#like').css("color", "green");
                     
                     var valor = parseInt($('#valorVotos').text());
                     valor = valor + 1;
+                    
+                    $('#valorVotos').text(valor);
+                }else if($('#dislike').css("color") == 'rgb(255, 0, 0)'){
+                    $('#like').css("color", "green");
+                    
+                    var valor = parseInt($('#valorVotos').text());
+                    valor = valor + 2;
                     
                     $('#valorVotos').text(valor);
                 }else{
@@ -52,11 +59,18 @@ $(document).ready(function () {
             
             },
             success : function(data) {
-                if($('#dislike').css("color") == 'rgb(169, 169, 169)'){
+                if(($('#dislike').css("color") == 'rgb(169, 169, 169)') && ($('#like').css("color") == 'rgb(169, 169, 169)')){
                     $('#dislike').css("color", "red");
                     
                     var valor = parseInt($('#valorVotos').text());
                     valor = valor - 1;
+                    
+                    $('#valorVotos').text(valor);
+                }else if($('#like').css("color") == 'rgb(0, 128, 0)'){
+                    $('#dislike').css("color", "red");
+                    
+                    var valor = parseInt($('#valorVotos').text());
+                    valor = valor - 2;
                     
                     $('#valorVotos').text(valor);
                 }else{

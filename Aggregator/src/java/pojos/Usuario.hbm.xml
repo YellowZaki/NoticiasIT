@@ -17,26 +17,26 @@
         <property name="rol" type="string">
             <column name="rol" length="50" not-null="true" />
         </property>
-        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+        <set name="comentarios" table="comentario" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuario" length="50" not-null="true" />
             </key>
             <one-to-many class="pojos.Comentario" />
         </set>
-        <set name="votos" table="voto" inverse="true" lazy="true" fetch="select">
+        <set name="votos" table="voto" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuario" length="50" not-null="true" />
             </key>
             <one-to-many class="pojos.Voto" />
         </set>
         <one-to-one name="personalizacion" class="pojos.Personalizacion"></one-to-one>
-        <set name="carpetas" table="carpeta" inverse="true" lazy="true" fetch="select">
+        <set name="carpetas" table="carpeta" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuario" length="50" not-null="true" />
             </key>
             <one-to-many class="pojos.Carpeta" />
         </set>
-        <set name="noticias" table="noticia" inverse="true" lazy="true" fetch="select">
+        <set name="noticias" table="noticia" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="usuario" length="50" not-null="true" />
             </key>
