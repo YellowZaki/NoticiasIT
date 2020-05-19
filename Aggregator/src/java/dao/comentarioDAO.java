@@ -15,7 +15,7 @@ import pojos.Usuario;
  */
 public class comentarioDAO {
 
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
 
 
     public void addComentario(Noticia noticia, Usuario usuario, String texto) {
