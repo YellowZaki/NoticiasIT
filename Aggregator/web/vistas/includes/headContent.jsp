@@ -92,6 +92,18 @@
 
 
 <style>
+
+    .widget .panel-body { padding:0px; }
+    .widget .list-group { margin-bottom: 0; }
+    .widget .panel-title { display:inline }
+    .widget .label-info { float: right; }
+    .widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+    .widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+    .widget .mic-info { color: #666666;font-size: 11px; }
+    .widget .action { margin-top:5px; }
+    .widget .comment-text { font-size: 12px; }
+    .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
     .btn-primary {
         background-color: <%=color_primario%>;
         border-color: <%=color_primario%>>;
@@ -128,7 +140,7 @@
         -o-transition:all linear .2s;
         transition:all linear .2s;
     }
-            
+
     .principal {
         background: <%=color_primario%>;
     }    

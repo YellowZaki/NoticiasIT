@@ -64,8 +64,17 @@
         <action name="goToLogin">
             <result>/vistas/login.jsp</result>
         </action>
-        <action name="nuevoComentario" class="acciones.NewComentario">
-         
+        <action name="nuevoComentario" class="acciones.ComentarioActions">
+            <result name="success" type="redirectAction">
+                <param name="id">${id_noticia}</param>
+                <param name="actionName">VerNoticia</param>
+            </result>
+        </action>
+        <action name="borrarComentario" class="acciones.ComentarioActions" method="borrarComentario">
+            <result name="success" type="redirectAction">
+                <param name="id">${id_noticia}</param>
+                <param name="actionName">VerNoticia</param>
+            </result>
         </action>
         <action name="logout" class="acciones.Login" method="logout">
             <result name="success">/vistas/login.jsp</result>
@@ -100,7 +109,9 @@
             <result name="input">/vistas/crear_editar_noticia.jsp</result>
         </action>
         <action name="crearEditarTemaSubmit" class="acciones.NewTema">
-            <result name="success">/vistas/noticia.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">ListaNoticias</param>
+            </result> 
             <result name="input">/vistas/crear_editar_tema.jsp</result>
         </action>
     </package>

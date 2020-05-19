@@ -26,19 +26,19 @@
         <property name="fechaPublicacion" type="date">
             <column name="fecha_publicacion" length="10" not-null="true" />
         </property>
-        <set name="votos" table="voto" inverse="true" lazy="true" fetch="select">
+        <set name="votos" table="voto" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>
             <one-to-many class="pojos.Voto" />
         </set>
-        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+        <set name="comentarios" table="comentario" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>
             <one-to-many class="pojos.Comentario" />
         </set>
-        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="true" fetch="select">
+        <set name="guardadasEns" table="guardadas_en" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_noticia" not-null="true" />
             </key>
