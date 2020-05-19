@@ -9,12 +9,18 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Editar la configuración</title>  
+        <title>Perfil</title>  
         <%@include file="includes/headContent.jsp"%>
         <style>
             ul {
                 list-style: none;
-                margin: 10px 0px;
+            }
+            
+            li {
+                margin-top: 15px;
+            }
+            
+            li span {
                 padding:7px;
                 color: #D8000C;
                 background-color: #FFD2D2;
@@ -24,9 +30,12 @@
         </style>
     </head>
     <body>
-        <!-- Mostrando los datos del usuario -->
-        <div class="container upoboard-margin-navbar">
+        <%@include file="includes/header.jsp"%>
+        <div class="container aggregator-margin-navbar">
             <div class="row">
+                <div class="mr-auto">
+                    
+                </div>
                 <div class="col-md-12 d-flex flex-column justify-content-center">
                     <div class="col-lg-7 col-md-8 mx-auto">
                         <div class="card rounded shadow shadow-sm">
@@ -42,26 +51,27 @@
 
                                     <div class="form-group">
                                         <label for="correo">Correo: </label>
-                                        <s:textfield value="%{#session.usuario.getEmail()}" theme="simple" cssClass="form-control" name="email"></s:textfield><s:fielderror fieldName="email"/>
+                                        <s:textfield value="%{#session.usuario.getEmail()}" theme="simple" cssClass="form-control" name="email"></s:textfield>
+                                        <s:fielderror fieldName="email"/>
                                     </div>
 
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="mostrar_encabezado" name="mostrar_encabezado">    
-                                        <label class="custom-control-label" for="mostrar_encabezado">Mostrar encabezado</label>
+                                        <s:checkbox name="mostrarEncabezado" id="mostrarEncabezado" cssClass="custom-control-input" theme="simple"></s:checkbox>
+                                        <label class="custom-control-label" for="mostrarEncabezado">Mostrar encabezado</label>
                                         <small  class="form-text text-muted">
                                             Cuando se oculta el encabezado, además la navegación queda fija arriba
                                         </small>
                                     </div>
 
                                     <div class="custom-control custom-switch mt-3">
-                                        <input type="checkbox" class="custom-control-input form-check-input" id="tema_oscuro" name="tema_oscuro">
-                                        <label class="custom-control-label" for="tema_oscuro">Tema oscuro</label>                                      
+                                        <s:checkbox name="temaOscuro" id="temaOscuro" cssClass="custom-control-input form-check-input" theme="simple"></s:checkbox>
+                                        <label class="custom-control-label" for="temaOscuro">Tema oscuro</label>                                      
                                         <small  class="form-text text-muted">
                                             Da un descanso a tus ojos por la noche
                                         </small>
                                     </div>     
                                     <div class="form-group mt-3">
-                                        <input type='hidden' name='color_primario' id='color_primario' value='#007bff'>
+                                        <s:hidden name="color_primario" id="color_primario" value="%{#session.get('usuario').getPersonalizacion().getColorPrimario()}"></s:hidden>
                                         <label for="color_primario">Color primario</label>
                                         <div class="colorPickSelector"></div>
                                     </div>

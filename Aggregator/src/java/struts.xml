@@ -84,7 +84,7 @@
         <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
-        <action name="CrearEditarNoticia" class="acciones.SetVariables" method="getNoticiaUnica">
+        <action name="CrearEditarNoticia" class="acciones.SetVariables" method="setearTemas">
             <result name="success">/vistas/crear_editar_noticia.jsp</result>
         </action>
         <action name="BorrarNoticia" class="acciones.BorrarNoticia">
@@ -104,15 +104,25 @@
     </package>
     
     <package name="hector" extends="struts-default">
-        <action name="crearNoticiaSubmit" class="acciones.NewNoticia">
+        <action name="crearNoticiaSubmit" class="acciones.NoticiaActions">
             <result name="success">/vistas/noticia.jsp</result>
             <result name="input">/vistas/crear_editar_noticia.jsp</result>
         </action>
-        <action name="crearEditarTemaSubmit" class="acciones.NewTema">
+        <action name="crearEditarTemaSubmit" class="acciones.TemaActions">
             <result name="success" type="chain">
-                <param name="actionName">ListaNoticias</param>
-            </result> 
+                <param name="actionName">gestionarTemas</param>
+            </result>
             <result name="input">/vistas/crear_editar_tema.jsp</result>
+        </action>
+        
+        <action name="gestionarTemas" class="acciones.SetVariables" method="setearTemas">
+            <result name="success">/vistas/gestionar_temas.jsp</result>
+        </action>
+        
+        <action name="BorrarTema" class="acciones.TemaActions" method="borrarTema">
+            <result name="success" type="chain">
+                <param name="actionName">gestionarTemas</param>
+            </result>
         </action>
     </package>
 </struts>

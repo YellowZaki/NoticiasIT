@@ -8,6 +8,7 @@ package acciones;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.noticiaDAO;
+import dao.temaDAO;
 import java.util.Date;
 import java.util.Map;
 import pojos.Noticia;
@@ -19,12 +20,12 @@ import utils.Utils;
  *
  * @author hecto
  */
-public class NewNoticia extends ActionSupport {
+public class NoticiaActions extends ActionSupport {
     
     private String titulo;
     private String descripcion;
     private String fuente;
-    private Tema temaNoticia;
+    private String temaNoticia;
 
     public String getTitulo() {
         return titulo;
@@ -50,15 +51,15 @@ public class NewNoticia extends ActionSupport {
         this.fuente = fuente;
     }
 
-    public Tema getTemaNoticia() {
+    public String getTemaNoticia() {
         return temaNoticia;
     }
 
-    public void setTemaNoticia(Tema temaNoticia) {
+    public void setTemaNoticia(String temaNoticia) {
         this.temaNoticia = temaNoticia;
     }
     
-    public NewNoticia() {
+    public NoticiaActions() {
     }
     
     public String execute() throws Exception {
@@ -66,7 +67,10 @@ public class NewNoticia extends ActionSupport {
        Usuario usuario = (Usuario) session.get("usuario");
        
        Date fechaPublicacion = Utils.fechaHoy();
-       Noticia noticia = new Noticia(temaNoticia, usuario, titulo, descripcion, fuente, fechaPublicacion);
+        temaDAO tdao = new temaDAO();
+       Tema tema = tdao.getTema(temaNoticia);
+       
+       Noticia noticia = new Noticia(tema, usuario, titulo, descripcion, fuente, fechaPublicacion);
        noticiaDAO ndao = new noticiaDAO();
        
        ndao.addNoticia(noticia);
