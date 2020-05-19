@@ -16,7 +16,7 @@ import pojos.Carpeta;
  * @author juani_000
  */
 public class carpetaDAO {
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
 
     public Carpeta getCarpeta(String nombre_carpeta, String nombre_usuario) {
         

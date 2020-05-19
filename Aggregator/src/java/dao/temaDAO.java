@@ -17,7 +17,7 @@ import pojos.Tema;
  */
 public class temaDAO {
 
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
 
     public Tema getTema(String tema) {
         Transaction tx = sesion.beginTransaction();

@@ -16,7 +16,7 @@ import pojos.Usuario;
  * @author juani_000
  */
 public class usuarioDAO {
-    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
 
     public Usuario getUsuario(String usuario) {
         Transaction tx = sesion.beginTransaction();
