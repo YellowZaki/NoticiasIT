@@ -57,7 +57,12 @@
                                            <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
                                        </s:url>
                                        '><i style='color:red;' class='fas fa-trash'></i></a>                            
-
+                                       <a href='
+                                       <s:url action="VerCarpeta">
+                                           <s:param name="nombre_carpeta"><s:property value="%{#carpeta.getNombreCarpeta()}"/></s:param>
+                                           <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
+                                       </s:url>
+                                       '><i style='color:red;' class='fas fa-eye'></i></a>
                                 </s:else></td>
                         </tr>
                     </s:iterator>
