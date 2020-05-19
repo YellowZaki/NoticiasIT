@@ -16,10 +16,9 @@ import pojos.Usuario;
  * @author juani_000
  */
 public class usuarioDAO {
-    Session sesion = null;
+    Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
 
     public Usuario getUsuario(String usuario) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Usuario where usuario='" + usuario + "'");
         Usuario u = (Usuario) q.uniqueResult();

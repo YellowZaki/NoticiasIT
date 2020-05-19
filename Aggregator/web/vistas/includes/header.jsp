@@ -44,15 +44,25 @@
         <div class="collapse navbar-collapse ml-5" id="prueba">
 
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class='nav-link' href='#'>Carpetas</a>
+                <s:if test='#session.containsKey("usuario")'>
+                    <li class="nav-item">
+                        <a class='nav-link' href='
+                           <s:url action="GestionarCarpetas">
+                           </s:url>
+                           '>Mis carpetas</a>
+                    </li>
+                </s:if>
 
-
-                </li>
-                <li class="nav-item">
-                    <a class='nav-link' href='#'>Gestionar temas y anuncios (admin)</a>
-                </li>
-
+                <s:if test='#session.containsKey("usuario")'>
+                    <s:if test='%{#session.usuario.getRol() == "admin"}'>
+                    <li class="nav-item">
+                        <a class='nav-link' href='
+                           <s:url action="gestionarTemas">
+                           </s:url>
+                           '>Gestionar temas</a>
+                    </li>
+                    </s:if>
+                </s:if>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="perfil.jsp"><i class="fa fa-cog"></i></a> </li>
@@ -68,7 +78,7 @@
                     <li class="nav-item"><a class="nav-link" href="
                                             <s:url action="goToLogin">
                                             </s:url>
-                                            
+
                                             "><i class="fas fa-sign-in-alt"></i></a> </li>
                         </s:else>
 

@@ -20,6 +20,7 @@
                         <s:action name="NoticiaCard" ignoreContextParams="true" executeResult="true">
                             <s:param name="id"><s:property value="#noticia0.idNoticia" /></s:param>
                         </s:action>
+                        <br>
                     </s:iterator>
                 </div>
                 <div class="col-1">
