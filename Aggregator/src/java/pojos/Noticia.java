@@ -1,5 +1,5 @@
 package pojos;
-// Generated 19-may-2020 19:11:18 by Hibernate Tools 4.3.1
+// Generated 19-may-2020 20:01:26 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class Noticia  implements java.io.Serializable {
         this.fuente = fuente;
         this.fechaPublicacion = fechaPublicacion;
     }
-    public Noticia(Tema tema, Usuario usuario, String titulo, String descripcion, String fuente, Date fechaPublicacion, Set votos, Set comentarios, Set guardadasEns) {
+    public Noticia(Tema tema, Usuario usuario, String titulo, String descripcion, String fuente, Set votos, Set comentarios, Set guardadasEns,  Date fechaPublicacion) {
        this.tema = tema;
        this.usuario = usuario;
        this.titulo = titulo;
