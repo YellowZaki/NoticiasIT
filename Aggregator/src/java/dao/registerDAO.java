@@ -18,10 +18,10 @@ import utils.Utils;
  * @author Andrés Manuel
  */
 public class registerDAO {
-    Session sesion = HibernateUtil.getSessionFactory().openSession();
+    Session sesion = null;
     
     public String Registrar(String usuario, String email, String clave) {
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         
         Query q = sesion.createQuery("From Usuario where email='" + email + "'");
@@ -49,7 +49,7 @@ public class registerDAO {
         }
 
         tx.commit();
-        
+        sesion.close();
         return enc;
     }
 }

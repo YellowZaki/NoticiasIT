@@ -24,7 +24,7 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-center">
     <div class="container">
 
-        <div class="dropdown mr-auto">
+<!--        <div class="dropdown mr-auto">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Temática seleccionada
             </button>
@@ -33,7 +33,7 @@
                 <a class='dropdown-item' href='#'>Tematica2...</a>
                 <a class='dropdown-item' href='#'>Tematica3...</a>
             </div>
-        </div>
+        </div>-->
 
 
 

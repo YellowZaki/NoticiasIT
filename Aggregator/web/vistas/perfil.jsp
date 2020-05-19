@@ -11,30 +11,14 @@
     <head>
         <title>Perfil</title>  
         <%@include file="includes/headContent.jsp"%>
-        <style>
-            ul {
-                list-style: none;
-            }
-            
-            li {
-                margin-top: 15px;
-            }
-            
-            li span {
-                padding:7px;
-                color: #D8000C;
-                background-color: #FFD2D2;
-                border: 1px solid red;
-                border-radius: 5px;
-            }
-        </style>
+
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
         <div class="container aggregator-margin-navbar">
             <div class="row">
                 <div class="mr-auto">
-                    
+
                 </div>
                 <div class="col-md-12 d-flex flex-column justify-content-center">
                     <div class="col-lg-7 col-md-8 mx-auto">
@@ -47,41 +31,50 @@
                                     <div class="form-group">
                                         <label for="nombre">Nombre de usuario: </label>
                                         <s:textfield value="%{#session.usuario.getUsuario()}" theme="simple" cssClass="form-control" name="nombre" disabled="true"></s:textfield>
-                                    </div>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label for="correo">Correo: </label>
+                                        <div class="form-group">
+                                            <label for="correo">Correo: </label>
                                         <s:textfield value="%{#session.usuario.getEmail()}" theme="simple" cssClass="form-control" name="email"></s:textfield>
                                         <s:fielderror fieldName="email"/>
                                     </div>
 
                                     <div class="custom-control custom-switch">
-                                        <s:checkbox name="mostrarEncabezado" id="mostrarEncabezado" cssClass="custom-control-input" theme="simple"></s:checkbox>
-                                        <label class="custom-control-label" for="mostrarEncabezado">Mostrar encabezado</label>
-                                        <small  class="form-text text-muted">
-                                            Cuando se oculta el encabezado, además la navegación queda fija arriba
-                                        </small>
-                                    </div>
+                                        <s:set var="mostrarEncabezadoValue">false</s:set>
+                                        <s:if test="%{#session.usuario.personalizacion.mostrarEncabezado == 1}">
+                                            <s:set var="mostrarEncabezadoValue">true</s:set>
+                                        </s:if>
+                                        <s:checkbox name="mostrarEncabezado" id="mostrarEncabezado" cssClass="custom-control-input" theme="simple" value="#mostrarEncabezadoValue"></s:checkbox>
 
-                                    <div class="custom-control custom-switch mt-3">
-                                        <s:checkbox name="temaOscuro" id="temaOscuro" cssClass="custom-control-input form-check-input" theme="simple"></s:checkbox>
-                                        <label class="custom-control-label" for="temaOscuro">Tema oscuro</label>                                      
-                                        <small  class="form-text text-muted">
-                                            Da un descanso a tus ojos por la noche
-                                        </small>
-                                    </div>     
-                                    <div class="form-group mt-3">
+                                            <label class="custom-control-label" for="mostrarEncabezado">Mostrar encabezado</label>
+                                            <small  class="form-text text-muted">
+                                                Cuando se oculta el encabezado, además la navegación queda fija arriba
+                                            </small>
+                                        </div>
+
+                                        <div class="custom-control custom-switch mt-3">
+                                        <s:set var="temaOscuroValue">false</s:set>
+                                        <s:if test="%{#session.usuario.personalizacion.modoOscuro == 1}">
+                                            <s:set var="temaOscuroValue">true</s:set>
+                                        </s:if>
+                                        <s:checkbox name="temaOscuro" id="temaOscuro" cssClass="custom-control-input form-check-input" value="#temaOscuroValue"></s:checkbox>
+                                            <label class="custom-control-label" for="temaOscuro">Tema oscuro</label>                                      
+                                            <small  class="form-text text-muted">
+                                                Da un descanso a tus ojos por la noche
+                                            </small>
+                                        </div>     
+                                        <div class="form-group mt-3">
                                         <s:hidden name="color_primario" id="color_primario" value="%{#session.get('usuario').getPersonalizacion().getColorPrimario()}"></s:hidden>
-                                        <label for="color_primario">Color primario</label>
-                                        <div class="colorPickSelector"></div>
-                                    </div>
-                                    <div class="text-center mt-3">
+                                            <label for="color_primario">Color primario</label>
+                                            <div class="colorPickSelector"></div>
+                                        </div>
+                                        <div class="text-center mt-3">
                                         <s:submit cssClass="btn btn-primary" name="modificarCuenta" value="Guardar" theme="simple"></s:submit>
-                                    </div>
+                                        </div>
 
-                                    <div class="text-center mt-5">
+                                        <div class="text-center mt-5">
                                         <s:submit cssClass="btn btn-danger" name="modificarCuenta" value="Eliminar cuenta" theme="simple"></s:submit>
-                                    </div>
+                                        </div>
                                 </s:form>
                             </div>
                         </div>

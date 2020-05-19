@@ -36,7 +36,9 @@
                                         <s:textarea name="textoComentario" cols="40" rows="5"/> 
                                         <input type="hidden" name="id_noticia" value="<s:property value="noticia.idNoticia" />"/>
 
-                                        <s:submit value="Comentar" name="submit" />
+                                        <s:submit cssClass="btn btn-primary" value="Comentar" name="submit" />
+
+
                                     </s:form>                         
                                 </s:if>
 
@@ -77,7 +79,7 @@
                                                                     <div class="action">
                                                                         <a href='
                                                                            <s:url action="EditarComentario">
-                                                                               <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
+                                                                               <s:param name="id_comentario"><s:property value="#comentario.idComentario"/></s:param>
                                                                            </s:url>
 
                                                                            '><i style='color:orange;' class='fas fa-edit'></i></a>

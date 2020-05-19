@@ -15,56 +15,64 @@ import pojos.Voto;
  */
 public class noticiaDAO {
 
-    Session sesion = HibernateUtil.getSessionFactory().openSession();
+    Session sesion = null;
 
     public Noticia getNoticia(String id) {
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where id_noticia='" + id + "'");
         Noticia n = (Noticia) q.uniqueResult();
         tx.commit();
+        sesion.close();
         return n;
     }
 
     public List<Noticia> getAllNoticias() {
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia");
         List<Noticia> ln = (List<Noticia>) q.list();
         tx.commit();
+        sesion.close();
         return ln;
     }
 
     public List<Noticia> getNoticias(String tema) {
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("From Noticia where tema = '" + tema + "'");
         List<Noticia> ln = (List<Noticia>) q.list();
         tx.commit();
+        sesion.close();
         return ln;
     }
 
     public void borrarNoticia(Noticia noticia) {
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         sesion.delete(noticia);
         tx.commit();
+        sesion.close();
     }
     
     public void updateNoticia(Noticia noticia) {
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         sesion.update(noticia);
         tx.commit();
+        sesion.close();
     }
 
     public void addNoticia(Noticia noticia) {
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         sesion.save(noticia);
         tx.commit();
+        sesion.close();
     }
     
     public void votar(Usuario u, String idNoticia, int valor){
-        
+        sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
         
         Query q1 = sesion.createQuery("From Noticia where id_noticia='" + idNoticia + "'");
@@ -107,5 +115,6 @@ public class noticiaDAO {
         }
         
         tx.commit();
+        sesion.close();
     }
 }
