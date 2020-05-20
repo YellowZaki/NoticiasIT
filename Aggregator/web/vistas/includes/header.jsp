@@ -1,39 +1,62 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-<div class="jumbotron text-center" style="margin-bottom:-20px">
 
-    <a href="
-
-       <s:url action="ListaNoticias">
-           <s:param name="pag">1</s:param>
-       </s:url>
+<s:set name="mostrarEncabezado"><%= mostrar_encabezado %></s:set>
 
 
-       ">
+<s:if test="%{#mostrarEncabezado == 'true'}">
+    <div class="jumbotron text-center" style="margin-bottom:-20px">
+        <a href="
 
-        <h1>AGGREGATOR</h1>
+           <s:url action="ListaNoticias">
+               <s:param name="pag">1</s:param>
+           </s:url>
+           ">
+
+            <h1>AGGREGATOR</h1>
+
+        </a> 
+
+        <p>Lo agrega TORR</p>
+    </div>
+</s:if> 
 
 
 
 
-    </a> 
-
-    <p>Lo agrega TORR</p>
-</div>    
-
-<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-center">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-center bg-dark
+     <s:if test="%{#mostrarEncabezado == 'false'}">
+         fixed-top
+     </s:if> 
+     ">
     <div class="container">
 
-<!--        <div class="dropdown mr-auto">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Temática seleccionada
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class='dropdown-item' href='#'>Todas</a>
-                <a class='dropdown-item' href='#'>Tematica2...</a>
-                <a class='dropdown-item' href='#'>Tematica3...</a>
+        <s:if test="%{#mostrarEncabezado == 'false'}">
+            <div class="mr-auto">
+                <a href="
+
+                   <s:url action="ListaNoticias">
+                       <s:param name="pag">1</s:param>
+                   </s:url>
+                   ">
+
+                    <h5>AGGREGATOR</h5>
+
+                </a>
             </div>
-        </div>-->
+        </s:if>
+
+
+        <!--        <div class="dropdown mr-auto">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Temática seleccionada
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class='dropdown-item' href='#'>Todas</a>
+                        <a class='dropdown-item' href='#'>Tematica2...</a>
+                        <a class='dropdown-item' href='#'>Tematica3...</a>
+                    </div>
+                </div>-->
 
 
 
@@ -42,6 +65,12 @@
         </button>
 
         <div class="collapse navbar-collapse ml-5" id="prueba">
+
+
+
+
+
+
 
             <ul class="navbar-nav mx-auto">
                 <s:if test='#session.containsKey("usuario")'>
@@ -55,17 +84,27 @@
 
                 <s:if test='#session.containsKey("usuario")'>
                     <s:if test='%{#session.usuario.getRol() == "admin"}'>
-                    <li class="nav-item">
-                        <a class='nav-link' href='
-                           <s:url action="gestionarTemas">
-                           </s:url>
-                           '>Gestionar temas</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class='nav-link' href='
+                               <s:url action="gestionarTemas">
+                               </s:url>
+                               '>Gestionar temas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' href='
+                               <s:url action="gestionarAnuncios">
+                               </s:url>
+                               '>Gestionar anuncios</a>
+                        </li>
                     </s:if>
                 </s:if>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="./perfil.jsp"><i class="fa fa-cog"></i></a> </li>
+
+                <li class="nav-item"><a class="nav-link" href="
+                                        <s:url action="goToPerfil">
+                                        </s:url>
+                                        "><i class="fa fa-cog"></i></a> </li>
                 <!--                    session.usuario.getUsuario()-->
                 <s:if test='#session.containsKey("usuario")'>
 

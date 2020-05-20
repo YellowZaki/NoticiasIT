@@ -24,7 +24,9 @@
         <action name="goToRegister">           
             <result>/vistas/register.jsp</result>
         </action>   
-        
+        <action name="goToPerfil">           
+            <result>/vistas/perfil.jsp</result>
+        </action>   
         
         <action name="votosLike" class="acciones.Votos">
             <result name="success">/vistas/noticia.jsp</result>
@@ -153,7 +155,7 @@
             </result>
         </action>
         
-        <action name="GestionarAnuncios" class="acciones.SetVariables" method="setearAnuncios">
+        <action name="gestionarAnuncios" class="acciones.SetVariables" method="setearAnuncios">
             <result name="success">/vistas/gestionar_anuncios.jsp</result>
         </action>
         
@@ -163,7 +165,7 @@
         
         <action name="crearEditarAnuncioSubmit" class="acciones.AnuncioActions">
             <result name="success" type="chain">
-                <param name="actionName">GestionarAnuncios</param>
+                <param name="actionName">gestionarAnuncios</param>
             </result>
             <result name="input" type="chain">
                 <param name="actionName">SetearTemasAnuncios</param>
@@ -176,7 +178,7 @@
         
         <action name="BorrarAnuncio" class="acciones.AnuncioActions" method="borrarAnuncio">
             <result name="success" type="chain">
-                <param name="actionName">GestionarAnuncios</param>
+                <param name="actionName">gestionarAnuncios</param>
             </result>
         </action>
         
