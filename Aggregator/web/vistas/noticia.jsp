@@ -47,7 +47,7 @@
                            <s:url action="BorrarNoticia">
                                <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
                            </s:url>
-
+                           
                            '><i style='color:red;' class='fas fa-trash'></i></a>
 
                     </s:if>   

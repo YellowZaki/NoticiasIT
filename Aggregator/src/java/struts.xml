@@ -165,5 +165,9 @@
                 <param name="actionName">GestionarAnuncios</param>
             </result>
         </action>
+        
+        <action name="PaginaNoEncontrada">
+            <result name="success">/vistas/paginaNoEncontrada.jsp</result>
+        </action>
     </package>
 </struts>

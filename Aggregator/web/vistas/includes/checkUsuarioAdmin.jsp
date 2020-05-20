@@ -11,7 +11,7 @@
     <%
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if ( usuario == null || !usuario.getRol().equals("admin")) {
-            response.sendRedirect(request.getContextPath() + "/vistas/paginaNoEncontrada.jsp"); //Comprobar que la ruta vaya bien.
+            response.sendRedirect(request.getContextPath() + "/PaginaNoEncontrada"); //Comprobar que la ruta vaya bien.
         }
     %>
 </html>

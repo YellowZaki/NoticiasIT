@@ -71,6 +71,34 @@ public class NoticiaActions extends ActionSupport {
     public NoticiaActions() {
     }
 
+    public void validate() {
+        if (titulo != null) {
+            if (this.titulo.length() == 0) {
+                this.addFieldError("titulo", "Debe rellenar el campo");
+            }
+
+            if (this.titulo.contains("#") || this.titulo.contains("!") || this.titulo.contains(";") || this.titulo.contains("(") || this.titulo.contains(")") || this.titulo.contains("[") || this.titulo.contains("]") || this.titulo.contains("{") || this.titulo.contains("}")) {
+                this.addFieldError("titulo", "No se permiten caracteres extraños");
+            }
+
+            if (this.descripcion.length() == 0) {
+                this.addFieldError("descripcion", "Debe rellenar el campo");
+            }
+
+            if (this.descripcion.contains("#") || this.descripcion.contains("!") || this.descripcion.contains(";") || this.descripcion.contains("(") || this.descripcion.contains(")") || this.descripcion.contains("[") || this.descripcion.contains("]") || this.descripcion.contains("{") || this.descripcion.contains("}")) {
+                this.addFieldError("descripcion", "No se permiten caracteres extraños");
+            }
+            if (this.fuente.length() == 0) {
+                this.addFieldError("fuente", "Debe rellenar el campo");
+            }
+
+            if (this.fuente.contains("#") || this.fuente.contains("!") || this.fuente.contains(";") || this.fuente.contains("(") || this.fuente.contains(")") || this.fuente.contains("[") || this.fuente.contains("]") || this.fuente.contains("{") || this.fuente.contains("}")) {
+                this.addFieldError("fuente", "No se permiten caracteres extraños");
+
+            }
+        }
+    }
+
     public String execute() throws Exception {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuario usuario = (Usuario) session.get("usuario");
