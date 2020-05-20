@@ -16,12 +16,22 @@
             <div class="row">
                 <div class="mr-auto">
                     <h1>Página no encontrada</h1>
-                    <h5>Parece que no tienes permisos para acceder a esta página </h5>
+                    <h5>Parece que no tienes permisos para acceder a esta página</h5>
+                    <h6>Puede ser que tengas que loguearte antes de poder realizar esta acción.</h6>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="d-flex">
-                    <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+            <div class="row">
+                <div class="d-flex ml-auto">
+                    <a href="
+
+                       <s:url action="ListaNoticias">
+                           <s:param name="pag">1</s:param>
+                       </s:url>
+
+                       ">
+                        <button class="btn btn-primary">Volver</button>
+
+                    </a>
                 </div>
             </div>
         </div>

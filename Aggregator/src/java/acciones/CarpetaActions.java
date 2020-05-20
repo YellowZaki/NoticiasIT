@@ -28,6 +28,15 @@ public class CarpetaActions extends ActionSupport {
     String nombre;
     String nombreOriginal;
     String id_noticia;
+    String validar;
+
+    public String getValidar() {
+        return validar;
+    }
+
+    public void setValidar(String validar) {
+        this.validar = validar;
+    }
 
     public String getId_noticia() {
         return id_noticia;
@@ -72,6 +81,17 @@ public class CarpetaActions extends ActionSupport {
     public CarpetaActions() {
     }
 
+    public void validate() {
+        if (validar != null) {
+            if (this.nombre.length() == 0) {
+                this.addFieldError("nombre", "Debe rellenar el campo");
+            }
+            if (this.nombre.contains("_") || this.nombre.contains("#") || this.nombre.contains("!") || this.nombre.contains(";") || this.nombre.contains(":") || this.nombre.contains("*") || this.nombre.contains("(") || this.nombre.contains(")") || this.nombre.contains("[") || this.nombre.contains("]") || this.nombre.contains("{") || this.nombre.contains("}")) {
+                this.addFieldError("nombre", "No se permiten caracteres extraños");
+            }
+        }
+    }
+    
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -108,6 +128,16 @@ public class CarpetaActions extends ActionSupport {
             cDAO.addCarpeta(carpeta);
             u.getCarpetas().add(carpeta);
         }
+        Map session = (Map) ActionContext.getContext().get("session");
+        session.put("usuario", u);
+        return SUCCESS;
+    }
+    
+    public String desasociar() throws Exception {
+        Noticia n = new noticiaDAO().getNoticia(id_noticia);
+        Carpeta c = new carpetaDAO().getCarpeta(id_carpeta);      
+        new carpetaDAO().borrarRelacionCarpeta(id_noticia, id_carpeta);
+        Usuario u = new usuarioDAO().getUsuario(nombre_usuario);
         Map session = (Map) ActionContext.getContext().get("session");
         session.put("usuario", u);
         return SUCCESS;

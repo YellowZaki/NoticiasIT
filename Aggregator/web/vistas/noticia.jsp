@@ -39,7 +39,7 @@
                            <s:url action="BorrarNoticia">
                                <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
                            </s:url>
-
+                           
                            '><i style='color:red;' class='fas fa-trash'></i></a>
 
                     </s:if>   
@@ -70,7 +70,7 @@
                 <s:property value="noticia.comentarios.size()"/> <i class="fas fa-comment" style="color:#a9a9a9;"></i>
             </div>
             <div class="mr-3">
-                <i class="fas fa-thumbs-up" style="
+                <i class="fas fa-thumbs-up likeVotos" style="
 
                    <s:if test="%{valorVotoUsuario == 1}">
                        color:green;
@@ -79,9 +79,9 @@
                        color:#a9a9a9;
                    </s:else>
 
-                   " id="like">
+                   ">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                </i> <div id="valorVotos" style="display: inline;"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down" style="
+                </i> <div id="valorVotos" style="display: inline;"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down dislikeVotos" style="
                     <s:if test="%{valorVotoUsuario == -1}">
                        color:red;
                    </s:if>
@@ -89,7 +89,7 @@
                        color:#a9a9a9;
                    </s:else>
                            
-                           " id="dislike">
+                           ">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
                     </i>
                 </div>

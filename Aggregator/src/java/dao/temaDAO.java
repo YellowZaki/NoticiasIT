@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Noticia;
 import pojos.Tema;
 
 /**
@@ -58,6 +59,11 @@ public class temaDAO {
     public void borrarTema(Tema tema) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
+        noticiaDAO ndao = new noticiaDAO();
+        List<Noticia> noticias = ndao.getNoticias(tema.getNombreTema());
+        for (Noticia noticia : noticias) {
+            ndao.borrarNoticia(noticia);
+        }
         sesion.delete(tema);
         tx.commit();
         sesion.close();

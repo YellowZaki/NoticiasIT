@@ -10,8 +10,8 @@
 <html>
     <%
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if ( usuario == null || !usuario.getRol().equals("admin")) {
-            response.sendRedirect(request.getContextPath() + "/PaginaNoEncontrada"); //Comprobar que la ruta vaya bien.
+        if ( usuario == null) {
+            response.sendRedirect(request.getContextPath() + "/PaginaNoEncontrada");
         }
     %>
 </html>

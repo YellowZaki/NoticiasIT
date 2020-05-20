@@ -9,6 +9,7 @@ import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.noticiaDAO;
 import dao.temaDAO;
 import java.util.Map;
 import pojos.Tema;
@@ -126,7 +127,9 @@ public class TemaActions extends ActionSupport {
 
     public String borrarTema() {
         temaDAO tdao = new temaDAO();
+        
         Tema tema = tdao.getTema(getTemaBorrar());
+        
         tdao.borrarTema(tema);
 
         return SUCCESS;

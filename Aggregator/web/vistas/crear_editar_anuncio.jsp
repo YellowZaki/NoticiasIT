@@ -43,41 +43,44 @@
                             </div>
 
                             <div class="card-body">
-                                <s:form action="crearEditarAnuncioSubmit" cssClass="needs-validation" method="POST">
+                                <s:form theme="simple" action="crearEditarAnuncioSubmit" cssClass="needs-validation" method="POST">
                                     
                                     <div class="form-group">
                                         <s:if test="%{anuncio!=null}">
                                             <label for="link">Link</label>
-                                            <input type="text" required class="form-control" value="<s:property value="%{anuncio.getLink()}"/>" disabled />
+                                            <s:textfield cssClass="form-control" value="%{anuncio.getLink()}" disabled="true" />
                                             <s:hidden name="link" value="%{anuncio.getLink()}"/>
                                         </s:if>
                                         <s:else>
                                             <label for="link">Link</label>
-                                            <input type="text" required class="form-control" name="link"/>
+                                            <s:textfield cssClass="form-control" name="link"/>
                                         </s:else>
+                                        <s:fielderror fieldName="link"/>
                                     </div>
                                     
                                     <div class="form-group">
                                         <s:if test="%{anuncio!=null}">
                                             <label for="titulo">Titulo</label>
-                                            <input type="text" required class="form-control" name="titulo" value="<s:property value="anuncio.getTitulo()"/>"/>
+                                            <s:textfield cssClass="form-control" name="titulo" value="%{anuncio.getTitulo()}"/>
                                         </s:if>
                                         <s:else>
                                             <label for="titulo">Titulo</label>
-                                            <input type="text" required class="form-control" name="titulo"/>
+                                            <s:textfield cssClass="form-control" name="titulo"/>
                                         </s:else>
+                                            <s:fielderror fieldName="titulo"/>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="imagen">Imagen</label>
                                         <s:if test="%{anuncio!=null}">
-                                            <input type="text" required class="form-control" name="imagen" value="<s:property value="anuncio.getImagen()"/>" />
-                                            <input type="hidden" name="actualizar" value="actualizar"/>
+                                            <s:textfield cssClass="form-control" name="imagen" value="%{anuncio.getImagen()}" />
+                                            <s:textfield type="hidden" name="actualizar" value="actualizar"/>
 
                                         </s:if>
                                         <s:else>
-                                            <input type="text" required class="form-control" name="imagen"/>
-                                        </s:else>  
+                                            <s:textfield cssClass="form-control" name="imagen"/>
+                                        </s:else>
+                                        <s:fielderror fieldName="imagen"/>
                                     </div> 
                                     
                                     <div class="form-group">
@@ -87,7 +90,7 @@
 
                                     <div class="form-group">
                                         <div class="d-flex">
-                                            <input type="submit" name="altaAnuncio" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            <s:submit name="altaAnuncio" cssClass="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
                                         </div>
                                     </div>
 
