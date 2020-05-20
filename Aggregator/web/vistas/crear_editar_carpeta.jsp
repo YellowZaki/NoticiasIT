@@ -22,6 +22,7 @@
                 border-radius: 5px;
             }
         </style>
+        <%@include file="includes/checkLogin.jsp"%>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
@@ -55,17 +56,17 @@
                                         <s:textfield name="nombre" cssClass="form-control" theme="simple"></s:textfield>
                                         <s:fielderror fieldName="nombre"/>
                                     </s:else>                                 
-                                     <s:if test="%{carpeta!=null}">
+                                    <s:if test="%{carpeta!=null}">
                                         <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>
-                                        <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
-                                        <s:hidden name="id_carpeta" value="%{carpeta.getIdCarpeta().toString()}"></s:hidden>
-                                        <s:hidden name="validar" value="true"></s:hidden>
-                                    <div class="form-group">
-                                        <div class="d-flex">
-                                            <input type="submit" name="altaCarpeta" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                    <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
+                                    <s:hidden name="id_carpeta" value="%{carpeta.getIdCarpeta().toString()}"></s:hidden>
+                                    <s:hidden name="validar" value="true"></s:hidden>
+                                        <div class="form-group">
+                                            <div class="d-flex">
+                                                <input type="submit" name="altaCarpeta" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            </div>
                                         </div>
-                                    </div>
                                 </s:form>
 
 

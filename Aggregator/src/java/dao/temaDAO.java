@@ -6,9 +6,11 @@
 package dao;
 
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Anuncio;
 import pojos.Noticia;
 import pojos.Tema;
 
@@ -63,6 +65,10 @@ public class temaDAO {
         List<Noticia> noticias = ndao.getNoticias(tema.getNombreTema());
         for (Noticia noticia : noticias) {
             ndao.borrarNoticia(noticia);
+        }
+        anuncioDAO adao = new anuncioDAO();
+        for (Anuncio a : (Set<Anuncio>)tema.getAnuncios()) {
+            adao.borrarAnuncio(a);
         }
         sesion.delete(tema);
         tx.commit();

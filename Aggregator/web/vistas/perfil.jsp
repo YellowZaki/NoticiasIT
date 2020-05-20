@@ -22,6 +22,7 @@
                 border-radius: 5px;
             }
         </style>
+        <%@include file="includes/checkLogin.jsp"%>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>

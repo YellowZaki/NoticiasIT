@@ -57,20 +57,28 @@
             <result name="success">/vistas/crear_editar_carpeta.jsp</result>
         </action>
         <action name="AnadirNoticiaACarpeta" class="acciones.CarpetaActions" method="asociar">
-            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">GestionarCarpetas</param>
+            </result> 
         </action>
         <action name="BorrarCarpeta" class="acciones.CarpetaActions" method="borrarCarpeta">
-            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">GestionarCarpetas</param>
+            </result> 
         </action>
         <action name="CrearEditarCarpetaSubmit" class="acciones.CarpetaActions" method="crearEditarCarpeta">
-            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">GestionarCarpetas</param>
+            </result> 
             <result name="input">/vistas/crear_editar_carpeta.jsp</result>
         </action>
         <action name="VerCarpeta" class="acciones.SetVariables" method="getNoticiasCarpeta">
             <result name="success">/vistas/ver_carpeta.jsp</result>
         </action>
         <action name="BorrarNoticiaDeCarpeta" class="acciones.CarpetaActions" method="desasociar">
-            <result name="success">/vistas/gestionar_carpetas.jsp</result>
+            <result name="success" type="chain">
+                <param name="actionName">GestionarCarpetas</param>
+            </result> 
         </action>
     </package>
     <package name="alberto" extends="struts-default">

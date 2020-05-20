@@ -11,6 +11,7 @@
     <head>
         <title>Pagina de prueba</title>
         <%@include file="includes/headContent.jsp"%>
+        <%@include file="includes/checkLogin.jsp"%>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
@@ -19,8 +20,8 @@
                 <s:form action="EditarComentarioSubmit">
                     <textarea name="textoComentario" cols="40" rows="5"><s:property value="comentario.texto" /></textarea>
                     <input type="hidden" name="id_comentario" value="<s:property value="comentario.idComentario" />"/>
-                    
-                  <s:submit cssClass="btn btn-primary" value="Actualizar comentario" name="submit" />
+
+                    <s:submit cssClass="btn btn-primary" value="Actualizar comentario" name="submit" />
                 </s:form>   
             </div>
 

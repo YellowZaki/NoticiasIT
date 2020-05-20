@@ -5,9 +5,12 @@
  */
 package dao;
 
+import java.util.List;
+import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Noticia;
 import pojos.Personalizacion;
 import pojos.Usuario;
 
@@ -43,13 +46,13 @@ public class usuarioDAO {
     public void eliminarUsuario(Usuario u) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-
-        Query q = sesion.createQuery("From Personalizacion where id_usuario='" + u.getUsuario() + "'");
-
-        Personalizacion p = (Personalizacion) q.uniqueResult();
-
+        noticiaDAO ndao = new noticiaDAO();
+        for (Noticia noticia : (Set<Noticia>)u.getNoticias()) {
+            ndao.borrarNoticia(noticia);
+        }
+        
+        Personalizacion p = u.getPersonalizacion();
         sesion.delete(p);
-
         sesion.delete(u);
 
         tx.commit();

@@ -18,7 +18,6 @@
         <s:else>
             <title>Crear tema</title>
         </s:else>
-
         <%@include file="includes/checkUsuarioAdmin.jsp"%>
         <%@include file="includes/headContent.jsp"%>
     </head>

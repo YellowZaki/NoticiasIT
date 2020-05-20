@@ -5,6 +5,8 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Comentario;
+import pojos.GuardadasEn;
 import pojos.Noticia;
 import pojos.Usuario;
 import pojos.Voto;
@@ -50,11 +52,20 @@ public class noticiaDAO {
     public void borrarNoticia(Noticia noticia) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
+        for (Comentario c1 : (Set<Comentario>) noticia.getComentarios()) {
+            sesion.delete(c1);
+        }
+        for (Voto v1 : (Set<Voto>) noticia.getVotos()) {
+            sesion.delete(v1);
+        }
+        for (GuardadasEn v1 : (Set<GuardadasEn>) noticia.getGuardadasEns()) {
+            sesion.delete(v1);
+        }
         sesion.delete(noticia);
         tx.commit();
         sesion.close();
     }
-    
+
     public void updateNoticia(Noticia noticia) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
@@ -70,50 +81,50 @@ public class noticiaDAO {
         tx.commit();
         sesion.close();
     }
-    
-    public void votar(Usuario u, String idNoticia, int valor){
+
+    public void votar(Usuario u, String idNoticia, int valor) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        
+
         Query q1 = sesion.createQuery("From Noticia where id_noticia='" + idNoticia + "'");
 
-        Noticia not = (Noticia)q1.uniqueResult();
+        Noticia not = (Noticia) q1.uniqueResult();
 
         Set<Voto> lista = not.getVotos();
         Voto v = null;
-        
-        for(Voto voto:lista){
-            if(voto.getUsuario().getUsuario().equals(u.getUsuario())){
+
+        for (Voto voto : lista) {
+            if (voto.getUsuario().getUsuario().equals(u.getUsuario())) {
                 v = voto;
             }
         }
-        
-        if(v == null){
+
+        if (v == null) {
             Voto v1;
-            
-            if(valor == 1){
+
+            if (valor == 1) {
                 v1 = new Voto(not, u, 1);
-            }else{
+            } else {
                 v1 = new Voto(not, u, -1);
             }
-            
+
             not.getVotos().add(v1);
             sesion.save(v1);
             sesion.update(not);
-        }else{
-            if(valor == 1 && (v.getValor() == -1)){
+        } else {
+            if (valor == 1 && (v.getValor() == -1)) {
                 v.setValor(1);
                 sesion.update(v);
-            }else if(valor == -1 && (v.getValor() == 1)){
+            } else if (valor == -1 && (v.getValor() == 1)) {
                 v.setValor(-1);
                 sesion.update(v);
-            }else if(valor == v.getValor()){
+            } else if (valor == v.getValor()) {
                 not.getVotos().remove(v);
                 sesion.delete(v);
                 sesion.update(not);
-            }   
+            }
         }
-        
+
         tx.commit();
         sesion.close();
     }

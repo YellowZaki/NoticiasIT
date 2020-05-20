@@ -14,9 +14,7 @@
            ">
 
             <h1>AGGREGATOR</h1>
-
         </a> 
-
         <p>Lo agrega TORR</p>
     </div>
 </s:if> 
@@ -46,30 +44,11 @@
             </div>
         </s:if>
 
-
-        <!--        <div class="dropdown mr-auto">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Temática seleccionada
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class='dropdown-item' href='#'>Todas</a>
-                        <a class='dropdown-item' href='#'>Tematica2...</a>
-                        <a class='dropdown-item' href='#'>Tematica3...</a>
-                    </div>
-                </div>-->
-
-
-
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#prueba" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse ml-5" id="prueba">
-
-
-
-
-
 
 
             <ul class="navbar-nav mx-auto">
@@ -100,12 +79,12 @@
                 </s:if>
             </ul>
             <ul class="navbar-nav">
-
-                <li class="nav-item"><a class="nav-link" href="
-                                        <s:url action="goToPerfil">
-                                        </s:url>
-                                        "><i class="fa fa-cog"></i></a> </li>
-                <!--                    session.usuario.getUsuario()-->
+                <s:if test='#session.containsKey("usuario")'>
+                    <li class="nav-item"><a class="nav-link" href="
+                                            <s:url action="goToPerfil">
+                                            </s:url>
+                                            "><i class="fa fa-cog"></i></a> </li>   
+                        </s:if>
                 <s:if test='#session.containsKey("usuario")'>
 
                     <li class="nav-item"><a class="nav-link" href="

@@ -23,6 +23,7 @@
             <title>Crear noticia</title>
         </s:else>
         <%@include file="includes/headContent.jsp"%>
+        <%@include file="includes/checkLogin.jsp"%>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>

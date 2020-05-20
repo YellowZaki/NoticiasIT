@@ -17,7 +17,6 @@
         <s:else>
             <title>Crear anuncio</title>
         </s:else>
-
         <%@include file="includes/checkUsuarioAdmin.jsp"%>
         <%@include file="includes/headContent.jsp"%>
     </head>
