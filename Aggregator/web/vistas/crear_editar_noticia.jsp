@@ -43,7 +43,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <s:form action="crearNoticiaSubmit" cssClass="needs-validation" method="POST">
+                                <s:form theme="simple" action="CrearEditarNoticiaSubmit" cssClass="needs-validation" method="POST">
 
                                     <s:if test="%{noticia!=null}">
                                         <s:hidden name="id" value="%{noticia.getIdNoticia()}"/>
@@ -52,38 +52,45 @@
                                     <div class="form-group">
                                         <label for="titulo">Título</label>
                                         <s:if test="%{noticia!=null}">
-                                            <input required class="form-control" name="titulo" value="<s:property value="noticia.getTitulo()"/>" />
+                                            <s:textfield cssClass="form-control" name="titulo" value="%{noticia.getTitulo()}" />
                                         </s:if>
                                         <s:else>
-                                            <input required class="form-control" name="titulo"/>
+                                            <s:textfield cssClass="form-control" name="titulo"/>
                                         </s:else>
+                                        <s:fielderror fieldName="titulo"/>
                                     </div>
-                                        
+
+
                                     <div class="form-group">
                                         <label for="descripcion">Descripción</label>
                                         <s:if test="%{noticia!=null}">
-                                            <input required class="form-control" name="descripcion" value="<s:property value="noticia.getDescripcion()"/>" />
+                                            <s:textfield cssClass="form-control" name="descripcion" value="%{noticia.getDescripcion()}" />
+                                            <s:fielderror fieldName="descripcion"/>
                                         </s:if>
                                         <s:else>
-                                            <input required class="form-control" name="descripcion"/>
-                                        </s:else>  
+                                            <s:textfield cssClass="form-control" name="descripcion"/>
+                                            <s:fielderror fieldName="descripcion"/>
+                                        </s:else>
+                                        
                                     </div> 
+
 
                                     <div class="form-group">
                                         <label for="fuente">Fuente</label>
                                         <s:if test="%{noticia!=null}">
-                                            <input required class="form-control" name="fuente" value="<s:property value="noticia.getFuente()"/>" />
+                                            <s:textfield cssClass="form-control" name="fuente" value="%{noticia.getFuente()}" />
                                         </s:if>
                                         <s:else>
-                                            <input required class="form-control" name="fuente"/>
+                                            <s:textfield cssClass="form-control" name="fuente"/>
                                         </s:else>
+                                        <s:fielderror fieldName="fuente"/>
                                     </div>
 
-                                    <!--Añadir CSS -->
+
 
                                     <div class="form-group">
                                         <s:select cssClass="btn btn-primary dropdown-toggle" theme="simple" name="temaNoticia" list="temas" listValue="nombreTema"  listKey="nombreTema"></s:select>
-                                    </div>
+                                        </div>
 
                                         <div class="form-group">
                                             <div class="d-flex">

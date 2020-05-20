@@ -46,16 +46,17 @@
                             <div class="card-body">
                                 <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
 
-
-                                    <s:if test="%{tema0!=null}">
-                                        <label for="nombreOriginal">Nombre</label>
-                                        <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="tema0.getNombreTema()"/>" disabled />
-                                    </s:if>
-                                    <s:else>
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" required class="form-control" name="nombre"/>
-                                    </s:else>
-
+                                    <div class="form-group">
+                                        <s:if test="%{tema0!=null}">
+                                            <label for="nombreOriginal">Nombre</label>
+                                            <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="tema0.getNombreTema()"/>" disabled />
+                                        </s:if>
+                                        <s:else>
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" required class="form-control" name="nombre"/>
+                                        </s:else>
+                                        <s:fielderror fieldName="nombre"/>
+                                    </div>
                                     <div class="form-group">
                                         <label for="imagen">Banner</label>
                                         <s:if test="%{tema0!=null}">
@@ -65,7 +66,8 @@
                                         </s:if>
                                         <s:else>
                                             <input type="text" required class="form-control" name="imagen"/>
-                                        </s:else>  
+                                        </s:else>
+                                            <s:fielderror fieldName="imagen"/>
                                     </div> 
 
                                     <s:if test="%{tema0!=null}">

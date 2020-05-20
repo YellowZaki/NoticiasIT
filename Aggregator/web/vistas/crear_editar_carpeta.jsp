@@ -42,7 +42,6 @@
                                     <s:else>
                                         <input required class="form-control" name="nombre"/>
                                     </s:else>                                 
-                                    <!--Añadir CSS -->                                   
                                      <s:if test="%{carpeta!=null}">
                                         <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>
