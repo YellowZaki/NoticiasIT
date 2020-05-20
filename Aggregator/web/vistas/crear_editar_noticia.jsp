@@ -15,7 +15,7 @@
             <title>Editar noticia</title>
             <s:if test="%{noticia.getUsuario()!= session.usuario.getUsuario().getUsuario()}">
                 <%
-                    response.sendRedirect(request.getContextPath() + "/paginaNoEncontrada.jsp"); //Comprobar que la ruta vaya bien.
+                    response.sendRedirect(request.getContextPath() + "/paginaNoEncontrada.jsp");
                 %>
             </s:if>
         </s:if>
@@ -43,7 +43,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <s:form theme="simple" action="CrearEditarNoticiaSubmit" cssClass="needs-validation" method="POST">
+                                <s:form theme="simple" action="CrearEditarNoticiaSubmit" cssClass="needs-validation">
 
                                     <s:if test="%{noticia!=null}">
                                         <s:hidden name="id" value="%{noticia.getIdNoticia()}"/>
@@ -94,7 +94,7 @@
 
                                         <div class="form-group">
                                             <div class="d-flex">
-                                                <input type="submit" name="altaNoticia" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            <s:submit name="altaNoticia" cssClass="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
                                             </div>
                                         </div>
                                 </s:form>
