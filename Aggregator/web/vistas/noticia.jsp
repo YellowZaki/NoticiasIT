@@ -70,7 +70,12 @@
                 <s:property value="noticia.comentarios.size()"/> <i class="fas fa-comment" style="color:#a9a9a9;"></i>
             </div>
             <div class="mr-3">
-                <i class="fas fa-thumbs-up likeVotos" style="
+                <i class="fas fa-thumbs-up 
+                   
+                   <s:if test='#session.containsKey("usuario")'>
+                       likeVotos
+                   </s:if>
+                   " style="
 
                    <s:if test="%{valorVotoUsuario == 1}">
                        color:green;
@@ -81,7 +86,11 @@
 
                    ">
                     <s:hidden id="idNoticia" value="%{noticia.idNoticia}" name="idNoticia"></s:hidden>
-                </i> <div id="valorVotos" style="display: inline;"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down dislikeVotos" style="
+                </i> <div id="valorVotos" style="display: inline;"><s:property value="valorVotosNoticia"></s:property></div> <i class="fas fa-thumbs-down 
+                   <s:if test='#session.containsKey("usuario")'>
+                       dislikeVotos
+                   </s:if>
+                     " style="
                     <s:if test="%{valorVotoUsuario == -1}">
                        color:red;
                    </s:if>
