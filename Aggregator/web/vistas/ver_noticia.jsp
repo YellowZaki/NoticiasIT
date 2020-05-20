@@ -32,8 +32,8 @@
                                 <br>
                                 <h2>Comentarios</h2>
                                 <s:if test='#session.containsKey("usuario")'>
-                                    <s:form action="nuevoComentario">
-                                        <s:textarea name="textoComentario" cols="40" rows="5"/> 
+                                    <s:form action="nuevoComentario" style="width:100%;" theme="simple">
+                                        <s:textarea name="textoComentario" cols="40" rows="5" style="width: 100%;"/> 
                                         <input type="hidden" name="id_noticia" value="<s:property value="noticia.idNoticia" />"/>
 
                                         <s:submit cssClass="btn btn-primary" value="Comentar" name="submit" />

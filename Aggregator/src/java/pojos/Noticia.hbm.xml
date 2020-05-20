@@ -21,7 +21,7 @@
             <column name="descripcion" length="3000" not-null="true" />
         </property>
         <property name="fuente" type="string">
-            <column name="fuente" length="100" not-null="true" />
+            <column name="fuente" length="300" not-null="true" />
         </property>
         <property name="fechaPublicacion" type="timestamp">
             <column name="fecha_publicacion" length="19" />
