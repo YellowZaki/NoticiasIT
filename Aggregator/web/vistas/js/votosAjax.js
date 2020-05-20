@@ -1,18 +1,45 @@
 $(document).ready(function () {
-    $('#like').hover(
+    $('.likeVotos').hover(
         function() {
-            $( this ).css("cursor", "pointer");
+            $(this).css("cursor", "pointer");
         }
     );
     
-    $('#dislike').hover(
+    $('.dislikeVotos').hover(
         function() {
-            $( this ).css("cursor", "pointer");
+            $(this).css("cursor", "pointer");
         }
     );
     
-    $('#like').click(function (event) {
+    $('.likeVotos').click(function (event) {
         var noticia = $(this).find("#idNoticia");
+        var padre = $(this).parent("div");
+        
+        if(($(this).css("color") == 'rgb(169, 169, 169)') && (padre.find(".dislikeVotos").css("color") == 'rgb(169, 169, 169)')){
+            $(this).css("color", "green");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor + 1;
+
+            padre.find('#valorVotos').text(valor);
+        }else if(padre.find('.dislikeVotos').css("color") == 'rgb(255, 0, 0)'){
+            $(this).css("color", "green");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor + 2;
+
+            padre.find('#valorVotos').text(valor);
+        }else{
+            $(this).css("color", "#a9a9a9");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor - 1;
+
+            padre.find('#valorVotos').text(valor);
+        }
+
+        padre.find('.dislikeVotos').css("color", "#a9a9a9");
+        
         $.ajax({
             type: "POST",
             url: "votosLike",
@@ -21,36 +48,40 @@ $(document).ready(function () {
             
             },
             success : function(data) {
-                if(($('#like').css("color") == 'rgb(169, 169, 169)') && ($('#dislike').css("color") == 'rgb(169, 169, 169)')){
-                    $('#like').css("color", "green");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor + 1;
-                    
-                    $('#valorVotos').text(valor);
-                }else if($('#dislike').css("color") == 'rgb(255, 0, 0)'){
-                    $('#like').css("color", "green");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor + 2;
-                    
-                    $('#valorVotos').text(valor);
-                }else{
-                    $('#like').css("color", "#a9a9a9");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor - 1;
-                    
-                    $('#valorVotos').text(valor);
-                }
                 
-                $('#dislike').css("color", "#a9a9a9");
             }
         });
     });
     
-    $('#dislike').click(function (event) {
+    $('.dislikeVotos').click(function (event) {
         var noticia = $(this).find("#idNoticia");
+        var padre = $(this).parent("div");
+        
+        if(($(this).css("color") == 'rgb(169, 169, 169)') && (padre.find(".likeVotos").css("color") == 'rgb(169, 169, 169)')){
+            $(this).css("color", "red");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor - 1;
+
+            padre.find('#valorVotos').text(valor);
+        }else if(padre.find(".likeVotos").css("color") == 'rgb(0, 128, 0)'){
+            $(this).css("color", "red");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor - 2;
+
+            padre.find('#valorVotos').text(valor);
+        }else{
+            $(this).css("color", "#a9a9a9");
+
+            var valor = parseInt(padre.find('#valorVotos').text());
+            valor = valor + 1;
+
+            padre.find('#valorVotos').text(valor);
+        }
+
+        padre.find(".likeVotos").css("color", "#a9a9a9");
+        
         $.ajax({
             type: "POST",
             url: "votosDislike",
@@ -59,30 +90,7 @@ $(document).ready(function () {
             
             },
             success : function(data) {
-                if(($('#dislike').css("color") == 'rgb(169, 169, 169)') && ($('#like').css("color") == 'rgb(169, 169, 169)')){
-                    $('#dislike').css("color", "red");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor - 1;
-                    
-                    $('#valorVotos').text(valor);
-                }else if($('#like').css("color") == 'rgb(0, 128, 0)'){
-                    $('#dislike').css("color", "red");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor - 2;
-                    
-                    $('#valorVotos').text(valor);
-                }else{
-                    $('#dislike').css("color", "#a9a9a9");
-                    
-                    var valor = parseInt($('#valorVotos').text());
-                    valor = valor + 1;
-                    
-                    $('#valorVotos').text(valor);
-                }
                 
-                $('#like').css("color", "#a9a9a9");
             }
         });
     });

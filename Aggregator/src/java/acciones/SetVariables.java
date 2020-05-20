@@ -235,6 +235,8 @@ public class SetVariables extends ActionSupport {
      * Si se le pasa por parámetro GET, el id, se establecerá Noticia. Si no no.
      */
     public String getNoticiaUnica() {
+        valorVotosNoticia = 0;
+        
         if (id != null) {
             noticiaDAO nd = new noticiaDAO();
             noticia = nd.getNoticia(getId());
