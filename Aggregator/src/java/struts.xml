@@ -126,7 +126,7 @@
     <package name="hector" extends="struts-default">
         <action name="CrearEditarNoticiaSubmit" class="acciones.NoticiaActions">
             <result name="success" type="chain">
-                <param name="actionName">GestionarNoticia</param>
+                <param name="actionName">ListaNoticias</param>
             </result>
             <result name="input" type="chain">
                 <param name="actionName">SetearTemasNoticia</param>
