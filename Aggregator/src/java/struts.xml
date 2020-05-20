@@ -37,7 +37,7 @@
         </action>  
         
         <action name="modificarUsuario" class="acciones.UsuarioActions">
-            <result name="success">/vistas/ver_noticias.jsp</result>
+            <result name="success">/vistas/perfil.jsp</result>
             <result name="input">/vistas/perfil.jsp</result>
         </action>
     </package>
@@ -64,9 +64,13 @@
         </action>
         <action name="CrearEditarCarpetaSubmit" class="acciones.CarpetaActions" method="crearEditarCarpeta">
             <result name="success">/vistas/gestionar_carpetas.jsp</result>
+            <result name="input">/vistas/crear_editar_carpeta.jsp</result>
         </action>
         <action name="VerCarpeta" class="acciones.SetVariables" method="getNoticiasCarpeta">
             <result name="success">/vistas/ver_carpeta.jsp</result>
+        </action>
+        <action name="BorrarNoticiaDeCarpeta" class="acciones.CarpetaActions" method="desasociar">
+            <result name="success">/vistas/gestionar_carpetas.jsp</result>
         </action>
     </package>
     <package name="alberto" extends="struts-default">

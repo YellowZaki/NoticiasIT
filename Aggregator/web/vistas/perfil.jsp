@@ -11,7 +11,17 @@
     <head>
         <title>Perfil</title>  
         <%@include file="includes/headContent.jsp"%>
-
+        <style>
+            .errorMessage {
+                list-style: none;
+                margin: 10px 0px;
+                padding:7px;
+                color: #D8000C;
+                background-color: #FFD2D2;
+                border: 1px solid red;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
