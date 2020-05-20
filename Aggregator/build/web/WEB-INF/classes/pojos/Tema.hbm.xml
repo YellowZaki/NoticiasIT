@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-may-2020 20:01:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Tema" table="tema" catalog="aggregator" optimistic-lock="version">
+        <id name="nombreTema" type="string">
+            <column name="nombre_tema" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="imagen" type="string">
+            <column name="imagen" length="100" not-null="true" />
+        </property>
+        <set name="anuncios" table="anuncio" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="nombre_tema" length="100" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Anuncio" />
+        </set>
+        <set name="noticias" table="noticia" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="nombre_tema" length="100" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Noticia" />
+        </set>
+    </class>
+</hibernate-mapping>
