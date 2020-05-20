@@ -58,6 +58,7 @@ public class temaDAO {
     public void borrarTema(Tema tema) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
+        
         sesion.delete(tema);
         tx.commit();
         sesion.close();

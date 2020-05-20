@@ -44,40 +44,40 @@
                             </div>
 
                             <div class="card-body">
-                                <s:form action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
+                                <s:form theme="simple" action="crearEditarTemaSubmit" cssClass="needs-validation" method="POST">
 
                                     <div class="form-group">
                                         <s:if test="%{tema0!=null}">
                                             <label for="nombreOriginal">Nombre</label>
-                                            <input type="text" required class="form-control" name="nombreOriginal" value="<s:property value="tema0.getNombreTema()"/>" disabled />
+                                            <s:textfield cssClass="form-control" name="nombreOriginal" value="%{tema0.getNombreTema()}" disabled="true" />
                                         </s:if>
                                         <s:else>
                                             <label for="nombre">Nombre</label>
-                                            <input type="text" required class="form-control" name="nombre"/>
+                                            <s:textfield cssClass="form-control" name="nombre"/>
                                         </s:else>
                                         <s:fielderror fieldName="nombre"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="imagen">Banner</label>
                                         <s:if test="%{tema0!=null}">
-                                            <input type="text" required class="form-control" name="imagen" value="<s:property value="tema0.getImagen()"/>" />
-                                            <input type="hidden" name="actualizar" value="actualizar"/>
+                                            <s:textfield cssClass="form-control" name="imagen" value="%{tema0.getImagen()}" />
+                                            <s:hidden name="actualizar" value="actualizar"/>
 
                                         </s:if>
                                         <s:else>
-                                            <input type="text" required class="form-control" name="imagen"/>
+                                            <s:textfield cssClass="form-control" name="imagen"/>
                                         </s:else>
                                             <s:fielderror fieldName="imagen"/>
                                     </div> 
 
                                     <s:if test="%{tema0!=null}">
-                                        <input type="hidden" name="temaOriginal" value="<s:property value="tema0.getNombreTema()"/>" />
+                                        <s:hidden name="temaOriginal" value="%{tema0.getNombreTema()}" />
                                     </s:if>
 
 
                                     <div class="form-group">
                                         <div class="d-flex">
-                                            <input type="submit" name="altaTema" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
+                                            <s:submit name="altaTema" cssClass="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
                                         </div>
                                     </div>
 
