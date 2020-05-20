@@ -91,4 +91,13 @@ public class carpetaDAO {
         sesion.close();
         return lista;
     }
+    
+    public void borrarRelacionCarpeta(String id_noticia, String id_carpeta){
+        sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("delete From GuardadasEn where id_carpeta=" + id_carpeta + " and id_noticia=" + id_noticia + "");
+        q.executeUpdate();
+        tx.commit();
+        sesion.close();
+    }
 }

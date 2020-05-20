@@ -12,6 +12,7 @@ import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -295,8 +296,24 @@ public class SetVariables extends ActionSupport {
     public String getNoticiasCarpeta(){
         if (id_carpeta != null) {
             carpetaDAO cd = new carpetaDAO();
-            carpeta = cd.getCarpeta(id_carpeta);
+            carpeta = cd.getCarpeta(id_carpeta);            
+            noticias = new ArrayList<Noticia>();
             relaciones = cd.getNoticiasCarpeta(id_carpeta);
+            noticiaDAO nd = new noticiaDAO();
+            for(GuardadasEn relacion: relaciones){
+                Noticia noticia = nd.getNoticia(relacion.getNoticia().getIdNoticia().toString());
+                Boolean contiene = false;
+                Iterator<Noticia> noticiasIterator = noticias.iterator();
+                while(!contiene && noticiasIterator.hasNext()){
+                    Noticia next = noticiasIterator.next();
+                    if(next.getIdNoticia().equals(noticia.getIdNoticia())){
+                        contiene = true;
+                    }
+                }
+                if(!contiene){
+                noticias.add(noticia);
+                }
+            }
         }
         return SUCCESS;
     }

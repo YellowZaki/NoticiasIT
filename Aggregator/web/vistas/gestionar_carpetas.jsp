@@ -18,11 +18,13 @@
         <div class="container aggregator-margin-navbar">
             <div class="row">
                 <div class="mr-auto"><h1>Carpetas</h1></div>
-                <div class="ml-auto">                    
-                    <a href='
-                       <s:url action="EditarAnadirCarpeta">
-                       </s:url>
-                       ' class='btn btn-primary add-new'><i class='fa fa-plus'></i> Añadir</a>
+                <div class="ml-auto">
+                    <s:if test="%{noticia==null}">
+                        <a href='
+                           <s:url action="EditarAnadirCarpeta">
+                           </s:url>
+                           ' class='btn btn-primary add-new'><i class='fa fa-plus'></i> Nueva carpeta</a>
+                    </s:if>
                 </div>
             </div>
             <table class="table table-responsive-sm">
@@ -35,14 +37,21 @@
                 <tbody>
                     <s:iterator value="%{#session.usuario.getCarpetas()}" var="carpeta">
                         <tr>
-                            <td><s:property value="%{#carpeta.getNombreCarpeta()}"/></td>
+                            <td><a href='
+                                   <s:url action="VerCarpeta">
+                                       <s:param name="id_carpeta"><s:property value="%{#carpeta.getIdCarpeta().toString()}"/></s:param>
+                                       <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
+                                   </s:url>
+                                   '><s:property value="%{#carpeta.getNombreCarpeta()}"/></a>
+                            </td>
                             <td><s:if test="%{noticia!=null}">
-                                    <s:form action="AnadirNoticiaACarpeta">
-                                        <s:submit name="btnAsocial" value="Añadir a esta carpeta" cssClass='btn btn-primary add-new'></s:submit>
-                                        <s:hidden name="id_noticia" value="%{noticia.getIdNoticia()}"></s:hidden>
-                                        <s:hidden name="id_carpeta" value="%{#carpeta.getIdCarpeta().toString()}"></s:hidden>
-                                        <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
-                                    </s:form>                                    
+                                    <a href='
+                                       <s:url action="AnadirNoticiaACarpeta">
+                                           <s:param name="id_noticia"><s:property value="%{noticia.idNoticia}"/></s:param>
+                                           <s:param name="id_carpeta"><s:property value="%{#carpeta.getIdCarpeta().toString()}"/></s:param>
+                                           <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
+                                       </s:url>
+                                       ' class='btn btn-primary add-new'><i class='fa fa-plus'></i> Añadir a esta carpeta</a>                                    
                                 </s:if>
                                 <s:else>
                                     <a href='
@@ -57,12 +66,7 @@
                                            <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
                                        </s:url>
                                        '><i style='color:red;' class='fas fa-trash'></i></a>                            
-                                       <a href='
-                                       <s:url action="VerCarpeta">
-                                           <s:param name="id_carpeta"><s:property value="%{#carpeta.getIdCarpeta().toString()}"/></s:param>
-                                           <s:param name="nombre_usuario"><s:property value="%{#session.usuario.getUsuario()}"/></s:param>
-                                       </s:url>
-                                       '><i style='color:red;' class='fas fa-eye'></i></a>
+
                                 </s:else></td>
                         </tr>
                     </s:iterator>

@@ -11,6 +11,17 @@
     <head>
         <title>Pagina de prueba</title>
         <%@include file="includes/headContent.jsp"%>
+        <style>
+            .errorMessage {
+                list-style: none;
+                margin: 10px 0px;
+                padding:7px;
+                color: #D8000C;
+                background-color: #FFD2D2;
+                border: 1px solid red;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
@@ -40,14 +51,17 @@
                                         <input required class="form-control" name="nombre" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>
                                     <s:else>
-                                        <input required class="form-control" name="nombre"/>
+                                        <!--<input required class="form-control" name="nombre"/>-->
+                                        <s:textfield name="nombre" cssClass="form-control" theme="simple"></s:textfield>
+                                        <s:fielderror fieldName="nombre"/>
                                     </s:else>                                 
-                                    <!--Añadir CSS -->                                   
+                                                                     
                                      <s:if test="%{carpeta!=null}">
                                         <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>
                                         <s:hidden name="nombre_usuario" value="%{#session.usuario.getUsuario()}"></s:hidden>
                                         <s:hidden name="id_carpeta" value="%{carpeta.getIdCarpeta().toString()}"></s:hidden>
+                                        <s:hidden name="validar" value="true"></s:hidden>
                                     <div class="form-group">
                                         <div class="d-flex">
                                             <input type="submit" name="altaCarpeta" class="btn btn-primary ml-auto" theme="simple" value="Confirmar"/>
