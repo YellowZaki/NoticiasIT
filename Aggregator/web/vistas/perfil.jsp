@@ -11,7 +11,7 @@
     <head>
         <title>Perfil</title>  
         <%@include file="includes/headContent.jsp"%>
-
+        
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
