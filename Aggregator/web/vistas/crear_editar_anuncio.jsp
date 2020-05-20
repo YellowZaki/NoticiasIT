@@ -55,6 +55,7 @@
                                             <label for="link">Link</label>
                                             <input type="text" required class="form-control" name="link"/>
                                         </s:else>
+                                        <s:fielderror fieldName="link"/>
                                     </div>
                                     
                                     <div class="form-group">
@@ -66,6 +67,7 @@
                                             <label for="titulo">Titulo</label>
                                             <input type="text" required class="form-control" name="titulo"/>
                                         </s:else>
+                                            <s:fielderror fieldName="titulo"/>
                                     </div>
                                     
                                     <div class="form-group">
@@ -77,7 +79,8 @@
                                         </s:if>
                                         <s:else>
                                             <input type="text" required class="form-control" name="imagen"/>
-                                        </s:else>  
+                                        </s:else>
+                                        <s:fielderror fieldName="imagen"/>
                                     </div> 
                                     
                                     <div class="form-group">

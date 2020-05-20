@@ -26,7 +26,7 @@
     <body>
         <div class="jumbotron text-center">
             <h1>Aggregator</h1>
-            <p>Mis cojones adobaos</p>
+            <p>Lo agrega TORR</p>
         </div>
         <div class="container aggregator-margin-navbar">
             <div class="row">

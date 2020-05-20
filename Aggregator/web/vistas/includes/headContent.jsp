@@ -12,17 +12,17 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <!--JS y CSS propio-->
-<script src="js/votosAjax.js"></script>
-<link rel="stylesheet" href="css/gestorTareas.css">
+<script src="vistas/js/votosAjax.js"></script>
+<link rel="stylesheet" href="vistas/css/gestorTareas.css">
 <!-- PLugin JQUERY: Color picker-->
-<script src="js/colorPick.min.js"></script>
-<link rel="stylesheet" href="css/colorPick.css">
+<script src="vistas/js/colorPick.min.js"></script>
+<link rel="stylesheet" href="vistas/css/colorPick.css">
 <!-- Plugin JQUERY: datepicker-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <!-- Uso de plugins-->
-<script src="js/aggregator.js"></script>
+<script src="vistas/js/aggregator.js"></script>
 
 <%!
     public static String darkenColor(String colorStr, int factor) {
@@ -48,22 +48,22 @@
     boolean mostrar_encabezado = true;
     //Comprobar si la variable de sesion usuario está establecida y tomar su personalizacion
     if (session.getAttribute("usuario") != null) {
-        Usuario u = (Usuario)session.getAttribute("usuario");
+        Usuario u = (Usuario) session.getAttribute("usuario");
         color_primario = u.getPersonalizacion().getColorPrimario();
-        
-        if(u.getPersonalizacion().getModoOscuro() == 1){
+
+        if (u.getPersonalizacion().getModoOscuro() == 1) {
             tema_oscuro = true;
-            
+
         }
-        
-        if(u.getPersonalizacion().getMostrarEncabezado() == 0){
+
+        if (u.getPersonalizacion().getMostrarEncabezado() == 0) {
             mostrar_encabezado = false;
-        }  
+        }
     }
-    
+
     String color_primario_oscuro = darkenColor(color_primario, 1);
     String color_primario_oscuroplus = darkenColor(color_primario, 2);
-        
+
     //MODO OSCURO
     if (tema_oscuro) {
 %>
@@ -94,7 +94,7 @@
 
     .btn-primary {
         background-color: <%=color_primario%>;
-        border-color: <%=color_primario%>>;
+        border-color: <%=color_primario%>;
     }
     .btn-primary:hover {
         background-color: <%=color_primario_oscuro%>;
@@ -132,6 +132,21 @@
     .principal .formulario input[type=text].error {
         border: 5px solid <%=color_primario%>;
     }
+    a {
+        color: <%=color_primario%>;
+    }
+    a:hover {
+        color: <%=color_primario_oscuro%>;
+    }
+    .page-link {
+        background-color: <%=color_primario%>;
+        color: white;
+    }
+
+    .page-link:hover {
+        background-color: <%=color_primario_oscuro%>;
+        color: white;
+    }
 
     .aggregator-margin-navbar {
         margin-bottom:50px;
@@ -147,7 +162,7 @@
             105px
             <%
                 }
-            %>
+            %>;
     }
 
 

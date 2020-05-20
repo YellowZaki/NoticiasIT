@@ -55,7 +55,6 @@
                                         <s:textfield name="nombre" cssClass="form-control" theme="simple"></s:textfield>
                                         <s:fielderror fieldName="nombre"/>
                                     </s:else>                                 
-                                                                     
                                      <s:if test="%{carpeta!=null}">
                                         <input type="hidden" name="nombreOriginal" value="<s:property value="carpeta.getNombreCarpeta()"/>" />
                                     </s:if>

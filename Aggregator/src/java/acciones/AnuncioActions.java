@@ -125,7 +125,6 @@ public class AnuncioActions extends ActionSupport {
                 if (this.titulo.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
                     this.addFieldError("titulo", "No se permiten caracteres extraños");
                 }
-
             }
 
         }
