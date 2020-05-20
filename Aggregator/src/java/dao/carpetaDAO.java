@@ -5,12 +5,14 @@
  */
 package dao;
  
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojos.Carpeta;
 import pojos.GuardadasEn;
+import pojos.Noticia;
  
 /**
  *
@@ -19,10 +21,10 @@ import pojos.GuardadasEn;
 public class carpetaDAO {
     Session sesion = null;
  
-    public Carpeta getCarpeta(String nombre_carpeta, String nombre_usuario) {
+    public Carpeta getCarpeta(String id_carpeta) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("From Carpeta where nombre_carpeta='" + nombre_carpeta + "' and usuario='" + nombre_usuario + "'");
+        Query q = sesion.createQuery("From Carpeta where id_carpeta='" + id_carpeta + "'");
         Carpeta c = (Carpeta) q.uniqueResult();
         tx.commit();
         sesion.close();
@@ -39,10 +41,12 @@ public class carpetaDAO {
         return ln;
     }
    
-    public void borrarCarpeta(String nombre_carpeta, String nombre_usuario) {
+    public void borrarCarpeta(String id_carpeta) {
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("delete From Carpeta where nombre_carpeta='" + nombre_carpeta + "' and usuario='" + nombre_usuario + "'");
+        Query q = sesion.createQuery("delete From GuardadasEn where id_carpeta=" + id_carpeta + "");
+        q.executeUpdate();
+        q = sesion.createQuery("delete From Carpeta where id_carpeta=" + id_carpeta + "");
         q.executeUpdate();
         tx.commit();
         sesion.close();
@@ -56,11 +60,11 @@ public class carpetaDAO {
         sesion.close();
     }
  
-    public void updateCarpeta(String nombreOriginal, Carpeta carpetaNueva) {
+    public void updateCarpeta(String id_carpeta, Carpeta carpetaNueva) {
         //Carpeta original = getCarpeta(nombreOriginal, carpetaNueva.getUsuario().getUsuario());
         sesion = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("From Carpeta where nombre_carpeta='" + nombreOriginal + "' and usuario='" + carpetaNueva.getUsuario().getUsuario() + "'");
+        Query q = sesion.createQuery("From Carpeta where id_carpeta=" + id_carpeta + "");
         Carpeta original = (Carpeta) q.uniqueResult();
         String nombre = carpetaNueva.getNombreCarpeta();
         original.setNombreCarpeta(nombre);
@@ -76,5 +80,15 @@ public class carpetaDAO {
         sesion.save(relacion);
         tx.commit();
         sesion.close();
+    }
+    
+    public List<GuardadasEn> getNoticiasCarpeta(String id_carpeta){
+        sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("From GuardadasEn where id_carpeta=" + id_carpeta + "");
+        List<GuardadasEn> lista = (List<GuardadasEn>) q.list();              
+        tx.commit();
+        sesion.close();
+        return lista;
     }
 }

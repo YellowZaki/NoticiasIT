@@ -17,7 +17,7 @@
         <%@include file="includes/header.jsp"%>
         <div class="container aggregator-margin-navbar">
             <div class="row">
-                <div class="mr-auto"><h1>Carpetas</h1></div>
+                <div class="mr-auto"><h1>Viendo el contenido de la carpeta <s:property value="%{carpeta.getNombreCarpeta()}"/></h1></div>
                 <div class="ml-auto">                    
                     <a href='
                        <s:url action="EditarAnadirCarpeta">
@@ -32,10 +32,10 @@
                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <s:iterator value="%{#carpeta.getGuardadasEns().iterator()}" var="relacion">
+                <tbody>                    
+                    <s:iterator value="relaciones" var="relacion">
                         <tr>
-                            <td><s:property value="%{#relacion.getNoticia().getTitulo()}"/></td>
+                            <td><s:property value="#relacion.Noticia.titulo"/></td>
                             <td><s:if test="%{noticia!=null}">
                                     <s:form action="AnadirNoticiaACarpeta">
                                         <s:submit name="btnAsocial" value="Añadir a esta carpeta" cssClass='btn btn-primary add-new'></s:submit>

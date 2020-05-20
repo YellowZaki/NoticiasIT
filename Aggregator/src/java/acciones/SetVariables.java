@@ -7,6 +7,7 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.anuncioDAO;
 import dao.carpetaDAO;
 import dao.noticiaDAO;
 import dao.temaDAO;
@@ -14,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import pojos.Anuncio;
 import pojos.Carpeta;
+import pojos.GuardadasEn;
 import pojos.Noticia;
 import pojos.Tema;
 import pojos.Usuario;
@@ -30,17 +33,39 @@ public class SetVariables extends ActionSupport {
     String id;//De noticia, si se van a crear mas ids, poner id_xxxx
     String pag;
     String tema; //Para ver_noticias.jsp
-    String nombre_carpeta;
-    String nombre_usuario;
+    String id_carpeta;
     String temaCrearEditar;
+    String anuncioCrearEditar;
+
     //Parámetros de salida para mostrar en página .jsp
     Noticia noticia;
     List<Noticia> noticias;
+    List<GuardadasEn> relaciones;
     List <Tema> temas;
     Tema tema0;
     Carpeta carpeta;
     int valorVotosNoticia = 0;
     int valorVotoUsuario = 0;
+
+    public List<GuardadasEn> getRelaciones() {
+        return relaciones;
+    }
+
+    public void setRelaciones(List<GuardadasEn> relaciones) {
+        this.relaciones = relaciones;
+    }
+
+    public String getId_carpeta() {
+        return id_carpeta;
+    }
+
+    public void setId_carpeta(String id_carpeta) {
+        this.id_carpeta = id_carpeta;
+    }
+
+    List<Anuncio> anuncios;
+    Anuncio anuncio;
+
 
     public SetVariables() {
     }
@@ -54,6 +79,30 @@ public class SetVariables extends ActionSupport {
      */
     public String getId() {
         return id;
+    }
+
+    public Anuncio getAnuncio() {
+        return anuncio;
+    }
+
+    public void setAnuncio(Anuncio anuncio) {
+        this.anuncio = anuncio;
+    }
+
+    public String getAnuncioCrearEditar() {
+        return anuncioCrearEditar;
+    }
+
+    public void setAnuncioCrearEditar(String anuncioCrearEditar) {
+        this.anuncioCrearEditar = anuncioCrearEditar;
+    }
+
+    public List<Anuncio> getAnuncios() {
+        return anuncios;
+    }
+
+    public void setAnuncios(List<Anuncio> anuncios) {
+        this.anuncios = anuncios;
     }
 
     public String getTemaCrearEditar() {
@@ -108,22 +157,6 @@ public class SetVariables extends ActionSupport {
         this.tema0 = tema0;
     }
 
-    public String getNombre_carpeta() {
-        return nombre_carpeta;
-    }
-
-    public void setNombre_carpeta(String nombre_carpeta) {
-        this.nombre_carpeta = nombre_carpeta;
-    }
-
-    public String getNombre_usuario() {
-        return nombre_usuario;
-    }
-
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
-    }
-
     public Carpeta getCarpeta() {
         return carpeta;
     }
@@ -155,9 +188,6 @@ public class SetVariables extends ActionSupport {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
-    
-    
 
     /**
      * ###########################################
@@ -171,7 +201,7 @@ public class SetVariables extends ActionSupport {
         //Setear temas
         temaDAO td = new temaDAO();
         this.setTemas(td.getAllTemas());
-        
+
         noticiaDAO nd = new noticiaDAO();
         //Si se pasa el parámeto tema, obtener noticias de un tema. Si no, obtenerlas todas
         if (getTema() != null) {
@@ -200,8 +230,6 @@ public class SetVariables extends ActionSupport {
 
         return SUCCESS;
     }
-
-
 
     /**
      * Si se le pasa por parámetro GET, el id, se establecerá Noticia. Si no no.
@@ -236,10 +264,17 @@ public class SetVariables extends ActionSupport {
     }
 
     public String getCarpetaUnica() {
-        if (nombre_carpeta != null) {
+        if (id_carpeta != null) {
             carpetaDAO cd = new carpetaDAO();
-            carpeta = cd.getCarpeta(getNombre_carpeta(), getNombre_usuario());
+            carpeta = cd.getCarpeta(id_carpeta);
         }
+        return SUCCESS;
+    }
+
+    public String setearAnuncios() {
+        anuncioDAO adao = new anuncioDAO();
+        setAnuncios(adao.getAllanuncios());
+
         return SUCCESS;
     }
 
@@ -247,14 +282,35 @@ public class SetVariables extends ActionSupport {
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
-    public String setearTemas(){
+
+    public String setearTemas() {
         getNoticiaUnica();
         temaDAO tdao = new temaDAO();
         List<Tema> temas = tdao.getAllTemas();
         setTemas(temas);
-         
+
+        return SUCCESS;
+    }
+    
+    public String getNoticiasCarpeta(){
+        if (id_carpeta != null) {
+            carpetaDAO cd = new carpetaDAO();
+            carpeta = cd.getCarpeta(id_carpeta);
+            relaciones = cd.getNoticiasCarpeta(id_carpeta);
+        }
         return SUCCESS;
     }
 
+    public String setearAnuncio() {
+
+        if (getAnuncioCrearEditar() != null) {
+            anuncioDAO adao = new anuncioDAO();
+            Anuncio anuncio = adao.getAnuncio(getAnuncioCrearEditar());
+            setAnuncio(anuncio);
+
+        }
+        setearTemas();
+
+        return SUCCESS;
+    }
 }
