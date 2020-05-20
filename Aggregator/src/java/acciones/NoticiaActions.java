@@ -95,5 +95,13 @@ public class NoticiaActions extends ActionSupport {
 
         return SUCCESS;
     }
+    
+    
+    public String borrarNoticia() {
+        noticiaDAO nd = new noticiaDAO();
+        Noticia noticia = nd.getNoticia(getId());
+        nd.borrarNoticia(noticia);
+        return SUCCESS;
+    }
 
 }

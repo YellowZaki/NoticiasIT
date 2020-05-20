@@ -26,15 +26,7 @@
             </div>
 
             <div class="mr-3">
-                <!--                    session.usuario.getUsuario()-->
-
-
-
                 <s:if test='#session.containsKey("usuario")'>
-
-
-
-
                     <s:if test="%{#session.usuario.getUsuario() == noticia.usuario.getUsuario()}">
                         <a href='
                            <s:url action="CrearEditarNoticia">
@@ -51,20 +43,6 @@
                            '><i style='color:red;' class='fas fa-trash'></i></a>
 
                     </s:if>   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <a href='
                        <s:url action="GestionarCarpetas">
                            <s:param name="id"><s:property value="noticia.idNoticia"/></s:param>
