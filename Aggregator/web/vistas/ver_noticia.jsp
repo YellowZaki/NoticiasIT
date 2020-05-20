@@ -58,7 +58,7 @@
                                                 <li class="list-group-item">
                                                     <div class="row">
                                                         <div class="col-2">
-                                                            <img style="border-radius: 50%;" src="image/avatar.jpg" class="img-circle img-responsive" alt="" />
+                                                            <img style="border-radius: 50%;" src="vistas/image/avatar.jpg" class="img-circle img-responsive" alt="" />
                                                         </div>
                                                         <div class="col1">
 

@@ -24,7 +24,9 @@
         <action name="goToRegister">           
             <result>/vistas/register.jsp</result>
         </action>   
-        
+        <action name="goToPerfil">           
+            <result>/vistas/perfil.jsp</result>
+        </action>   
         
         <action name="votosLike" class="acciones.Votos">
             <result name="success">/vistas/noticia.jsp</result>
