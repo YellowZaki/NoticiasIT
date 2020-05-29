@@ -91,39 +91,19 @@ public class AnuncioActions extends ActionSupport {
                 if (this.imagen.length() == 0) {
                     this.addFieldError("imagen", "Debe rellenar el campo");
                 }
-
-                if (this.imagen.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
-                    this.addFieldError("imagen", "No se permiten caracteres extraños");
-                }
-
                 if (this.titulo.length() == 0) {
                     this.addFieldError("titulo", "Debe rellenar el campo");
-                }
-
-                if (this.titulo.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
-                    this.addFieldError("titulo", "No se permiten caracteres extraños");
                 }
             } else {
                 if (this.link.length() == 0) {
                     this.addFieldError("link", "Debe rellenar el campo");
                 }
-                if (this.link.contains("_") || this.link.contains("#") || this.link.contains("!") || this.link.contains(";") || this.link.contains(":") || this.link.contains("*") || this.link.contains("(") || this.link.contains(")") || this.link.contains("[") || this.link.contains("]") || this.link.contains("{") || this.link.contains("}")) {
-                    this.addFieldError("link", "No se permiten caracteres extraños");
-                }
                 if (this.imagen.length() == 0) {
                     this.addFieldError("imagen", "Debe rellenar el campo");
                 }
 
-                if (this.imagen.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
-                    this.addFieldError("imagen", "No se permiten caracteres extraños");
-                }
-
                 if (this.titulo.length() == 0) {
                     this.addFieldError("titulo", "Debe rellenar el campo");
-                }
-
-                if (this.titulo.contains("#") || this.imagen.contains("!") || this.imagen.contains(";") || this.imagen.contains("(") || this.imagen.contains(")") || this.imagen.contains("[") || this.imagen.contains("]") || this.imagen.contains("{") || this.imagen.contains("}")) {
-                    this.addFieldError("titulo", "No se permiten caracteres extraños");
                 }
             }
 

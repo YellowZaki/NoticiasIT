@@ -33,6 +33,8 @@ public class SetVariables extends ActionSupport {
     //Parámetros de entrada por GET
     String id;//De noticia, si se van a crear mas ids, poner id_xxxx
     String pag;
+    String nextPag;
+    String prevPag;
     String tema; //Para ver_noticias.jsp
     String id_carpeta;
     String temaCrearEditar;
@@ -126,6 +128,24 @@ public class SetVariables extends ActionSupport {
         this.pag = pag;
     }
 
+    public String getNextPag() {
+        return nextPag;
+    }
+
+    public void setNextPag(String nextPag) {
+        this.nextPag = nextPag;
+    }
+
+    public String getPrevPag() {
+        return prevPag;
+    }
+
+    public void setPrevPag(String prevPag) {
+        this.prevPag = prevPag;
+    }
+
+    
+    
     public String getTema() {
         return tema;
     }
@@ -215,8 +235,12 @@ public class SetVariables extends ActionSupport {
         int pag = 1;
         if (getPag() != null) {
             pag = Integer.parseInt(getPag());
+            setNextPag((pag+1)+"");
+            setPrevPag((pag-1)+"");
         } else {
             setPag(1 + "");
+            setNextPag(2+"");
+            setPrevPag(0 + "");
         }
         int initialIndex = pag * 3 - 3;
         int i = 0;
@@ -241,6 +265,8 @@ public class SetVariables extends ActionSupport {
         if (id != null) {
             noticiaDAO nd = new noticiaDAO();
             noticia = nd.getNoticia(getId());
+            anuncioDAO ad = new anuncioDAO();
+            anuncios = ad.getAnunciosTema(noticia.getTema().getNombreTema());
             Map session = (Map) ActionContext.getContext().get("session");
             Usuario user = null;
             if (session.containsKey("usuario") && session.get("usuario") != null) {

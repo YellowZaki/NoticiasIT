@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Pagina de prueba</title>
+        <title>Viendo noticia</title>
         <%@include file="includes/headContent.jsp"%>
     </head>
     <body>
@@ -41,19 +41,11 @@
 
                                     </s:form>                         
                                 </s:if>
-
-
                                 <br>
-
-
                                 <div class="panel panel-default widget">
 
                                     <div class="panel-body">
                                         <ul class="list-group">
-
-
-
-
                                             <s:iterator value="noticia.comentarios" var="comentario">
                                                 <li class="list-group-item">
                                                     <div class="row">
@@ -95,23 +87,13 @@
                                                                 </s:if> 
 
                                                             </s:if> 
-
-
-
                                                         </div>
                                                     </div>
                                                 </li>
-
                                             </s:iterator>    
-
-
-
                                         </ul>
                                     </div>
                                 </div>            
-
-
-
                             </div>
                         </div>
                     </div>
@@ -120,7 +102,12 @@
                     <!--                    Espacio vacio-->
                 </div>   
                 <div class="col-3">
-                    AQUI VAN LOS ANUNCIOS
+                    <s:iterator value="anuncios" var="anuncio">
+                        <s:a target="_blank" href="%{#anuncio.link}">
+                            <img src="<s:property value="#anuncio.imagen"></s:property>" width="300"/>
+                        </s:a>
+                        <s:property value="#anuncio.titulo"/>
+                    </s:iterator>
                 </div>
 
             </div> 

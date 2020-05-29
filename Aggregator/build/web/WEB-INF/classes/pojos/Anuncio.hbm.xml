@@ -15,7 +15,7 @@
             <column name="titulo" length="100" not-null="true" />
         </property>
         <property name="imagen" type="string">
-            <column name="imagen" length="100" not-null="true" />
+            <column name="imagen" length="300" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

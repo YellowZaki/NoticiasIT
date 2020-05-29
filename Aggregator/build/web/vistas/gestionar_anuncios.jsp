@@ -28,14 +28,14 @@
             <table class="table table-responsive-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Link</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <s:iterator value="anuncios" var="anuncio">
                         <tr>
-                            <td><s:property value="%{#anuncio.getLink()}"/></td>
+                            <td><s:property value="%{#anuncio.getTitulo()}"/></td>
                             <td>
                                 <a href='
                                    <s:url action="CrearEditarAnuncio">

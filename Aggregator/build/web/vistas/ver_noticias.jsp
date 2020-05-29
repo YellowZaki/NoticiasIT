@@ -54,7 +54,7 @@
                                             <li class="page-item">
                                                 <a class="page-link" href="
                                                    <s:url action="ListaNoticias">
-                                                       <s:param name="pag">1</s:param>
+                                                       <s:param name="pag"><s:property value="prevPag"/></s:param>
                                                    </s:url>
                                                    " tabindex="-1">Página anterior</a>
                                             </li>
@@ -69,7 +69,7 @@
                                     <li class="page-item float-right">
                                         <a class="page-link" href="
                                            <s:url action="ListaNoticias">
-                                               <s:param name="pag">2</s:param>
+                                               <s:param name="pag"><s:property value="nextPag"/></s:param>
                                            </s:url>
 
                                            ">Página siguiente</a>
