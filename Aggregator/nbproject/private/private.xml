@@ -3,16 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/NoticiaActions.java</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/ComentarioActions.java</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/dao/carpetaDAO.java</file>
             <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/dao/temaDAO.java</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/includes/headContent.jsp</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/js/votosAjax.js</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/CarpetaActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/dao/usuarioDAO.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/crear_editar_anuncio.jsp</file>
             <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/struts.xml</file>
-            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/UsuarioActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/SetVariables.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/ComentarioActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/gestionar_anuncios.jsp</file>
             <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/dao/noticiaDAO.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/includes/checkUsuarioAdmin.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/includes/checkLogin.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/ver_carpeta.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/gestionar_carpetas.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/crear_editar_carpeta.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/perfil.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/includes/headContent.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/CarpetaActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/AnuncioActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/gestionar_temas.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/UsuarioActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/crear_editar_tema.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/editar_comentario.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/src/java/acciones/NoticiaActions.java</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/js/votosAjax.js</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/noticia.jsp</file>
+            <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/crear_editar_noticia.jsp</file>
             <file>file:/C:/Users/Alberto/Desktop/UPO_3/IT/NoticiasIT/Aggregator/web/vistas/includes/header.jsp</file>
         </group>
     </open-files>

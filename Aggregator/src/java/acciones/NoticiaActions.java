@@ -77,7 +77,7 @@ public class NoticiaActions extends ActionSupport {
                 this.addFieldError("titulo", "Debe rellenar el campo");
             }
 
-            if (this.titulo.contains("#") || this.titulo.contains("!") || this.titulo.contains(";") || this.titulo.contains("(") || this.titulo.contains(")") || this.titulo.contains("[") || this.titulo.contains("]") || this.titulo.contains("{") || this.titulo.contains("}")) {
+            if (this.titulo.contains("#") || this.titulo.contains(";") || this.titulo.contains("(") || this.titulo.contains(")") || this.titulo.contains("[") || this.titulo.contains("]") || this.titulo.contains("{") || this.titulo.contains("}")) {
                 this.addFieldError("titulo", "No se permiten caracteres extraños");
             }
 
@@ -85,14 +85,11 @@ public class NoticiaActions extends ActionSupport {
                 this.addFieldError("descripcion", "Debe rellenar el campo");
             }
 
-            if (this.descripcion.contains("#") || this.descripcion.contains("!") || this.descripcion.contains(";") || this.descripcion.contains("(") || this.descripcion.contains(")") || this.descripcion.contains("[") || this.descripcion.contains("]") || this.descripcion.contains("{") || this.descripcion.contains("}")) {
-                this.addFieldError("descripcion", "No se permiten caracteres extraños");
-            }
             if (this.fuente.length() == 0) {
                 this.addFieldError("fuente", "Debe rellenar el campo");
             }
 
-            if (this.fuente.contains("#") || this.fuente.contains("!") || this.fuente.contains(";") || this.fuente.contains("(") || this.fuente.contains(")") || this.fuente.contains("[") || this.fuente.contains("]") || this.fuente.contains("{") || this.fuente.contains("}")) {
+            if (this.fuente.contains("!") || this.fuente.contains(";") || this.fuente.contains("(") || this.fuente.contains(")") || this.fuente.contains("[") || this.fuente.contains("]") || this.fuente.contains("{") || this.fuente.contains("}")) {
                 this.addFieldError("fuente", "No se permiten caracteres extraños");
 
             }

@@ -12,12 +12,11 @@
         </action>  
     </package>
     
-    <package name="andres" extends="struts-default">
+    <package name="aggregator" extends="struts-default">
         <action name="registrar" class="acciones.Register">
             <result name="success" type="chain">
                 <param name="actionName">ListaNoticias</param>
-            </result> 
-            
+            </result>             
             <result name="input">/vistas/register.jsp</result>
             <result name="error">/vistas/register.jsp</result>
         </action>  
@@ -26,23 +25,17 @@
         </action>   
         <action name="goToPerfil">           
             <result>/vistas/perfil.jsp</result>
-        </action>   
-        
+        </action>         
         <action name="votosLike" class="acciones.Votos">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
-        
         <action name="votosDislike" class="acciones.Votos" method="dislike">
             <result name="success">/vistas/noticia.jsp</result>
         </action>  
-        
         <action name="modificarUsuario" class="acciones.UsuarioActions">
             <result name="success">/vistas/perfil.jsp</result>
             <result name="input">/vistas/perfil.jsp</result>
         </action>
-    </package>
-    
-    <package name="juan" extends="struts-default">
         <action name="comprobarLogin" class="acciones.Login">
             <result name="success" type="chain">
                 <param name="actionName">ListaNoticias</param>
@@ -80,8 +73,6 @@
                 <param name="actionName">GestionarCarpetas</param>
             </result> 
         </action>
-    </package>
-    <package name="alberto" extends="struts-default">
         <action name="goToLogin">
             <result>/vistas/login.jsp</result>
         </action>
@@ -100,19 +91,15 @@
         <action name="EditarComentario" class="acciones.ComentarioActions" method="editarComentario">
             <result name="success">/vistas/editar_comentario.jsp</result>
         </action>
-        
         <action name="EditarComentarioSubmit" class="acciones.ComentarioActions" method="editarComentarioSubmit">
             <result name="success" type="redirectAction">
                 <param name="id">${id_noticia}</param>
                 <param name="actionName">VerNoticia</param>
             </result>
-        </action>
-        
+        </action>    
         <action name="logout" class="acciones.Login" method="logout">
             <result name="success">/vistas/login.jsp</result>
         </action> 
-    </package>
-    <package name="variable-setting" extends="struts-default">
         <action name="NoticiaCard" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/noticia.jsp</result>
         </action>
@@ -124,15 +111,12 @@
                 <param name="actionName">ListaNoticias</param>
             </result>
         </action>  
-          
         <action name="crearNoticiaSubmit" class="acciones.NoticiaActions">
             <result name="success" type="chain">
                 <param name="actionName">ListaNoticias</param>
             </result>
             <result name="input">/vistas/crear_editar_noticia.jsp</result>
-        </action>  
-              
-                  
+        </action>     
         <action name="VerNoticia" class="acciones.SetVariables" method="getNoticiaUnica">
             <result name="success">/vistas/ver_noticia.jsp</result>
         </action>
@@ -142,9 +126,6 @@
         <action name="CrearEditarTema" class="acciones.SetVariables" method="setearTema">
             <result name="success">/vistas/crear_editar_tema.jsp</result>
         </action>
-    </package>
-    
-    <package name="hector" extends="struts-default">
         <action name="CrearEditarNoticiaSubmit" class="acciones.NoticiaActions">
             <result name="success" type="chain">
                 <param name="actionName">ListaNoticias</param>
@@ -153,37 +134,29 @@
                 <param name="actionName">SetearTemasNoticia</param>
             </result>
         </action>
-        
-        
         <action name="SetearTemasNoticia" class="acciones.SetVariables" method="setearTemas">
             <result name="success">/vistas/crear_editar_noticia.jsp</result>
         </action>
-        
         <action name="crearEditarTemaSubmit" class="acciones.TemaActions">
             <result name="success" type="chain">
                 <param name="actionName">gestionarTemas</param>
             </result>
             <result name="input">/vistas/crear_editar_tema.jsp</result>
         </action>
-        
         <action name="gestionarTemas" class="acciones.SetVariables" method="setearTemas">
             <result name="success">/vistas/gestionar_temas.jsp</result>
         </action>
-        
         <action name="BorrarTema" class="acciones.TemaActions" method="borrarTema">
             <result name="success" type="chain">
                 <param name="actionName">gestionarTemas</param>
             </result>
-        </action>
-        
+        </action>        
         <action name="gestionarAnuncios" class="acciones.SetVariables" method="setearAnuncios">
             <result name="success">/vistas/gestionar_anuncios.jsp</result>
-        </action>
-        
+        </action>   
         <action name="CrearEditarAnuncio" class="acciones.SetVariables" method="setearAnuncio">
             <result name="success">/vistas/crear_editar_anuncio.jsp</result>
         </action>
-        
         <action name="crearEditarAnuncioSubmit" class="acciones.AnuncioActions">
             <result name="success" type="chain">
                 <param name="actionName">gestionarAnuncios</param>
@@ -191,18 +164,15 @@
             <result name="input" type="chain">
                 <param name="actionName">SetearTemasAnuncios</param>
             </result>
-        </action>
-        
+        </action>     
         <action name="SetearTemasAnuncios" class="acciones.SetVariables" method="setearTemas">
             <result name="success">/vistas/crear_editar_anuncio.jsp</result>
         </action>
-        
         <action name="BorrarAnuncio" class="acciones.AnuncioActions" method="borrarAnuncio">
             <result name="success" type="chain">
                 <param name="actionName">gestionarAnuncios</param>
             </result>
-        </action>
-        
+        </action>    
         <action name="PaginaNoEncontrada">
             <result name="success">/vistas/paginaNoEncontrada.jsp</result>
         </action>

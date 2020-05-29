@@ -61,7 +61,7 @@
         <s:property value="noticia.descripcion"/>
         <br>
         <br>
-        Fuente: <a href='<s:property value="noticia.fuente"/>'>Click aquí</a>
+        Fuente: <a target="_blank" href='<s:property value="noticia.fuente"/>'>Click aquí</a>
     </div>
 
     <div class="card-footer">

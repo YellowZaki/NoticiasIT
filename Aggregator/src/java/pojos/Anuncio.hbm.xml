@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="pojos.Anuncio" table="anuncio" catalog="aggregator" optimistic-lock="version">
         <id name="link" type="string">
-            <column name="link" length="100" />
+            <column name="link" length="300" />
             <generator class="assigned" />
         </id>
         <many-to-one name="tema" class="pojos.Tema" fetch="select">

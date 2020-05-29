@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <property name="imagen" type="string">
-            <column name="imagen" length="100" not-null="true" />
+            <column name="imagen" length="300" not-null="true" />
         </property>
         <set name="anuncios" table="anuncio" inverse="true" lazy="false" fetch="select">
             <key>
